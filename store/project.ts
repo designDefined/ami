@@ -13,7 +13,7 @@ interface Project {
   edgeSummaries: EdgeSummary[];
 }
 
-type ProjectStatus = "clean" | "styled";
+type ProjectStatus = "loading" | "memo" | "styled";
 
 interface ProjectStoreStatus extends Project {
   status: ProjectStatus;
@@ -38,7 +38,7 @@ export const useProjectStore = create<ProjectStoreStatus>()(
       title,
       edges,
       edgeSummaries,
-      status: "clean",
+      status: "loading",
       setTitle: (title) => set({ title }),
       setEdges: (edges) =>
         set({
