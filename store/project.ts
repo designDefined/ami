@@ -1,24 +1,50 @@
 import create from "zustand";
-import { Edge, initialCleanEdge } from "./base/edge";
+import {
+  Edge,
+  EdgeSummary,
+  initializeCleanEdge,
+  summarizeEdge,
+  summarizeEdges,
+} from "./base/edge";
 
 interface Project {
   title: string;
   edges: Edge[];
+  edgeSummaries: EdgeSummary[];
 }
+
+type ProjectStatus = "clean" | "styled";
 
 interface ProjectStoreStatus extends Project {
+  status: ProjectStatus;
   setTitle: (title: string) => void;
+  setEdges: (edges: Edge[]) => void;
 }
 
-const initialProject = {
-  title: "untitled_project",
-  edges: [initialCleanEdge()],
+const initializeProject = () => {
+  const emptyEdge = initializeCleanEdge();
+  return {
+    title: "untitled_project",
+    edges: [emptyEdge],
+    edgeSummaries: [summarizeEdge(emptyEdge)],
+  };
 };
 
 export const useProjectStore = create<ProjectStoreStatus>()(
-  (set) => ({
-    title: initialProject.title,
-    edges: initialProject.edges,
-    setTitle: (title) => set({ title }),
-  }),
+  (set) => {
+    const { title, edges, edgeSummaries } =
+      initializeProject();
+    return {
+      title,
+      edges,
+      edgeSummaries,
+      status: "clean",
+      setTitle: (title) => set({ title }),
+      setEdges: (edges) =>
+        set({
+          edges,
+          edgeSummaries: summarizeEdges(edges),
+        }),
+    };
+  },
 );

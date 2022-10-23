@@ -23,9 +23,22 @@ interface StyledEdge extends BaseEdge {
 
 export type Edge = CleanEdge | StyledEdge;
 
-export const initialCleanEdge = (): CleanEdge => ({
+export type EdgeSummary = Omit<Edge, "contents">;
+
+export const initializeCleanEdge = (): CleanEdge => ({
   id: nanoid(10),
   type: "clean",
   name: "untitled_edge",
   contents: [initialNormalEdgeMarkDown()],
 });
+
+export const summarizeEdge = ({
+  id,
+  type,
+  name,
+}: Edge): EdgeSummary => ({ id, type, name });
+
+export const summarizeEdges = (
+  edges: Edge[],
+): EdgeSummary[] =>
+  edges.map((edge) => summarizeEdge(edge));
