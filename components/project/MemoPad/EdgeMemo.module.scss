@@ -1,0 +1,27 @@
+@use "./styles/material";
+
+.MemoPad{
+
+}
+
+.EdgeMemo{
+  @include material.shadow(2);
+  width:800px;
+  min-height:300px;
+  background-color: #f3f3f3;
+  padding:20px;
+  border-radius: 20px 0 20px 20px;
+  font-size:16px;
+
+  .Line{
+    width:100%;
+    min-height:1.5em;
+
+    font-size:inherit;
+
+    &.read{
+      background-color: red;
+    }
+    &.edit{}
+  }
+}

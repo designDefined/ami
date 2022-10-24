@@ -1,4 +1,6 @@
-type EdgeMarkDownType =
+import { nanoid } from "nanoid";
+
+export type EdgeMarkDownType =
   | "h1"
   | "h2"
   | "h3"
@@ -14,13 +16,14 @@ type NormalEdgeMarkDownType = Exclude<
 >;
 
 interface BaseEdgeMarkDown {
+  id: string;
   type: EdgeMarkDownType;
+  innerText: string;
   isEditing: boolean;
 }
 
 interface NormalEdgeMarkDown extends BaseEdgeMarkDown {
   type: NormalEdgeMarkDownType;
-  innerText: string;
 }
 
 interface ListEdgeMarkDown extends BaseEdgeMarkDown {
@@ -34,6 +37,7 @@ export type EdgeMarkDown =
 
 export const initialNormalEdgeMarkDown =
   (): NormalEdgeMarkDown => ({
+    id: nanoid(7),
     type: "p",
     innerText: "",
     isEditing: true,

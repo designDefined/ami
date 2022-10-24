@@ -6,6 +6,9 @@ import {
   summarizeEdge,
   summarizeEdges,
 } from "./base/edge";
+import { EdgeMarkDown } from "./base/edgeMarkDown";
+import _ from "lodash";
+import { manipulateWithId } from "../api/arrayFunctions";
 
 interface Project {
   title: string;
@@ -19,6 +22,10 @@ interface ProjectStoreStatus extends Project {
   status: ProjectStatus;
   setTitle: (title: string) => void;
   setEdges: (edges: Edge[]) => void;
+  updateEdge: (target: Edge) => void;
+  updateMarkDown: (
+    edge: Edge,
+  ) => (markDown: EdgeMarkDown) => void;
 }
 
 const initializeProject = () => {
@@ -30,6 +37,23 @@ const initializeProject = () => {
   };
 };
 
+const updateEdgeOfEdges =
+  (edges: Edge[]) =>
+  (edge: Edge): Edge[] => {
+    const indexOfEdge = _.findIndex(edges, { id: edge.id });
+    if (indexOfEdge < 0) {
+      //add edge
+    }
+    return [];
+  };
+
+const updateMarkDownOfEdges =
+  (edges: Edge[]) =>
+  (edge: Edge) =>
+  (markDown: EdgeMarkDown): Edge[] => {
+    return [];
+  };
+
 export const useProjectStore = create<ProjectStoreStatus>()(
   (set) => {
     const { title, edges, edgeSummaries } =
@@ -38,13 +62,33 @@ export const useProjectStore = create<ProjectStoreStatus>()(
       title,
       edges,
       edgeSummaries,
-      status: "loading",
+      status: "memo",
       setTitle: (title) => set({ title }),
       setEdges: (edges) =>
         set({
           edges,
           edgeSummaries: summarizeEdges(edges),
         }),
+      updateEdge: (target, indexToAdd?: number) =>
+        set((state) => ({
+          edges: manipulateWithId(state.edges)(
+            target,
+            indexToAdd,
+          ),
+        })),
+      updateMarkDown:
+        (edge) => (markDown, indexToAdd?: number) =>
+          set((state) => {
+            const newEdge: Edge = {
+              ...edge,
+              contents: manipulateWithId(edge.contents)(
+                markDown,
+              ),
+            };
+            return {
+              edges: manipulateWithId(state.edges)(newEdge),
+            };
+          }),
     };
   },
 );
