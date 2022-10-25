@@ -17,16 +17,14 @@
   .title{
     display: flex;
     align-items: center;
-    height:40px;
     position: absolute;
-    right:0px;
+    height:40px;
+    top:-40px;
+    right:0;
     padding-left:10px;
     padding-right:10px;
     border-radius: 15px 15px 0 0 ;
-
-    top:-40px;
     background-color: #f3f3f3;
-
   }
 
   .Line{
