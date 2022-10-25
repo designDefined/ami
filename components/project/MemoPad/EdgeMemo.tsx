@@ -6,10 +6,6 @@ import styles from "./EdgeMemo.module.scss";
 import MarkDownWriter from "../../common/EdgeMarkDown/MarkDownWriter";
 import useInputValueStore from "../../../store/inputValue";
 import { useProjectStore } from "../../../store/project";
-import {
-  EdgeMarkDownType,
-  initialNormalEdgeMarkDown,
-} from "../../../store/base/edgeMarkDown";
 
 interface EdgeMemoProps {
   edge: Edge;
@@ -30,13 +26,10 @@ const EdgeMemo = ({ edge }: EdgeMemoProps) => {
   const updateMarkDown = useProjectStore(
     (state) => state.updateMarkDown,
   );
-  const addMarkDown = useProjectStore(
-    (state) => state.addMarkDown,
-  );
 
   return (
     <div className={cx("EdgeMemo")}>
-      <label>{name}</label>
+      <label className={cx("title")}>{name}</label>
       {contents.map((edgeMarkDown) => {
         if (!edgeMarkDown.isEditing) {
           return (

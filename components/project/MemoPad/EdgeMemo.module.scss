@@ -6,22 +6,72 @@
 
 .EdgeMemo{
   @include material.shadow(2);
+  position: relative;
   width:800px;
   min-height:300px;
   background-color: #f3f3f3;
-  padding:20px;
+  padding:30px;
   border-radius: 20px 0 20px 20px;
   font-size:16px;
+
+  .title{
+    display: flex;
+    align-items: center;
+    height:40px;
+    position: absolute;
+    right:0px;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius: 15px 15px 0 0 ;
+
+    top:-40px;
+    background-color: #f3f3f3;
+
+  }
 
   .Line{
     width:100%;
     min-height:1.5em;
-
     font-size:inherit;
+    padding-left:10px;
 
     &.read{
-      background-color: red;
+      display: flex;
+      align-items: center;
+      height:2em;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover{
+        background-color: rgba(204, 231, 193, 0.5);
+      }
     }
-    &.edit{}
+    &.write{
+      @include material.shadow(1);
+      display: flex;
+      align-items: center;
+      height:2em;
+      background-color: white;
+      border-radius: 5px;
+      animation: 0.3s popup ease;
+      textarea{
+        height:1em;
+        overflow-y: hidden;
+      }
+    }
   }
 }
+
+
+@keyframes popup {
+  0%{
+    transform: translateY(-100%);
+    opacity: 0.3;
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+}
+

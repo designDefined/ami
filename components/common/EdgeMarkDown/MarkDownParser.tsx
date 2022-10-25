@@ -1,5 +1,4 @@
 import { EdgeMarkDown } from "../../../store/base/edgeMarkDown";
-import { nanoid } from "nanoid";
 
 interface MarkDownParserProps {
   edgeMarkDown: EdgeMarkDown;
@@ -16,17 +15,17 @@ const MarkDownParser = ({
       case "ol":
         return (
           <ol>
-            {edgeMarkDown.listItems.map((listItem) => (
-              <li key={nanoid(5)}>{listItem}</li>
-            ))}
+            {/*{edgeMarkDown..map((listItem) => (*/}
+            {/*  <li key={nanoid(5)}>{listItem}</li>*/}
+            {/*))}*/}
           </ol>
         );
       case "ul":
         return (
           <ul>
-            {edgeMarkDown.listItems.map((listItem) => (
-              <li key={nanoid(5)}>{listItem}</li>
-            ))}
+            {/*{edgeMarkDown.listItems.map((listItem) => (*/}
+            {/*  <li key={nanoid(5)}>{listItem}</li>*/}
+            {/*))}*/}
           </ul>
         );
     }

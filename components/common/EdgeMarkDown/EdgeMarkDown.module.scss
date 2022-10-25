@@ -1,10 +1,26 @@
 .MarkDown{
   width:100%;
+  height:100%;
+  font: inherit;
+  font-family:inherit;
+  font-weight: inherit;
+  font-size:inherit;
+  color:inherit;
+  background-color: transparent;
 
   &.parser{
-
+    width:100%;
+    height:100%;
+    resize:none;
+    border:none;
   }
   &.writer{
+    line-height: 1em;
+    padding:0;
     resize:none;
+    border:none;
+    &:focus{
+      outline: none;
+    }
   }
 }
