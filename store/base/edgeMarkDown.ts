@@ -28,12 +28,20 @@ interface NormalEdgeMarkDown extends BaseEdgeMarkDown {
 
 interface ListEdgeMarkDown extends BaseEdgeMarkDown {
   type: ListEdgeMarkDownType;
-  listItems: string[];
 }
 
 export type EdgeMarkDown =
   | NormalEdgeMarkDown
   | ListEdgeMarkDown;
+
+export type NormalEdgeMarkDownInput = {
+  type: EdgeMarkDownType;
+  innerText: string;
+};
+export type ListEdgeMarkDownInput = {
+  type: ListEdgeMarkDownType;
+  listItems: string[];
+};
 
 export const initialNormalEdgeMarkDown =
   (): NormalEdgeMarkDown => ({

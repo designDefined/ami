@@ -6,9 +6,17 @@ import {
   summarizeEdge,
   summarizeEdges,
 } from "./base/edge";
-import { EdgeMarkDown } from "./base/edgeMarkDown";
+import {
+  EdgeMarkDown,
+  NormalEdgeMarkDownInput,
+  initialNormalEdgeMarkDown,
+  ListEdgeMarkDownInput,
+} from "./base/edgeMarkDown";
 import _ from "lodash";
-import { manipulateWithId } from "../api/arrayFunctions";
+import {
+  manipulateWithId,
+  manipulateWithIds,
+} from "../api/arrayFunctions";
 
 interface Project {
   title: string;
@@ -25,7 +33,12 @@ interface ProjectStoreStatus extends Project {
   updateEdge: (target: Edge) => void;
   updateMarkDown: (
     edge: Edge,
-  ) => (markDown: EdgeMarkDown) => void;
+    markDown: EdgeMarkDown,
+    input: NormalEdgeMarkDownInput | ListEdgeMarkDownInput,
+  ) => void;
+  // submitMarkDown: (
+  //   edge: Edge,
+  // ) => (markDown: EdgeMarkDown) => void;
 }
 
 const initializeProject = () => {
@@ -36,23 +49,6 @@ const initializeProject = () => {
     edgeSummaries: [summarizeEdge(emptyEdge)],
   };
 };
-
-const updateEdgeOfEdges =
-  (edges: Edge[]) =>
-  (edge: Edge): Edge[] => {
-    const indexOfEdge = _.findIndex(edges, { id: edge.id });
-    if (indexOfEdge < 0) {
-      //add edge
-    }
-    return [];
-  };
-
-const updateMarkDownOfEdges =
-  (edges: Edge[]) =>
-  (edge: Edge) =>
-  (markDown: EdgeMarkDown): Edge[] => {
-    return [];
-  };
 
 export const useProjectStore = create<ProjectStoreStatus>()(
   (set) => {
@@ -76,19 +72,30 @@ export const useProjectStore = create<ProjectStoreStatus>()(
             indexToAdd,
           ),
         })),
-      updateMarkDown:
-        (edge) => (markDown, indexToAdd?: number) =>
-          set((state) => {
-            const newEdge: Edge = {
-              ...edge,
-              contents: manipulateWithId(edge.contents)(
-                markDown,
-              ),
-            };
-            return {
-              edges: manipulateWithId(state.edges)(newEdge),
-            };
-          }),
+      updateMarkDown: (edge, markDown, input) =>
+        set((state) => {
+          const emptyMarkDown =
+            input.type === ("ul" || "ol")
+              ? initialNormalEdgeMarkDown()
+              : initialNormalEdgeMarkDown();
+          const updatedMarkDown = {
+            ...markDown,
+            ...input,
+            isEditing: false,
+          };
+          const updatedEdge: Edge = {
+            ...edge,
+            contents: manipulateWithIds(edge.contents)([
+              updatedMarkDown,
+              emptyMarkDown,
+            ]),
+          };
+          return {
+            edges: manipulateWithId(state.edges)(
+              updatedEdge,
+            ),
+          };
+        }),
     };
   },
 );
