@@ -44,7 +44,7 @@ const findMDBefore = (markDown: MarkDown) => {
 export const handleClickMD =
   (clickedMD: MarkDown): React.MouseEventHandler<HTMLLIElement> =>
   (e) => {
-    e.preventDefault();
+    e.stopPropagation();
     if (selectedMarkDown.getState().source.length > 0) {
       project.getState().updateMarkDowns([changedMarkDown()]);
     }
@@ -80,6 +80,15 @@ export const handleKeyDownMD =
       default:
         break;
     }
+  };
+
+export const handleBlurMD =
+  (blurredMD: MarkDown): React.FocusEventHandler<HTMLTextAreaElement> =>
+  (e) => {
+    if (selectedMarkDown.getState().source.length > 0) {
+      project.getState().updateMarkDowns([changedMarkDown()]);
+    }
+    selectedMarkDown.getState().deSelect();
   };
 
 export const handleChangeMDType = (type: MarkDownType) => {

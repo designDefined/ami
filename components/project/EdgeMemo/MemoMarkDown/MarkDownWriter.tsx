@@ -3,6 +3,7 @@ import { MarkDown } from "../../../../store/base/markDown";
 import classNames from "classnames/bind";
 import { useSelectedMarkDown } from "../../../../store/selectedMarkdown";
 import {
+  handleBlurMD,
   handleChangeSelectedInput,
   handleKeyDownMD,
 } from "./MarkDownEventHandler";
@@ -19,6 +20,7 @@ const MemoMarkDownWriter = () => {
         className={cx("textArea")}
         placeholder="내용을 입력하세요"
         value={input}
+        onBlur={handleBlurMD(source)}
         onChange={handleChangeSelectedInput}
         onKeyDown={handleKeyDownMD(source, input)}
         autoFocus
