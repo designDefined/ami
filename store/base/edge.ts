@@ -1,7 +1,4 @@
-import {
-  EdgeMarkDown,
-  initialNormalEdgeMarkDown,
-} from "./edgeMarkDown";
+import { createDefaultMarkDownAt, MarkDown } from "./markDown";
 import { nanoid } from "nanoid";
 import _ from "lodash";
 import { manipulateWithId } from "../../api/arrayFunctions";
@@ -12,7 +9,7 @@ interface BaseEdge {
   id: string;
   type: EdgeType;
   name: string;
-  contents: EdgeMarkDown[];
+  contents: MarkDown[];
 }
 
 interface CleanEdge extends BaseEdge {
@@ -27,20 +24,25 @@ export type Edge = CleanEdge | StyledEdge;
 
 export type EdgeSummary = Omit<Edge, "contents">;
 
-export const initializeCleanEdge = (): CleanEdge => ({
+export const defaultEdge: Edge = {
+  id: "default",
+  type: "clean",
+  name: "DEFAULT_EDGE",
+  contents: [],
+};
+
+export const createCleanEdgeWith = (markDown: MarkDown): CleanEdge => ({
   id: nanoid(10),
   type: "clean",
   name: "untitled_edge",
-  contents: [initialNormalEdgeMarkDown()],
+  contents: [markDown],
 });
 
-export const summarizeEdge = ({
+export const summarizeEdge = ({ id, type, name }: Edge): EdgeSummary => ({
   id,
   type,
   name,
-}: Edge): EdgeSummary => ({ id, type, name });
+});
 
-export const summarizeEdges = (
-  edges: Edge[],
-): EdgeSummary[] =>
+export const summarizeEdges = (edges: Edge[]): EdgeSummary[] =>
   edges.map((edge) => summarizeEdge(edge));

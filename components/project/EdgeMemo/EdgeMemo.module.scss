@@ -27,7 +27,11 @@
     background-color: #f3f3f3;
   }
 
-  .Line{
+  .list{
+    list-style: none;
+  }
+
+  .line{
     width:100%;
     min-height:1.5em;
     font-size:inherit;

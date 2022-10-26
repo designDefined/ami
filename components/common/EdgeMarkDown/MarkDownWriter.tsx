@@ -1,10 +1,7 @@
 import styles from "./EdgeMarkDown.module.scss";
 import classNames from "classnames/bind";
 import useInputValueStore from "../../../store/inputValue";
-import {
-  EdgeMarkDown,
-  EdgeMarkDownType,
-} from "../../../store/base/edgeMarkDown";
+import { EdgeMarkDown, EdgeMarkDownType } from "../../../store/base/markDown";
 import { useCallback } from "react";
 
 interface MarkDownWriterProps {
@@ -14,25 +11,17 @@ interface MarkDownWriterProps {
 
 const cx = classNames.bind(styles);
 
-const MarkDownWriter = ({
-  source,
-  setter,
-}: MarkDownWriterProps) => {
+const MarkDownWriter = ({ source, setter }: MarkDownWriterProps) => {
   const type = useInputValueStore((state) => state.type);
-  const currentValue = useInputValueStore(
-    (state) => state.currentValue,
-  );
-  const setValue = useInputValueStore(
-    (state) => state.updateValue,
-  );
+  const currentValue = useInputValueStore((state) => state.currentValue);
+  const setValue = useInputValueStore((state) => state.updateValue);
 
-  const onChangeInputValue: React.ChangeEventHandler<HTMLTextAreaElement> =
-    useCallback((e) => {
-      setValue(e.target.value);
-    }, []);
-  const onKeyPress: React.KeyboardEventHandler<
-    HTMLTextAreaElement
-  > = (e) => {
+  const onChangeInputValue: React.ChangeEventHandler<HTMLTextAreaElement> = (
+    e,
+  ) => {
+    setValue(e.target.value);
+  };
+  const onKeyPress: React.KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     switch (e.key) {
       case "Enter":
         setter(type, currentValue);

@@ -1,16 +1,11 @@
-import { EdgeMarkDown } from "../../../store/base/edgeMarkDown";
+import { EdgeMarkDown } from "../../../store/base/markDown";
 
 interface MarkDownParserProps {
   edgeMarkDown: EdgeMarkDown;
 }
 
-const MarkDownParser = ({
-  edgeMarkDown,
-}: MarkDownParserProps) => {
-  if (
-    edgeMarkDown.type === "ul" ||
-    edgeMarkDown.type === "ol"
-  ) {
+const MarkDownParser = ({ edgeMarkDown }: MarkDownParserProps) => {
+  if (edgeMarkDown.type === "ul" || edgeMarkDown.type === "ol") {
     switch (edgeMarkDown.type) {
       case "ol":
         return (

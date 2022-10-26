@@ -31,12 +31,17 @@ export const manipulateWithIds =
     let previouslyAddedIndex: number = array.length;
     for (let i = 0; i < items.length; i++) {
       const item: T = items[i];
-      newArray = manipulateWithId(newArray)(item, index);
+      newArray = manipulateWithId(newArray)(
+        item,
+        previouslyAddedIndex,
+      );
       const index = _.findIndex(
         newArray,
         (existingItem) => existingItem.id === item.id,
       );
-      if (index >= 0) previouslyAddedIndex = index;
+      index >= 0
+        ? (previouslyAddedIndex = index + 1)
+        : (previouslyAddedIndex = newArray.length);
     }
     return newArray;
   };
