@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import _ from "lodash";
 import { manipulateWithId } from "../../api/arrayFunctions";
 
-type EdgeType = "clean" | "styled";
+export type EdgeType = "clean" | "styled";
 
 interface BaseEdge {
   id: string;
@@ -31,8 +31,11 @@ export const defaultEdge: Edge = {
   contents: [],
 };
 
-export const createCleanEdgeWith = (markDown: MarkDown): CleanEdge => ({
-  id: nanoid(10),
+export const createCleanEdgeWith = (
+  id: string,
+  markDown: MarkDown,
+): CleanEdge => ({
+  id: id,
   type: "clean",
   name: "untitled_edge",
   contents: [markDown],

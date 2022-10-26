@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { Edge } from "./edge";
+import { Edge, EdgeSummary, EdgeType, summarizeEdge } from "./edge";
 
 export type MarkDownType = "h1" | "h2" | "h3" | "h4" | "p" | "uli" | "oli";
 
@@ -8,7 +8,7 @@ export interface MarkDown {
   type: MarkDownType;
   innerText: string;
   depth: number;
-  parent: Edge;
+  parent_id: string;
 }
 
 export const createNewMarkDownFrom = (source: MarkDown): MarkDown => {
@@ -21,12 +21,12 @@ export const createNewMarkDownFrom = (source: MarkDown): MarkDown => {
   };
 };
 
-export const createDefaultMarkDownAt = (parent: Edge): MarkDown => ({
+export const createDefaultMarkDownAt = (parent_id: string): MarkDown => ({
   id: nanoid(10),
   type: "p",
   innerText: "",
   depth: 0,
-  parent,
+  parent_id,
 });
 
 //

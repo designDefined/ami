@@ -1,13 +1,6 @@
 import create from "zustand";
-import {
-  createCleanEdgeWith,
-  defaultEdge,
-  Edge,
-  EdgeSummary,
-  summarizeEdge,
-  summarizeEdges,
-} from "./base/edge";
-import { createDefaultMarkDownAt, MarkDown } from "./base/markDown";
+import { Edge } from "./base/edge";
+import { MarkDown } from "./base/markDown";
 import _ from "lodash";
 import { manipulateWithId, manipulateWithIds } from "../api/arrayFunctions";
 
@@ -23,53 +16,58 @@ interface ProjectStoreStatus extends Project {
   setProjectTitle: (title: string) => void;
   setEdges: (edges: Edge[]) => void;
   updateMarkDowns: (markDowns: MarkDown[]) => void;
+  deleteMarkDown: (markDown: MarkDown) => void;
 }
 
-const initializeProject = () => {
-  const firstMarkDown = createDefaultMarkDownAt(defaultEdge);
-  const firstEdge = createCleanEdgeWith(firstMarkDown);
-  firstMarkDown.parent = firstEdge;
-  return {
-    title: "untitled_project",
-    edges: [firstEdge],
-  };
-};
-
-export const useProjectStore = create<ProjectStoreStatus>()((set) => {
-  const { title, edges } = initializeProject();
-  return {
-    title,
-    edges,
-    status: "memo",
-    setProjectTitle: (title) => set({ title }),
-    setEdges: (edges) =>
-      set({
-        edges,
-      }),
-    updateMarkDowns: (markDowns) =>
-      set((state) => {
-        if (markDowns.length < 1) {
-          return state;
-        }
-        const edge = _.find(
-          state.edges,
-          (edge) => edge.id === markDowns[0].parent.id,
-        );
-        if (edge) {
-          const updatedEdge: Edge = {
-            ...edge,
-            contents: manipulateWithIds(edge.contents)(markDowns),
-          };
-          markDowns.forEach((md) => {
-            md.parent = updatedEdge;
-          });
-          return {
-            edges: manipulateWithId(state.edges)(updatedEdge),
-          };
-        } else {
-          alert("wrong parent");
-          return state;
-        }
-      }),
-  };
-});
+export const useProjectStore = create<ProjectStoreStatus>()((set) => ({
+  title: "",
+  edges: [],
+  status: "memo",
+  setProjectTitle: (title) => set({ title }),
+  setEdges: (edges) =>
+    set({
+      edges: edges,
+    }),
+  updateMarkDowns: (markDowns) =>
+    set((state) => {
+      if (markDowns.length < 1) {
+        return state;
+      }
+      const edge = _.find(
+        state.edges,
+        (edge) => edge.id === markDowns[0].parent_id,
+      );
+      if (edge) {
+        const updatedEdge: Edge = {
+          ...edge,
+          contents: manipulateWithIds(edge.contents)(markDowns),
+        };
+        return {
+          edges: manipulateWithId(state.edges)(updatedEdge),
+        };
+      } else {
+        console.log(markDowns);
+        return state;
+      }
+    }),
+  deleteMarkDown: (markDown) =>
+    set((state) => {
+      const edge = _.find(
+        state.edges,
+        (edge) => edge.id === markDown.parent_id,
+      );
+      if (edge) {
+        if (edge.contents.length < 2) return state;
+        const updatedEdge = {
+          ...edge,
+          contents: edge.contents.filter((md) => md.id !== markDown.id),
+        };
+        return {
+          edges: manipulateWithId(state.edges)(updatedEdge),
+        };
+      } else {
+        alert("wrong parent");
+        return state;
+      }
+    }),
+}));
