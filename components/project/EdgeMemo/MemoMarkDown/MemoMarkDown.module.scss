@@ -43,8 +43,10 @@
   border-radius: 5px;
   //font
   font:inherit;
+  animation: 0.3s popup ease;
   &.reader{
     cursor: pointer;
+    animation: none;
     &:hover{
       background-color: rgba(204, 231, 193, 0.5);
     }
@@ -56,8 +58,8 @@
       //sizing
       width:100%;
       height:1em;
-      padding:0;
       //inside
+      padding:0;
       overflow-y: hidden;
       //font
       font:inherit;
@@ -65,9 +67,23 @@
       //clear textarea
       resize: none;
       border:none;
+      //animation
       &:focus{
         outline: none;
       }
     }
   }
+}
+
+
+@keyframes popup {
+  0%{
+    transform: translateY(-100%);
+    opacity: 0.3;
+  }
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+
 }

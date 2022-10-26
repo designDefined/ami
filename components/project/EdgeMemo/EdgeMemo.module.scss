@@ -33,49 +33,6 @@
     padding: 0;
   }
 
-  .line{
-    width:100%;
-    min-height:1.5em;
-    font-size:inherit;
-    padding-left:10px;
-
-    &.read{
-      display: flex;
-      align-items: center;
-      height:2em;
-      border-radius: 5px;
-      cursor: pointer;
-
-      &:hover{
-        background-color: rgba(204, 231, 193, 0.5);
-      }
-    }
-    &.write{
-      @include material.shadow(1);
-      display: flex;
-      align-items: center;
-      height:2em;
-      background-color: white;
-      border-radius: 5px;
-      animation: 0.3s popup ease;
-      textarea{
-        height:1em;
-        overflow-y: hidden;
-      }
-    }
-  }
 }
 
-
-@keyframes popup {
-  0%{
-    transform: translateY(-100%);
-    opacity: 0.3;
-  }
-  100%{
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-}
 
