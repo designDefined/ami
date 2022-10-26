@@ -1,5 +1,5 @@
 import styles from "./SaveLoader.module.scss";
-import { readEdges, saveEdges } from "../../../api/filesystem";
+import { resetProject, saveEdges } from "../../../api/filesystem";
 import { useProjectStore } from "../../../store/project";
 import classNames from "classnames/bind";
 
@@ -14,12 +14,17 @@ const SaveLoader = () => {
       <button
         className={cx("button", "save")}
         onClick={() => {
-          saveEdges(edges);
+          saveEdges();
         }}
       >
         저장
       </button>
-      <button className={cx("button", "load")} onClick={() => {}}>
+      <button
+        className={cx("button", "load")}
+        onClick={() => {
+          resetProject();
+        }}
+      >
         리셋
       </button>
     </div>

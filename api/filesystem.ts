@@ -31,3 +31,9 @@ export const loadProject = () => {
     useSelectedMarkDown.getState().select(firstMd);
   }
 };
+
+export const resetProject = () => {
+  localStorage.removeItem(titleLocation);
+  localStorage.removeItem(edgesLocation);
+  loadProject();
+};
