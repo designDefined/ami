@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 const EdgeList = () => {
   const edges = useProjectStore((state) => state.edges);
   return (
-    <section className={cx("MemoPad")}>
+    <section className={cx("EdgeList")}>
       {edges.map((edge) => (
         <EdgeMemo key={edge.id} edge={edge} />
       ))}
