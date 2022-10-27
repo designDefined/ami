@@ -3,6 +3,7 @@ import { createCleanEdgeWith } from "../store/base/edge";
 import { nanoid } from "nanoid";
 import { createDefaultMarkDownAt } from "../store/base/markDown";
 import { useSelectedMarkDown } from "../store/selectedMarkdown";
+import { introduction } from "../data/introduction";
 
 const titleLocation = "title";
 const edgesLocation = "edges";
@@ -15,25 +16,31 @@ export const saveEdges = () => {
 };
 
 export const loadProject = () => {
-  const title = localStorage.getItem(titleLocation);
+  //  const title = localStorage.getItem(titleLocation);
   const data = localStorage.getItem(edgesLocation);
-  if (title) {
-    useProjectStore.getState().setProjectTitle(title);
-  } else {
-    useProjectStore.getState().setProjectTitle("untitled_project");
-  }
+  //if (title) {
+  //  useProjectStore.getState().setProjectTitle(title);
+  //} else {
+  //    useProjectStore.getState().setProjectTitle("untitled_project");
+  //}
   if (data) {
     useProjectStore.getState().setEdges(JSON.parse(data));
   } else {
-    const id = nanoid(10);
-    const firstMd = createDefaultMarkDownAt(id);
-    useProjectStore.getState().setEdges([createCleanEdgeWith(id, firstMd)]);
-    useSelectedMarkDown.getState().select(firstMd);
+    // const id = nanoid(10);
+    // const firstMd = createDefaultMarkDownAt(id);
+    // useProjectStore.getState().setEdges([createCleanEdgeWith(id, firstMd)]);
+    // useSelectedMarkDown.getState().select(firstMd);
+    loadIntroduction();
   }
+};
+
+export const loadIntroduction = () => {
+  useProjectStore.getState().setProjectTitle(introduction.title);
+  useProjectStore.getState().setEdges(introduction.edges);
 };
 
 export const resetProject = () => {
   localStorage.removeItem(titleLocation);
   localStorage.removeItem(edgesLocation);
-  loadProject();
+  loadIntroduction();
 };
