@@ -34,11 +34,14 @@
   position:relative;
   //sizing
   width:100%;
-  height:2em;
+  min-height:2em;
   padding-left:10px;
+  padding-top: 0.4em;
+  padding-bottom:0.4em;
   //inside
   display: flex;
   align-items: center;
+  text-align: justify;
   //look
   border-radius: 5px;
   //font
@@ -60,10 +63,10 @@
       height:1em;
       //inside
       padding:0;
-      overflow-y: hidden;
+      //overflow-y: hidden;
       //font
       font:inherit;
-      line-height: 1em;
+      text-align: justify;
       //clear textarea
       resize: none;
       border:none;
