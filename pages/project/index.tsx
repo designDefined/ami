@@ -7,7 +7,6 @@ import Header from "../../components/project/Header/Header";
 import { useEffect } from "react";
 import SaveLoader from "../../components/project/SaveLoader/SaveLoader";
 import { loadProject } from "../../api/filesystem";
-import RouterLink from "../../components/common/RouterLink/RouterLink";
 import { useRouter } from "next/router";
 
 const cx = classNames.bind(styles);
