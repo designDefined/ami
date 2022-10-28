@@ -1,0 +1,68 @@
+@use "./styles/material";
+
+.Wrapper{
+  position:fixed;
+  left:-280px;
+  top:0;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:40px;
+  z-index:50;
+  transition: 0.5s ease;
+  .button{
+    position: absolute;
+    width:30px;
+    right:10px;
+    background: none;
+    border:none;
+    font:inherit;
+    font-size:24px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  &.open{
+    left:0;
+  }
+}
+.Navigator{
+  @include material.shadow(1);
+  position: relative;
+  //sizing
+  width:240px;
+  //inside
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding:10px;
+  background: white;
+
+}
+
+.NavItem{
+  padding:5px;
+  margin-top:0.25em;
+  margin-bottom:0.25em;
+  text-align: justify;
+  border-radius: 10px;
+  &.depth-0{
+    width: 100%;
+    pointer-events: none;
+    border-radius: 0;
+    box-shadow:  0  5px 3px -3px rgba(0, 0, 0, 0.5);
+  }
+  &.depth-1{
+    margin-left:0px;
+  }
+  &.depth-2{
+    margin-left:10px;
+  }
+  &.depth-3{
+    margin-left:20px;
+  }
+  &:hover{
+    text-decoration: underline;
+  }
+}

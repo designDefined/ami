@@ -2,6 +2,7 @@ import { useProjectStore } from "../../../store/project";
 import CleanParser from "../Parser/CleanParser";
 import styles from "./EdgeReader.module.scss";
 import classNames from "classnames/bind";
+import Navigator from "../Navigator/Navigator";
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +17,7 @@ const EdgeReader = () => {
           ))}
         </div>
       ))}
+      <Navigator edges={edges} />
     </section>
   );
 };
