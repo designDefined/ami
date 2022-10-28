@@ -11,7 +11,7 @@ export const introduction: Project = {
     {
       id: "8L8-s7IZEI",
       type: "clean",
-      name: "untitled_edge",
+      name: "Introduction",
       contents: [
         {
           id: "xDXvSE6lbA",
