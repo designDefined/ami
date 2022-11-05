@@ -31,10 +31,7 @@ export const manipulateWithIds =
     let previouslyAddedIndex: number = array.length;
     for (let i = 0; i < items.length; i++) {
       const item: T = items[i];
-      newArray = manipulateWithId(newArray)(
-        item,
-        previouslyAddedIndex,
-      );
+      newArray = manipulateWithId(newArray)(item, previouslyAddedIndex);
       const index = _.findIndex(
         newArray,
         (existingItem) => existingItem.id === item.id,
@@ -44,4 +41,24 @@ export const manipulateWithIds =
         : (previouslyAddedIndex = newArray.length);
     }
     return newArray;
+  };
+
+export const findNextWithId =
+  <T extends WithID>(array: T[]) =>
+  (item: T): T | false => {
+    const index = array.findIndex((itemInArray) => item.id === itemInArray.id);
+    if (index >= 0 && index < array.length - 1) {
+      return array[index + 1];
+    }
+    return false;
+  };
+
+export const findPreviousWithId =
+  <T extends WithID>(array: T[]) =>
+  (item: T): T | false => {
+    const index = array.findIndex((itemInArray) => item.id === itemInArray.id);
+    if (index > 0) {
+      return array[index - 1];
+    }
+    return false;
   };

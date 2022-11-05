@@ -31,7 +31,12 @@ const EdgeMemo = ({ edge }: Props) => {
 
   return (
     <div className={cx("EdgeMemo")}>
-      <label className={cx("title")}>{name}</label>
+      <label className={cx("title")}>
+        {name}
+        <button className={cx("modify")}>
+          <div className={cx("icon")} />
+        </button>
+      </label>
       <ul className={cx("list")}>
         {contents.map((md) => parseMarkDown(md, selectedMD))}
       </ul>

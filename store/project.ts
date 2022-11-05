@@ -33,8 +33,7 @@ export const useProjectStore = create<ProjectStoreStatus>()((set) => ({
       if (markDowns.length < 1) {
         return state;
       }
-      const edge = _.find(
-        state.edges,
+      const edge = state.edges.find(
         (edge) => edge.id === markDowns[0].parent_id,
       );
       if (edge) {
@@ -46,7 +45,6 @@ export const useProjectStore = create<ProjectStoreStatus>()((set) => ({
           edges: manipulateWithId(state.edges)(updatedEdge),
         };
       } else {
-        console.log(markDowns);
         return state;
       }
     }),

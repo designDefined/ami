@@ -1,6 +1,6 @@
 import { Edge } from "../../../store/base/edge";
 import { MarkDown } from "../../../store/base/markDown";
-import styles from "./CleanParser.module.scss";
+import styles from "./EdgeParser.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
@@ -9,7 +9,7 @@ interface Props {
   markDown: MarkDown;
 }
 
-const CleanParser = ({ markDown }: Props) => {
+const EdgeParser = ({ markDown }: Props) => {
   const { id, type, innerText } = markDown;
   switch (type) {
     case "p":
@@ -47,4 +47,4 @@ const CleanParser = ({ markDown }: Props) => {
   }
 };
 
-export default CleanParser;
+export default EdgeParser;

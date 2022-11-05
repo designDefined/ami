@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import SaveLoader from "../../components/project/SaveLoader/SaveLoader";
 import { loadProject } from "../../api/filesystem";
 import { useRouter } from "next/router";
+import Hint from "../../components/project/Hint/Hint";
 
 const cx = classNames.bind(styles);
 
@@ -32,7 +33,7 @@ const Project: NextPage = () => {
       >
         {"< 홈으로 돌아가기"}
       </button>
-
+      <Hint />
       {/*status === "memo" && <EdgeList />*/}
     </article>
   );

@@ -7,6 +7,7 @@ import {
 } from "../../../../store/base/markDown";
 import _ from "lodash";
 import { Edge } from "../../../../store/base/edge";
+import { findPreviousWithId } from "../../../../api/arrayFunctions";
 
 const project = useProjectStore;
 const selectedMarkDown = useSelectedMarkDown;
@@ -31,12 +32,7 @@ const changedMarkDown = (
 const findMDBefore = (markDown: MarkDown) => {
   const edge = findParent(markDown);
   if (edge) {
-    const index = _.findIndex(edge.contents, (md) => md.id === markDown.id);
-    if (index > 0) {
-      return edge.contents[index - 1];
-    } else {
-      return false;
-    }
+    return findPreviousWithId(edge.contents)(markDown);
   }
   return false;
 };

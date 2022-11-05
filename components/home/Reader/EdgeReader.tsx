@@ -1,5 +1,5 @@
 import { useProjectStore } from "../../../store/project";
-import CleanParser from "../Parser/CleanParser";
+import EdgeParser from "../Parser/EdgeParser";
 import styles from "./EdgeReader.module.scss";
 import classNames from "classnames/bind";
 import Navigator from "../Navigator/Navigator";
@@ -13,7 +13,7 @@ const EdgeReader = () => {
       {edges.map((edge) => (
         <div key={edge.id} className={cx("EdgeReader")}>
           {edge.contents.map((md) => (
-            <CleanParser key={md.id} markDown={md} />
+            <EdgeParser key={md.id} markDown={md} />
           ))}
         </div>
       ))}
