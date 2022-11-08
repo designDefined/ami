@@ -28,7 +28,7 @@ const Project: NextPage = () => {
       <button
         className={cx("toHome")}
         onClick={() => {
-          router.push("/");
+          router.push("/temporal");
         }}
       >
         {"< 홈으로 돌아가기"}

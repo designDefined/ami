@@ -1,0 +1,12 @@
+.Home{
+  position:relative;
+
+  .sections{
+    position:relative;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:0 120px;
+  }
+}

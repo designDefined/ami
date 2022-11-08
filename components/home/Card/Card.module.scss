@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap');
+
+
+.Card{
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid transparentize(#666666, 0.5);
+  text-shadow: 0 0 1em transparentize(black, 0.5);
+  background: transparentize(#ececec, 0.5);
+  backdrop-filter: blur(20px);
+  transform: perspective(500px);
+  transform-style: preserve-3d;
+  cursor: pointer;
+
+  &.large{
+    width:800px;
+    height:500px;
+  }
+  &.small{
+    width:240px;
+    height:150px;
+  }
+}
