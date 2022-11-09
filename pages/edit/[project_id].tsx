@@ -22,7 +22,7 @@ const Edit: NextPage = () => {
   const [status, setStatus] = useState<string>("memo");
   useEffect(() => {
     if (router.query.project_id) {
-      getProject(Number(router.query.project_id));
+      // getProject(Number(router.query.project_id));
     }
   }, [router.query]);
 

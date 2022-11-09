@@ -1,4 +1,4 @@
-import { IProject } from "../../types/base";
+import { IProject } from "../types/base";
 
 export const moim1: IProject = {
   id: 1,

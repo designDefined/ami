@@ -14,9 +14,9 @@ const cx = classNames.bind(styles);
 const Home: NextPage = () => {
   const all = useProjectsListStore((state) => state.all);
   const router = useRouter();
-  useEffect(() => {
-    getProjects();
-  }, []);
+  // useEffect(() => {
+  //   getProjects();
+  // }, []);
 
   return (
     <article className={cx("Home")}>

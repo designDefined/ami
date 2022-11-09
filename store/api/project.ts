@@ -88,13 +88,13 @@ export const postCurrentProject = async () => {
 };
 
 export const getProject = async (id: number) => {
-  const { load } = useProjectStore.getState();
-  try {
-    const response = await axios.get<IProject>(`/api/project/${id}`);
-    console.log(response.data);
-    load(response.data);
-    console.log(useProjectStore.getState().id);
-  } catch (e) {
-    console.log(e);
-  }
+  // const { load } = useProjectStore.getState();
+  // try {
+  //   const response = await axios.get<IProject>(`/api/project/${id}`);
+  //   console.log(response.data);
+  //   load(response.data);
+  //   console.log(useProjectStore.getState().id);
+  // } catch (e) {
+  //   console.log(e);
+  // }
 };

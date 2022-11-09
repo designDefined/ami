@@ -46,13 +46,13 @@ export const useUserStore = create<LoginStore>()((set) => ({
 }));
 
 export const postLogin = async () => {
-  const { request: data, setStatus, login } = useUserStore.getState();
-  setStatus("pending");
-  try {
-    const response = await axios.post<UserResponse>("/api/login", data);
-    login(response.data);
-  } catch (e) {
-    setStatus("no_user");
-    console.log(e);
-  }
+  // const { request: data, setStatus, login } = useUserStore.getState();
+  // setStatus("pending");
+  // try {
+  //   const response = await axios.post<UserResponse>("/api/login", data);
+  //   login(response.data);
+  // } catch (e) {
+  //   setStatus("no_user");
+  //   console.log(e);
+  // }
 };

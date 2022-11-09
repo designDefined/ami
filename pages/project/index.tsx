@@ -17,7 +17,7 @@ const Project: NextPage = () => {
   const status = useProjectStore((state) => state.status);
   const router = useRouter();
   useEffect(() => {
-    loadProject();
+    // loadProject();
   });
 
   return (

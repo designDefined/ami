@@ -7,7 +7,7 @@ import Memo from "../../components/edit/memoComponents/Memo";
 import { useEffect, useState } from "react";
 import styles from "./Moim.module.scss";
 import classNames from "classnames/bind";
-import { moim1 } from "./data";
+import { moim1 } from "../../store/data";
 import ReadByPage from "../../components/edit/readComponents/ReadByPage";
 
 const cx = classNames.bind(styles);
