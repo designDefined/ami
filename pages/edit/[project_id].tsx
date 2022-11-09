@@ -19,7 +19,7 @@ const Edit: NextPage = () => {
   const writer = useProjectStore((state) => state.writer);
   const pages = useProjectStore((state) => state.pages);
   const setProjectTitle = useProjectStore((state) => state.setProjectTitle);
-  const [status, setStatus] = useState<string>("read");
+  const [status, setStatus] = useState<string>("memo");
   useEffect(() => {
     if (router.query.project_id) {
       getProject(Number(router.query.project_id));
@@ -39,6 +39,7 @@ const Edit: NextPage = () => {
       >
         {"< 홈으로 돌아가기"}
       </button>
+      <button onClick={() => setStatus("memo")}>수정하기 </button>
     </article>
   );
 };

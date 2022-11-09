@@ -124,3 +124,10 @@ export const handleChangeSelectedInput: React.ChangeEventHandler<
   }
   selectedAtom.getState().setInput(input);
 };
+
+export const handleAddPage: React.MouseEventHandler<HTMLButtonElement> = (
+  e,
+) => {
+  const { pages, setPages } = project.getState();
+  project.getState().setPages([...pages, createEmpty.page()]);
+};

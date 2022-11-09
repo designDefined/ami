@@ -5,7 +5,6 @@
   position: relative;
   width:100%;
   height:100%;
-  background: white;
 }
 
 .Read{
@@ -16,6 +15,7 @@
   flex-direction: column;
   align-items: center;
   padding:100px;
+  color: #efefef;
 
   .toEdit {
     position: fixed;
@@ -25,7 +25,6 @@
     background: none;
     font:inherit;
     font-size: 24px;
-    color: #000000;
     cursor: pointer;
     &:hover{
       text-decoration: underline;
@@ -144,5 +143,45 @@
   }
   &:hover{
     text-decoration: underline;
+  }
+}
+
+.toPrev{
+  @include material.shadow(1);
+  position: absolute;
+  left:160px;
+  bottom:30px;
+  width:80px;
+  height:40px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  background: white;
+  justify-content: center;
+  border-radius: 15px;
+  color: black;
+  &:hover{
+    background: #c2c2c2;
+  }
+}
+
+.toNext{
+  @include material.shadow(1);
+  position: absolute;
+  right:160px;
+  bottom:30px;
+  width:80px;
+  height:40px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  background: white;
+  justify-content: center;
+  border-radius: 15px;
+  color: black;
+  &:hover{
+    background: #c2c2c2;
   }
 }
