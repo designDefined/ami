@@ -1,5 +1,3 @@
-import { MarkDownType } from "../store/base/markDown";
-
 interface IWithId<T> {
   id: T;
 }
@@ -12,11 +10,14 @@ export interface IToken {
 export interface IUser extends IWithId<string> {
   user_name: string;
 }
+
 export interface IProject extends IWithId<number> {
   writer: IUser;
   project_name: string;
   pages: IPage[];
 }
+
+export type IProjectSum = Pick<IProject, "id" | "writer" | "project_name">;
 
 export interface IPage extends IWithId<string> {
   page_name: string;
@@ -31,8 +32,10 @@ export interface IAtom extends IWithId<string> {
   parent_id: string;
 }
 
+export type IMarkDownType = "h1" | "h2" | "h3" | "h4" | "p" | "uli" | "oli";
+
 interface IMarkdown {
-  type: MarkDownType;
+  type: IMarkDownType;
   depth: number;
 }
 

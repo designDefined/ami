@@ -13,9 +13,10 @@ const SectionBillboard = () => {
         <CardLarge />
       </div>
       <div className={cx("sub")}>
-        <CardSmall />
-        <CardSmall />
-        <CardSmall />
+        {/*<CardSmall/>
+              <CardSmall />
+              <CardSmall />
+          */}
       </div>
     </section>
   );

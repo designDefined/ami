@@ -1,6 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { UserRequest, UserResponse } from "../../../store/api/user";
-import createEmpty from "../../../types/empty";
 import fs from "fs";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -16,7 +14,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const { writer, project_name, pages } = req.body;
     fs.writeFileSync(
       `pages/api/data/${project_id}.json`,
-      JSON.stringify({ writer, project_name, pages }),
+      JSON.stringify({
+        id: Number(project_id),
+        writer,
+        project_name,
+        pages,
+      }),
       "utf8",
     );
     res.status(201).json({

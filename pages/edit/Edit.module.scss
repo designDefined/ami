@@ -1,0 +1,24 @@
+.Project{
+  position: relative;
+  width:100%;
+  min-height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding:100px;
+  .toHome{
+    position: fixed;
+    left:10px;
+    top:40px;
+    border:none;
+    background: none;
+    font:inherit;
+    font-size: 24px;
+    color: #eaeaea;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}

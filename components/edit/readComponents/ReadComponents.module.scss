@@ -1,0 +1,148 @@
+@use "./styles/material";
+
+
+.wrapper{
+  position: relative;
+  width:100%;
+  height:100%;
+  background: white;
+}
+
+.Read{
+  position: relative;
+  width:100%;
+  min-height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:100px;
+
+  .toEdit {
+    position: fixed;
+    right:40px;
+    top:40px;
+    border:none;
+    background: none;
+    font:inherit;
+    font-size: 24px;
+    color: #000000;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+.Page{
+  width:1280px;
+  padding:80px;
+}
+
+.clean {
+  min-height: 1.5em;
+  line-height: 1.5em;
+
+
+  &.h1 {
+    font-size: 80px;
+    font-weight: 900;
+    margin-bottom: 120px;
+    margin-top: 120px;
+  }
+
+  &.h2 {
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 80px;
+    margin-top: 80px;
+  }
+
+  &.h3 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 60px;
+    margin-top: 60px;
+  }
+
+  &.h4 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+
+  &.p {
+    text-indent: 0.8em;
+    font-size: 24px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    text-align: justify;
+  }
+}
+
+
+.NavWrapper{
+  position:fixed;
+  left:-280px;
+  top:0;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:40px;
+  z-index:50;
+  transition: 0.5s ease;
+  .button{
+    position: absolute;
+    width:30px;
+    right:10px;
+    background: none;
+    border:none;
+    font:inherit;
+    font-size:24px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  &.open{
+    left:0;
+  }
+}
+.Navigator{
+  @include material.shadow(1);
+  position: relative;
+  //sizing
+  width:240px;
+  //inside
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding:10px;
+  background: white;
+
+}
+
+.NavItem{
+  padding:5px;
+  margin-top:0.25em;
+  margin-bottom:0.25em;
+  text-align: justify;
+  border-radius: 10px;
+  &.depth-0{
+    width: 100%;
+    pointer-events: none;
+    border-radius: 0;
+    box-shadow:  0  5px 3px -3px rgba(0, 0, 0, 0.5);
+  }
+  &.depth-1{
+    margin-left:0px;
+  }
+  &.depth-2{
+    margin-left:10px;
+  }
+  &.depth-3{
+    margin-left:20px;
+  }
+  &:hover{
+    text-decoration: underline;
+  }
+}

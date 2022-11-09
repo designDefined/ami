@@ -3,6 +3,7 @@ import { manipulateWithId, manipulateWithIds } from "../../api/arrayFunctions";
 import create from "zustand";
 import createEmpty from "../../types/empty";
 import axios from "axios";
+import { useSelectedAtomStore } from "./selectedAtom";
 
 interface ProjectStoreStatus extends IProject {
   load: (Project: IProject) => void;
@@ -71,4 +72,29 @@ export const postNewProject = async () => {
   }
 };
 
-export const getProject = 0;
+export const postCurrentProject = async () => {
+  const { id, writer, project_name, pages } = useProjectStore.getState();
+  const { load } = useProjectStore.getState();
+  try {
+    const response = await axios.post(`/api/project/${id}`, {
+      id,
+      writer,
+      project_name,
+      pages,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getProject = async (id: number) => {
+  const { load } = useProjectStore.getState();
+  try {
+    const response = await axios.get<IProject>(`/api/project/${id}`);
+    console.log(response.data);
+    load(response.data);
+    console.log(useProjectStore.getState().id);
+  } catch (e) {
+    console.log(e);
+  }
+};
