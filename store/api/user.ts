@@ -1,23 +1,26 @@
 import create from "zustand";
 import { IToken, IUser } from "../../types/base";
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import createEmpty from "../../types/empty";
 
-interface Request {
+export interface UserRequest {
   user_id: string;
   password: string;
 }
 
-interface Response extends IUser {
+export interface UserResponse extends IUser {
   token: IToken;
 }
 
+type UserStatus = "pending" | "no_user" | "logged_in";
+
 interface LoginStore {
-  status: "no_user" | "logged_in";
-  request: Request;
-  response: Response;
-  setRequest: (input: Partial<Request>) => void;
-  login: (response: Response) => void;
+  status: UserStatus;
+  request: UserRequest;
+  response: UserResponse;
+  setRequest: (input: Partial<UserRequest>) => void;
+  setStatus: (status: UserStatus) => void;
+  login: (response: UserResponse) => void;
   logout: void;
   test: () => void;
 }
@@ -36,17 +39,20 @@ export const useUserStore = create<LoginStore>()((set) => ({
   response: initial.response,
   setRequest: (request) =>
     set((state) => ({ request: { ...state.request, ...request } })),
+  setStatus: (status) => set({ status }),
   login: (response) => set({ status: "logged_in", response: response }),
   logout: set({ status: "no_user", response: initial.response }),
   test: () => set({ status: "logged_in" }),
 }));
 
 export const postLogin = async () => {
-  const { request: data, login } = useUserStore.getState();
+  const { request: data, setStatus, login } = useUserStore.getState();
+  setStatus("pending");
   try {
-    const response = await axios.post<Request, Response>("/post", data);
-    login(response);
+    const response = await axios.post<UserResponse>("/api/login", data);
+    login(response.data);
   } catch (e) {
+    setStatus("no_user");
     console.log(e);
   }
 };

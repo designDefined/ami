@@ -9,25 +9,28 @@ const token = (): IToken => ({
 
 const user = (): IUser => ({
   id: emptyId,
-  user_name: "",
+  user_name: "empty_user",
 });
 
 const project = (): IProject => ({
-  id: emptyId,
-  writer: { id: emptyId, user_name: "" },
+  id: -1,
+  writer: user(),
   project_name: "",
+  pages: [],
 });
 
 const page = (): IPage => ({
   id: emptyId,
   page_name: "",
+  atoms: [],
 });
 
 const atom = (): IAtom => ({
   id: emptyId,
   type: "text",
   content: "",
-  markdown: { type: "p", depth: 0, parent_id: "" },
+  parent_id: "",
+  markdown: { type: "p", depth: 0 },
   style: { geometry: { x: -9999, y: -9999, width: 0 }, interaction: [] },
 });
 

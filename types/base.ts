@@ -1,7 +1,7 @@
 import { MarkDownType } from "../store/base/markDown";
 
-interface IWithId {
-  id: string;
+interface IWithId<T> {
+  id: T;
 }
 
 export interface IToken {
@@ -9,29 +9,31 @@ export interface IToken {
   refresh: string;
 }
 
-export interface IUser extends IWithId {
+export interface IUser extends IWithId<string> {
   user_name: string;
 }
-export interface IProject extends IWithId {
+export interface IProject extends IWithId<number> {
   writer: IUser;
   project_name: string;
+  pages: IPage[];
 }
 
-export interface IPage extends IWithId {
+export interface IPage extends IWithId<string> {
   page_name: string;
+  atoms: IAtom[];
 }
 
-export interface IAtom extends IWithId {
+export interface IAtom extends IWithId<string> {
   type: "text" | "image";
   content: string;
   markdown: IMarkdown;
   style: IStyle;
+  parent_id: string;
 }
 
 interface IMarkdown {
   type: MarkDownType;
   depth: number;
-  parent_id: string;
 }
 
 type Interaction = "fade_in" | "fade_out" | "slide_in_left" | "slide_in_top";
