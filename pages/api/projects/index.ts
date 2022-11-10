@@ -4,7 +4,7 @@ import fs from "fs";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
     try {
-      const data = fs.readFileSync(`pages/api/data/all.json`, "utf8");
+      const data = fs.readFileSync(`data/json/all.json`, "utf8");
       res.status(201).json(JSON.parse(data).all_projects);
     } catch {
       res.status(404).json({ message: "프로젝트 가져오기 실패" });

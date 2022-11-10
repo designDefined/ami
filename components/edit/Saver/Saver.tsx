@@ -1,4 +1,3 @@
-import { resetProject, saveEdges } from "../../../api/filesystem";
 import styles from "./Saver.module.scss";
 import classNames from "classnames/bind";
 import { postCurrentProject } from "../../../store/api/project";

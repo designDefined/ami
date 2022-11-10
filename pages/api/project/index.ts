@@ -6,12 +6,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
       const { writer, project_name, pages } = req.body;
       const { next_id: id, all_projects: projects } = JSON.parse(
-        fs.readFileSync("pages/api/data/all.json", "utf-8"),
+        fs.readFileSync("data/json/all.json", "utf-8"),
       );
       const data = { id, writer, project_name, pages };
-      fs.writeFileSync(`pages/api/data/${id}.json`, JSON.stringify(data));
+      fs.writeFileSync(`data/json/${id}.json`, JSON.stringify(data));
       fs.writeFileSync(
-        `pages/api/data/all.json`,
+        `data/json/all.json`,
         JSON.stringify({
           next_id: id + 1,
           all_projects: [...projects, { id, writer, project_name }],

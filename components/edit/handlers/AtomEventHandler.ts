@@ -1,7 +1,7 @@
 import { useProjectStore } from "../../../store/api/project";
 import { useSelectedAtomStore } from "../../../store/api/selectedAtom";
 import { IAtom, IMarkDownType, IPage } from "../../../types/base";
-import { findPreviousWithId } from "../../../api/arrayFunctions";
+import { findPreviousWithId } from "../../../localApi/arrayFunctions";
 import createEmpty from "../../../types/empty";
 
 const project = useProjectStore;

@@ -10,6 +10,8 @@ import Memo from "../../components/edit/memoComponents/Memo";
 import createEmpty from "../../types/empty";
 import Hint from "../../components/edit/Hint/Hint";
 import Read from "../../components/edit/readComponents/Read";
+import ReadByPage from "../../components/edit/readComponents/ReadByPage";
+import { IEditStatus } from "../../types/status";
 
 const cx = classNames.bind(styles);
 
@@ -19,17 +21,17 @@ const Edit: NextPage = () => {
   const writer = useProjectStore((state) => state.writer);
   const pages = useProjectStore((state) => state.pages);
   const setProjectTitle = useProjectStore((state) => state.setProjectTitle);
-  const [status, setStatus] = useState<string>("memo");
+  const [status, setStatus] = useState<IEditStatus>("memo");
   useEffect(() => {
     if (router.query.project_id) {
-      // getProject(Number(router.query.project_id));
+      getProject(Number(router.query.project_id));
     }
   }, [router.query]);
 
   return (
     <article className={cx("Project")}>
-      <Header name={name} />
-      {status === "read" && <Read pages={pages} />}
+      <Header name={name} status={status} setStatus={setStatus} />
+      {status === "preview" && <ReadByPage pages={pages} />}
       {status === "memo" && <Memo pages={pages} />}
       <button
         className={cx("toHome")}
@@ -39,7 +41,6 @@ const Edit: NextPage = () => {
       >
         {"< 홈으로 돌아가기"}
       </button>
-      <button onClick={() => setStatus("memo")}>수정하기 </button>
     </article>
   );
 };

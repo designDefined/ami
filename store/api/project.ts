@@ -1,9 +1,18 @@
 import { IAtom, IPage, IProject, IUser } from "../../types/base";
-import { manipulateWithId, manipulateWithIds } from "../../api/arrayFunctions";
+import {
+  manipulateWithId,
+  manipulateWithIds,
+} from "../../localApi/arrayFunctions";
 import create from "zustand";
 import createEmpty from "../../types/empty";
 import axios from "axios";
-import { useSelectedAtomStore } from "./selectedAtom";
+import { isLocal } from "../../localApi/environment";
+import {
+  localGetProject,
+  localPostCurrentProject,
+  localPostNewProject,
+} from "../../localApi/manageLocalStorage";
+import { samples } from "../../data/samples";
 
 interface ProjectStoreStatus extends IProject {
   load: (Project: IProject) => void;
@@ -60,41 +69,57 @@ export const useProjectStore = create<ProjectStoreStatus>()((set) => ({
 
 export const postNewProject = async () => {
   const { writer, project_name, pages } = useProjectStore.getState();
-  try {
-    const response = await axios.post("/api/project", {
-      writer,
-      project_name,
-      pages,
-    });
-    return Promise.resolve(response.data);
-  } catch (e) {
-    console.log(e);
+  if (isLocal) {
+    try {
+      const response = await axios.post("/api/project", {
+        writer,
+        project_name,
+        pages,
+      });
+      return Promise.resolve(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    localPostNewProject({ writer, project_name, pages });
   }
 };
 
 export const postCurrentProject = async () => {
   const { id, writer, project_name, pages } = useProjectStore.getState();
   const { load } = useProjectStore.getState();
-  try {
-    const response = await axios.post(`/api/project/${id}`, {
-      id,
-      writer,
-      project_name,
-      pages,
-    });
-  } catch (e) {
-    console.log(e);
+  if (isLocal) {
+    try {
+      const response = await axios.post(`/api/project/${id}`, {
+        id,
+        writer,
+        project_name,
+        pages,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    localPostCurrentProject(id, { id, writer, project_name, pages });
   }
 };
 
 export const getProject = async (id: number) => {
-  // const { load } = useProjectStore.getState();
-  // try {
-  //   const response = await axios.get<IProject>(`/api/project/${id}`);
-  //   console.log(response.data);
-  //   load(response.data);
-  //   console.log(useProjectStore.getState().id);
-  // } catch (e) {
-  //   console.log(e);
-  // }
+  const { load } = useProjectStore.getState();
+  if (isLocal) {
+    try {
+      const response = await axios.get<IProject>(`/api/project/${id}`);
+      load(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    if (localGetProject(id)) {
+      load(localGetProject(id));
+    } else {
+      if (id < 5) {
+        load(samples[id - 1]);
+      }
+    }
+  }
 };

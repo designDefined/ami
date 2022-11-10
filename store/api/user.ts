@@ -1,6 +1,5 @@
 import create from "zustand";
 import { IToken, IUser } from "../../types/base";
-import axios, { AxiosError, AxiosResponse } from "axios";
 import createEmpty from "../../types/empty";
 
 export interface UserRequest {
