@@ -13,8 +13,8 @@ const user = (): IUser => ({
   user_name: "empty_user",
 });
 
-const project = (): IProject => ({
-  id: -1,
+const project = (id: number = -1): IProject => ({
+  id,
   writer: user(),
   project_name: "new_project",
   pages: [page()],

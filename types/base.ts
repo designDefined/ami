@@ -22,6 +22,8 @@ export type IProjectSum = Pick<IProject, "id" | "writer" | "project_name">;
 export interface IPage extends IWithId<string> {
   page_name: string;
   atoms: IAtom[];
+  color?: string;
+  height?: string;
 }
 
 export interface IAtom extends IWithId<string> {

@@ -3,6 +3,7 @@
 
 
 .Card{
+  position: relative;
   padding: 1em;
   border-radius: 1em;
   border: 1px solid transparentize(#666666, 0.5);
@@ -11,14 +12,34 @@
   backdrop-filter: blur(20px);
   transform: perspective(500px);
   transform-style: preserve-3d;
+  color: #222222;
   cursor: pointer;
 
   &.large{
     width:800px;
     height:500px;
+    .name{
+      position: absolute;
+      font-size:48px;
+      right:40px;
+      bottom:40px;
+      font-weight: 700;
+      color: transparentize(#222222, 0.3);
+
+    }
   }
   &.small{
     width:240px;
     height:150px;
+    .name{
+      position: absolute;
+      font-size:22px;
+      right:20px;
+      bottom:20px;
+      font-weight: 900;
+      color: transparentize(#222222, 0.2);
+      margin: 0 !important;
+
+    }
   }
 }

@@ -29,35 +29,9 @@ export const localGetProject = (id: number) => {
   }
 };
 
-export const localPostNewProject = (initial: Partial<IProject>) => {
-  const mine = localGetMine();
-  const id = mine ? mine.length + 5 : 5;
-  const data = { ...initial, id };
-  if (mine) {
-    localStorage.setItem(
-      MYPROJECT,
-      JSON.stringify([
-        ...mine,
-        {
-          id: data.id,
-          writer: data.writer,
-          project_name: data.project_name,
-        },
-      ]),
-    );
-  } else {
-    localStorage.setItem(
-      MYPROJECT,
-      JSON.stringify([
-        {
-          id: data.id,
-          writer: data.writer,
-          project_name: data.project_name,
-        },
-      ]),
-    );
-  }
-  localStorage.setItem(PROJECT(id), JSON.stringify(data));
+export const localPostMyProject = (mine: IProjectSum[], project: IProject) => {
+  localStorage.setItem(MYPROJECT, JSON.stringify(mine));
+  localStorage.setItem(PROJECT(project.id), JSON.stringify(project));
 };
 
 export const localPostCurrentProject = (id: number, data: IProject) => {

@@ -4,8 +4,11 @@ import SectionBillboard from "../components/home/Section/SectionBillboard";
 import styles from "./Home.module.scss";
 import classNames from "classnames/bind";
 import SectionHorizon from "../components/home/Section/SectionHorizon";
-import { getProjects, useProjectsListStore } from "../store/api/projectsList";
-import { postNewProject } from "../store/api/project";
+import {
+  getProjects,
+  postMyProject,
+  useProjectsListStore,
+} from "../store/api/projectsList";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -13,22 +16,23 @@ const cx = classNames.bind(styles);
 
 const Home: NextPage = () => {
   const all = useProjectsListStore((state) => state.all);
+  const my = useProjectsListStore((state) => state.my);
   const router = useRouter();
   useEffect(() => {
-    getProjects();
+    getProjects().then((res) => {});
   }, []);
 
   return (
     <article className={cx("Home")}>
       <HomeHeader />
       <main className={cx("sections")}>
-        <SectionBillboard />
+        <SectionBillboard projectsList={all} />
         <SectionHorizon
-          projectsList={all}
+          projectsList={my}
           writable={{
             is: true,
             callback: (e) => {
-              postNewProject().then((res) => {
+              postMyProject().then((res) => {
                 router.push(`/edit/${res.id}`);
               });
             },

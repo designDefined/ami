@@ -3,7 +3,12 @@ import create from "zustand";
 import axios from "axios";
 import { isLocal } from "../../localApi/environment";
 import { allSample } from "../../data/samples";
-import { localGetAll, localGetMine } from "../../localApi/manageLocalStorage";
+import {
+  localGetAll,
+  localGetMine,
+  localPostMyProject,
+} from "../../localApi/manageLocalStorage";
+import createEmpty from "../../types/empty";
 
 interface ProjectsListStatus {
   all: IProjectSum[];
@@ -20,7 +25,7 @@ export const useProjectsListStore = create<ProjectsListStatus>()((set) => ({
 }));
 
 export const getProjects = async () => {
-  const { load } = useProjectsListStore.getState();
+  const { load, loadMine } = useProjectsListStore.getState();
   if (isLocal) {
     try {
       const response = await axios.get<IProjectSum[]>("/api/projects");
@@ -36,6 +41,16 @@ export const getProjects = async () => {
     }
   }
   if (localGetMine()) {
-    load(localGetMine());
+    loadMine(localGetMine());
   }
+};
+
+export const postMyProject = async () => {
+  const { my, loadMine } = useProjectsListStore.getState();
+  const id: number = my.length > 0 ? my[my.length - 1].id + 1 : 5;
+  const project = createEmpty.project(id);
+  const newMy = [...my, project];
+  localPostMyProject(newMy, project);
+  loadMine(newMy);
+  return Promise.resolve({ id });
 };

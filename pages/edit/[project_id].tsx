@@ -18,13 +18,16 @@ const cx = classNames.bind(styles);
 const Edit: NextPage = () => {
   const router = useRouter();
   const name = useProjectStore((state) => state.project_name);
-  const writer = useProjectStore((state) => state.writer);
   const pages = useProjectStore((state) => state.pages);
   const setProjectTitle = useProjectStore((state) => state.setProjectTitle);
   const [status, setStatus] = useState<IEditStatus>("memo");
   useEffect(() => {
     if (router.query.project_id) {
-      getProject(Number(router.query.project_id));
+      getProject(Number(router.query.project_id)).then((result) => {
+        if (!result) {
+          router.push("/");
+        }
+      });
     }
   }, [router.query]);
 

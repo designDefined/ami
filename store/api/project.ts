@@ -10,7 +10,6 @@ import { isLocal } from "../../localApi/environment";
 import {
   localGetProject,
   localPostCurrentProject,
-  localPostNewProject,
 } from "../../localApi/manageLocalStorage";
 import { samples } from "../../data/samples";
 
@@ -66,24 +65,25 @@ export const useProjectStore = create<ProjectStoreStatus>()((set) => ({
       }
     }),
 }));
-
-export const postNewProject = async () => {
-  const { writer, project_name, pages } = useProjectStore.getState();
-  if (isLocal) {
-    try {
-      const response = await axios.post("/api/project", {
-        writer,
-        project_name,
-        pages,
-      });
-      return Promise.resolve(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  } else {
-    localPostNewProject({ writer, project_name, pages });
-  }
-};
+//
+// export const postNewProject = async () => {
+//   const { writer, project_name, pages } = useProjectStore.getState();
+//   localPostNewProject({ writer, project_name, pages });
+//
+//   if (isLocal) {
+//     try {
+//       const response = await axios.post("/api/project", {
+//         writer,
+//         project_name,
+//         pages,
+//       });
+//       return Promise.resolve(response.data);
+//     } catch (e) {
+//       console.log(e);
+//     }
+//   } else {
+//   }
+// };
 
 export const postCurrentProject = async () => {
   const { id, writer, project_name, pages } = useProjectStore.getState();
@@ -104,22 +104,23 @@ export const postCurrentProject = async () => {
   }
 };
 
-export const getProject = async (id: number) => {
+export const getProject = async (id: number): Promise<boolean> => {
   const { load } = useProjectStore.getState();
-  if (isLocal) {
-    try {
-      const response = await axios.get<IProject>(`/api/project/${id}`);
-      load(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  } else {
+  if (id < 1) {
+    return false;
+  } else if (id < 5) {
     if (localGetProject(id)) {
       load(localGetProject(id));
     } else {
-      if (id < 5) {
-        load(samples[id - 1]);
-      }
+      load(samples[id - 1]);
     }
+    return true;
+  } else if (id < 10) {
+    if (localGetProject(id)) {
+      load(localGetProject(id));
+    }
+    return true;
+  } else {
+    return false;
   }
 };

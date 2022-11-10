@@ -10,7 +10,7 @@ interface Props {
 
 const cx = classNames.bind(styles);
 const CardSmall = ({ project }: Props) => {
-  const { id, project_name, writer } = project;
+  const { id, project_name } = project;
   const router = useRouter();
   return (
     <ReactParallaxTilt
@@ -25,7 +25,7 @@ const CardSmall = ({ project }: Props) => {
           router.push(`/edit/${id}`);
         }}
       >
-        {project_name}
+        <label className={cx("name")}>{project_name}</label>
       </div>
     </ReactParallaxTilt>
   );
