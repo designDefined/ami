@@ -127,6 +127,26 @@
           }
         },
         {
+          "id": "b7xZyHJpeR",
+          "type": "text",
+          "content": "이야기란 무엇인가",
+          "parent_id": "fqhuO",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 578,
+              "y": 246,
+              "width": 300
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
           "id": "xliEexUbZk",
           "type": "text",
           "content": "TELL",
@@ -147,6 +167,26 @@
           }
         },
         {
+          "id": "65X2U3MSRE",
+          "type": "text",
+          "content": "우리는 어떻게 이야기하는가?",
+          "parent_id": "fqhuO",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 506,
+              "y": 476,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
           "id": "OyS1gq0rq_",
           "type": "text",
           "content": "ABSTRACTION",
@@ -160,6 +200,26 @@
             "geometry": {
               "x": 300,
               "y": 680,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "9XeqVfQ2Jy",
+          "type": "text",
+          "content": "개발과 이야기는 어떻게 맞닿을 수 있을까?",
+          "parent_id": "fqhuO",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 899,
+              "y": 728,
               "width": 500
             },
             "color": "#000000",
@@ -194,8 +254,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 300,
-              "y": 200,
+              "x": 620,
+              "y": 218,
               "width": 1000
             },
             "color": "#000000",
@@ -214,8 +274,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 610,
-              "y": 481,
+              "x": 645,
+              "y": 484,
               "width": 1000
             },
             "color": "#000000",
@@ -234,8 +294,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 1024,
-              "y": 481,
+              "x": 1118,
+              "y": 484,
               "width": 1000
             },
             "color": "#000000",
@@ -330,8 +390,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 517,
-              "y": 510,
+              "x": 433,
+              "y": 519,
               "width": 1200
             },
             "color": "#000000",
@@ -350,8 +410,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 790,
-              "y": 642,
+              "x": 779,
+              "y": 641,
               "width": 1000
             },
             "color": "#000000",
@@ -386,8 +446,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 707,
-              "y": 156,
+              "x": 777,
+              "y": 168,
               "width": 1000
             },
             "color": "#000000",
@@ -406,8 +466,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 813,
-              "y": 275,
+              "x": 873,
+              "y": 293,
               "width": 1000
             },
             "color": "#000000",
@@ -426,8 +486,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 696,
-              "y": 443,
+              "x": 757,
+              "y": 463,
               "width": 1000
             },
             "color": "#000000",
@@ -446,7 +506,7 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 577,
+              "x": 609,
               "y": 537,
               "width": 1000
             },
@@ -466,8 +526,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 819,
-              "y": 659,
+              "x": 884,
+              "y": 644,
               "width": 1000
             },
             "color": "#000000",
@@ -502,8 +562,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 561,
-              "y": 192,
+              "x": 373,
+              "y": 109,
               "width": 1000
             },
             "color": "#000000",
@@ -522,8 +582,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 252,
-              "y": 394,
+              "x": 380,
+              "y": 444,
               "width": 1000
             },
             "color": "#000000",
@@ -542,8 +602,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 789,
-              "y": 747,
+              "x": 378,
+              "y": 554,
               "width": 1000
             },
             "color": "#000000",
@@ -562,8 +622,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 1223,
-              "y": 506,
+              "x": 376,
+              "y": 661,
               "width": 500
             },
             "color": "#000000",
@@ -594,10 +654,10 @@
       "background": "#ffffff",
       "height": 937,
       "graph": {
-        "placed": false,
+        "placed": true,
         "geometry": {
-          "x": -9999,
-          "y": -9999
+          "x": 500,
+          "y": 300
         },
         "to": []
       }
@@ -694,7 +754,7 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 425,
+              "x": 517,
               "y": 86,
               "width": 1000
             },
@@ -714,8 +774,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 768,
-              "y": 288,
+              "x": 525,
+              "y": 369,
               "width": 100
             },
             "color": "#000000",
@@ -734,8 +794,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 773,
-              "y": 452,
+              "x": 523,
+              "y": 522,
               "width": 1000
             },
             "color": "#000000",
@@ -754,8 +814,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 777,
-              "y": 622,
+              "x": 525,
+              "y": 654,
               "width": 100
             },
             "color": "#000000",
@@ -790,8 +850,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 639,
-              "y": 712,
+              "x": 609,
+              "y": 721,
               "width": 500
             },
             "color": "#000000",
@@ -850,8 +910,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 1197,
-              "y": 323,
+              "x": 1407,
+              "y": 307,
               "width": 500
             },
             "color": "#000000",
@@ -870,8 +930,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 1024,
-              "y": 546,
+              "x": 1190,
+              "y": 563,
               "width": 500
             },
             "color": "#000000",
@@ -1149,6 +1209,86 @@
             "color": "#000000",
             "interaction": []
           }
+        },
+        {
+          "id": "GwrbYsw0a7",
+          "type": "text",
+          "content": "",
+          "parent_id": "r5d4z",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "ehwAwfhd9E",
+          "type": "text",
+          "content": "독자가 무엇을 이해했는 지 귀 기울이고",
+          "parent_id": "r5d4z",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 718,
+              "y": 523,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "Y4UmhprrJe",
+          "type": "text",
+          "content": "무엇을 듣고 싶어하는 지 예상해서",
+          "parent_id": "r5d4z",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 718,
+              "y": 585,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "ELuFkD53wX",
+          "type": "text",
+          "content": "계속 참여하고 싶은 대화를 이어가는 것",
+          "parent_id": "r5d4z",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 717,
+              "y": 649,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
         }
       ],
       "background": "#ffffff",
@@ -1225,6 +1365,46 @@
             "color": "#000000",
             "interaction": []
           }
+        },
+        {
+          "id": "bqienq9H7t",
+          "type": "text",
+          "content": "",
+          "parent_id": "82q66",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "FmP2txAx8W",
+          "type": "text",
+          "content": "편집은 선형적인가?",
+          "parent_id": "82q66",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1183,
+              "y": 674,
+              "width": 400
+            },
+            "color": "#000000",
+            "interaction": []
+          }
         }
       ],
       "background": "#ffffff",
@@ -1254,8 +1434,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 741,
-              "y": 58,
+              "x": 747,
+              "y": 128,
               "width": 1000
             },
             "color": "#000000",
@@ -1275,7 +1455,7 @@
             "placed": true,
             "geometry": {
               "x": 858,
-              "y": 257,
+              "y": 298,
               "width": 1000
             },
             "color": "#000000",
@@ -1314,8 +1494,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 733,
-              "y": 618,
+              "x": 731,
+              "y": 562,
               "width": 1000
             },
             "color": "#000000",
@@ -1350,8 +1530,28 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 464,
-              "y": 372,
+              "x": 567,
+              "y": 209,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "ChYXgebgMc",
+          "type": "text",
+          "content": "프로그래밍과 예술이 맞닿는 부분은 인공지능 밖에 없을까?",
+          "parent_id": "QVrKU",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 699,
+              "y": 566,
               "width": 1000
             },
             "color": "#000000",
@@ -1380,7 +1580,7 @@
           "content": "텍스트를 코드이게끔 하는 것",
           "parent_id": "QogHn",
           "markdown": {
-            "type": "h4",
+            "type": "h2",
             "depth": 0
           },
           "style": {
@@ -1406,8 +1606,8 @@
           "style": {
             "placed": true,
             "geometry": {
-              "x": 304,
-              "y": 317,
+              "x": 299,
+              "y": 349,
               "width": 1000
             },
             "color": "#000000",
@@ -1500,11 +1700,11 @@
             "depth": 0
           },
           "style": {
-            "placed": false,
+            "placed": true,
             "geometry": {
-              "x": -9999,
-              "y": -9999,
-              "width": 0
+              "x": 301,
+              "y": 269,
+              "width": 1000
             },
             "color": "#000000",
             "interaction": []
@@ -1536,6 +1736,86 @@
           "content": "분기와 비선형구조",
           "parent_id": "VTQEx",
           "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 300,
+              "y": 553,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "auRruK9bCT",
+          "type": "text",
+          "content": "이야기가 더이상 한 줄일 필요는 없다",
+          "parent_id": "VTQEx",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 302,
+              "y": 638,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "Gw9QG9B1c2",
+          "type": "text",
+          "content": "트랜스 미디어 스토리텔링",
+          "parent_id": "VTQEx",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1045,
+              "y": 512,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "qS1T-iWsLS",
+          "type": "text",
+          "content": "인터랙티브 스토리텔링",
+          "parent_id": "VTQEx",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1096,
+              "y": 704,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "5Ez0-hc6wi",
+          "type": "text",
+          "content": "",
+          "parent_id": "VTQEx",
+          "markdown": {
             "type": "p",
             "depth": 0
           },
@@ -1545,6 +1825,406 @@
               "x": -9999,
               "y": -9999,
               "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "SB58J",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "6EQjYWPlDy",
+          "type": "text",
+          "content": "최근의 접근",
+          "parent_id": "SB58J",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 843,
+              "y": 44,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "GNuni6M0Q7",
+          "type": "text",
+          "content": "이제 인공지능이 이야기를 만들어 줄거야",
+          "parent_id": "SB58J",
+          "markdown": {
+            "type": "h2",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 482,
+              "y": 134,
+              "width": 1200
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "-EwEie597I",
+          "type": "text",
+          "content": "스토리의 딥러닝",
+          "parent_id": "SB58J",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 182,
+              "y": 501,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "QUOLm1CBWp",
+          "type": "text",
+          "content": "좋은 자료구조의 고안",
+          "parent_id": "SB58J",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 181,
+              "y": 586,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "N14H7PInl1",
+          "type": "text",
+          "content": "그러면 우리 개개인에 맞는 이야기가 만들어지겠지!",
+          "parent_id": "SB58J",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 184,
+              "y": 675,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "d8AqB7GkVs",
+          "type": "text",
+          "content": "",
+          "parent_id": "SB58J",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "kY_f8",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "A2hnUODhre",
+          "type": "text",
+          "content": "또 다른 접근",
+          "parent_id": "kY_f8",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 829,
+              "y": 46,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "0QLIrbJaFf",
+          "type": "text",
+          "content": "우리는 이야기를 잘 하고 있었는가?",
+          "parent_id": "kY_f8",
+          "markdown": {
+            "type": "h2",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 506,
+              "y": 127,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "dA0cL",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "dgEcm7r0Lr",
+          "type": "text",
+          "content": "추상화 Abstraction",
+          "parent_id": "dA0cL",
+          "markdown": {
+            "type": "h2",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 300,
+              "y": 200,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "n3ZaC11mUj",
+          "type": "text",
+          "content": "이야기의 추상화는",
+          "parent_id": "dA0cL",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 301,
+              "y": 431,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "sf7_RRGy9B",
+          "type": "text",
+          "content": "이야기에 대한 우리의 이해를 점검하게 한다",
+          "parent_id": "dA0cL",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 301,
+              "y": 532,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "ut48y",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "WLi2QLnAFB",
+          "type": "text",
+          "content": "이야기와 프로그래밍이 맞닿는 새로운 가능성",
+          "parent_id": "ut48y",
+          "markdown": {
+            "type": "h2",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 394,
+              "y": 90,
+              "width": 1200
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "zeAXhCJEPU",
+          "type": "text",
+          "content": "1. 새로운 자료구조와 시각화",
+          "parent_id": "ut48y",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 197,
+              "y": 340,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "0Gg7u5KbEl",
+          "type": "text",
+          "content": "2. 에디터의 발전",
+          "parent_id": "ut48y",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 194,
+              "y": 537,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "4-BIrI_NtG",
+          "type": "text",
+          "content": "3. 비선형 이야기 구조에 대한 탐구",
+          "parent_id": "ut48y",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 192,
+              "y": 699,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "qKFGr",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "LwgkcbdVY-",
+          "type": "text",
+          "content": "그래서... 어떻게 하지?",
+          "parent_id": "qKFGr",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 216,
+              "y": 449,
+              "width": 1000
             },
             "color": "#000000",
             "interaction": []
