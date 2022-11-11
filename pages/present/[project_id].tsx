@@ -40,6 +40,8 @@ const Present: NextPage = () => {
   const router = useRouter();
 
   const pages = useProjectStore((state) => state.pages);
+  const id = useProjectStore((state) => state.id);
+
   useEffect(() => {
     if (router.query.project_id) {
       getProject(Number(router.query.project_id)).then((result) => {
@@ -79,6 +81,16 @@ const Present: NextPage = () => {
       }}
     >
       <Page page={pages[pageStatus]} />
+      {pageStatus === pages.length - 1 && (
+        <div
+          className={cx("temp")}
+          onClick={() => {
+            router.push(`/edit/${id}`);
+          }}
+        >
+          직접 편집해보기
+        </div>
+      )}
     </article>
   );
 };

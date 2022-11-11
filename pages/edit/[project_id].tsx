@@ -21,7 +21,7 @@ const Edit: NextPage = () => {
   const name = useProjectStore((state) => state.project_name);
   const pages = useProjectStore((state) => state.pages);
   const setProjectTitle = useProjectStore((state) => state.setProjectTitle);
-  const [status, setStatus] = useState<IEditStatus>("weave");
+  const [status, setStatus] = useState<IEditStatus>("memo");
   useEffect(() => {
     if (router.query.project_id) {
       getProject(Number(router.query.project_id)).then((result) => {

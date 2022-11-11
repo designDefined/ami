@@ -9,6 +9,17 @@
     opacity: 0;
     transform: translateX(-500px);
   }
+  .temp{
+    position: absolute;
+    right:120px;
+    bottom:80px;
+    font-size: 30px;
+    cursor: pointer;
+    &:hover {
+      color:gray;
+      text-decoration: underline;
+    }
+  }
 }
 
 .Page {
