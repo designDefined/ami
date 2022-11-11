@@ -12,10 +12,10 @@
       "background": "#ffffff",
       "height": 937,
       "graph": {
-        "placed": false,
+        "placed": true,
         "geometry": {
-          "x": -9999,
-          "y": -9999
+          "x": 644,
+          "y": 312
         },
         "to": []
       },
@@ -23,13 +23,564 @@
         {
           "id": "IfYAVXXA1L",
           "type": "text",
-          "content": "",
+          "content": "How To Tell",
           "parent_id": "rHB0I",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 141,
+              "y": 112,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "9kKPxtu3aq",
+          "type": "text",
+          "content": "your STORY",
+          "parent_id": "rHB0I",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 139,
+              "y": 203,
+              "width": 300
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "FjCdNU4dry",
+          "type": "text",
+          "content": "2022-2 ISC X 산학",
+          "parent_id": "rHB0I",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1356,
+              "y": 747,
+              "width": 300
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "ZUhppMl___",
+          "type": "text",
+          "content": "언론정보학과 박준영",
+          "parent_id": "rHB0I",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1354,
+              "y": 791,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "fqhuO",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "l-p8Vv_oSW",
+          "type": "text",
+          "content": "STORY",
+          "parent_id": "fqhuO",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 300,
+              "y": 200,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "xliEexUbZk",
+          "type": "text",
+          "content": "TELL",
+          "parent_id": "fqhuO",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 296,
+              "y": 429,
+              "width": 100
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "OyS1gq0rq_",
+          "type": "text",
+          "content": "ABSTRACTION",
+          "parent_id": "fqhuO",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 300,
+              "y": 680,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": true,
+        "geometry": {
+          "x": 122,
+          "y": 88
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "Fzt02",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "IgXwjUgZv1",
+          "type": "text",
+          "content": "스토리란 무엇인가?",
+          "parent_id": "Fzt02",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 300,
+              "y": 200,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "1x-g-4TJrW",
+          "type": "text",
+          "content": "순서",
+          "parent_id": "Fzt02",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 610,
+              "y": 481,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "r86ByUFvBg",
+          "type": "text",
+          "content": "동력",
+          "parent_id": "Fzt02",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1024,
+              "y": 481,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "CmWlw",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "xvLgF3igmE",
+          "type": "text",
+          "content": "오늘, 엄마가 죽었다. 아니 어쩌면 어제. 잘 모르겠다.",
+          "parent_id": "CmWlw",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 630,
+              "y": 199,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "jK87nRN4ts",
+          "type": "text",
+          "content": "- 알베르 카뮈 <이방인>",
+          "parent_id": "CmWlw",
           "markdown": {
             "type": "p",
             "depth": 0
           },
           "style": {
+            "placed": true,
+            "geometry": {
+              "x": 821,
+              "y": 336,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "tOiNQvE0ZR",
+          "type": "text",
+          "content": "",
+          "parent_id": "CmWlw",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "tETvYbTNL_",
+          "type": "text",
+          "content": "행복한 가정은 모두 비슷한 이유로 행복하지만 불행한 가정은 저마다의 이유로 불행하다.",
+          "parent_id": "CmWlw",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 517,
+              "y": 510,
+              "width": 1200
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "v39UynLEOV",
+          "type": "text",
+          "content": "- 레프 톨스토이 <안나 카레니나>",
+          "parent_id": "CmWlw",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 790,
+              "y": 642,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "k8jO-",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "WeC0yT_CTY",
+          "type": "text",
+          "content": "큰 힘에는 큰 책임이 따른다",
+          "parent_id": "k8jO-",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 707,
+              "y": 156,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "81nhiBCEZh",
+          "type": "text",
+          "content": "- 스파이더맨",
+          "parent_id": "k8jO-",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 813,
+              "y": 275,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "-6VYaKvpah",
+          "type": "text",
+          "content": "Oh, in case I don't see you,",
+          "parent_id": "k8jO-",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 696,
+              "y": 443,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "QCmnMQAyy0",
+          "type": "text",
+          "content": "Good Afternoon, good evening, and good night.",
+          "parent_id": "k8jO-",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 577,
+              "y": 537,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "i68rS2CThG",
+          "type": "text",
+          "content": "- 트루먼 쇼",
+          "parent_id": "k8jO-",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 819,
+              "y": 659,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "g6S3b",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "PhW0FQYRed",
+          "type": "text",
+          "content": "스토리가 아닌 것",
+          "parent_id": "g6S3b",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 561,
+              "y": 192,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "ZA-G8zToIQ",
+          "type": "text",
+          "content": "설명서",
+          "parent_id": "g6S3b",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 252,
+              "y": 394,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "63CgSCIkD7",
+          "type": "text",
+          "content": "논설문",
+          "parent_id": "g6S3b",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 789,
+              "y": 747,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "JFoF7iyyx9",
+          "type": "text",
+          "content": "나무위키의 스토리 요약?",
+          "parent_id": "g6S3b",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1223,
+              "y": 506,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "OpC3hBNW7D",
+          "type": "text",
+          "content": "",
+          "parent_id": "g6S3b",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
             "geometry": {
               "x": -9999,
               "y": -9999,
@@ -39,7 +590,977 @@
             "interaction": []
           }
         }
-      ]
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "Chb3h",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "3fAwS6UMtD",
+          "type": "text",
+          "content": "스토리란",
+          "parent_id": "Chb3h",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 208,
+              "y": 164,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "l7CgQP1jvS",
+          "type": "text",
+          "content": "순서를 가진 정보의 나열",
+          "parent_id": "Chb3h",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 209,
+              "y": 325,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "J-plbatPjW",
+          "type": "text",
+          "content": "다음 정보를 열람하게 만드는 동력",
+          "parent_id": "Chb3h",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 208,
+              "y": 391,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "7onOW",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "OEssHrHQVb",
+          "type": "text",
+          "content": "어떻게 순서를 부여하는가?",
+          "parent_id": "7onOW",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 425,
+              "y": 86,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "N8grcUsqqu",
+          "type": "text",
+          "content": "소설",
+          "parent_id": "7onOW",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 768,
+              "y": 288,
+              "width": 100
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "waus6DmRO_",
+          "type": "text",
+          "content": "영화",
+          "parent_id": "7onOW",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 773,
+              "y": 452,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "U0A9PYRgTt",
+          "type": "text",
+          "content": "말",
+          "parent_id": "7onOW",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 777,
+              "y": 622,
+              "width": 100
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "Vu7Pf",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "C3__T24dRw",
+          "type": "text",
+          "content": "열람의 순서란?",
+          "parent_id": "Vu7Pf",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 639,
+              "y": 712,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "aqf3hBtaiM",
+          "type": "text",
+          "content": "때로는 한 화면에서도 열람의 순서가 달라진다",
+          "parent_id": "Vu7Pf",
+          "markdown": {
+            "type": "h2",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 90,
+              "y": 313,
+              "width": 600
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "8BU4enf4gR",
+          "type": "text",
+          "content": "그것은 크기에 따를 수도 있고",
+          "parent_id": "Vu7Pf",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 628,
+              "y": 135,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "tvtBiecZG6",
+          "type": "text",
+          "content": "위치에 따를 수도 있고",
+          "parent_id": "Vu7Pf",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1197,
+              "y": 323,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "GhXvwbRvnE",
+          "type": "text",
+          "content": "때로는 인터랙션에 따를 수도 있다!",
+          "parent_id": "Vu7Pf",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1024,
+              "y": 546,
+              "width": 500
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "ArSut",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "KkCgtDmB3r",
+          "type": "text",
+          "content": "그렇다면 동력은?",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1177,
+              "y": 96,
+              "width": 300
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "buZu7tkIKS",
+          "type": "text",
+          "content": "반전",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1142,
+              "y": 588,
+              "width": 200
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "G4Z71ae8_a",
+          "type": "text",
+          "content": "서스펜스",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 1110,
+              "y": 395,
+              "width": 100
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "g3XtvgIUGQ",
+          "type": "text",
+          "content": "캐릭터의 매력",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 728,
+              "y": 727,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "oNPiHf42kr",
+          "type": "text",
+          "content": "묘사",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 305,
+              "y": 310,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "WqlD5YG9-P",
+          "type": "text",
+          "content": "압도감",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 910,
+              "y": 545,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "cRIMYYHG51",
+          "type": "text",
+          "content": "불쾌함",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 821,
+              "y": 266,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "wom7iBWoj4",
+          "type": "text",
+          "content": "통쾌함",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 675,
+              "y": 316,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "k1b5x7FwlT",
+          "type": "text",
+          "content": "시각 효과",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 383,
+              "y": 487,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "JhTMvY0nXA",
+          "type": "text",
+          "content": "사운드 효과",
+          "parent_id": "ArSut",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "r5d4z",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "2oTnF_C5pa",
+          "type": "text",
+          "content": "일종의 질의응답 과정",
+          "parent_id": "r5d4z",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 719,
+              "y": 387,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "c6NZa1pn36",
+          "type": "text",
+          "content": "스토리텔링이란?",
+          "parent_id": "r5d4z",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 725,
+              "y": 318,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "82q66",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "DY2xm9gW2X",
+          "type": "text",
+          "content": "편집",
+          "parent_id": "82q66",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 300,
+              "y": 200,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "3MfUO_HW11",
+          "type": "text",
+          "content": "기승전결의 구조 갖추게",
+          "parent_id": "82q66",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 305,
+              "y": 401,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "YAnN7jT0fN",
+          "type": "text",
+          "content": "한 화면에서도 조화롭게 배치되게",
+          "parent_id": "82q66",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 303,
+              "y": 501,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "zvS3p",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "kSyRaGLEQS",
+          "type": "text",
+          "content": "그래프 구조",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 741,
+              "y": 58,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "wY7TuaAC_n",
+          "type": "text",
+          "content": "꼭짓점과 모서리",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 858,
+              "y": 257,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "eTLeGaIhXU",
+          "type": "text",
+          "content": "내용과 통로",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 856,
+              "y": 420,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "lwxLjpglOd",
+          "type": "text",
+          "content": "감정상태와 열람 동기",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 733,
+              "y": 618,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "QVrKU",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "KTd5A7f8wM",
+          "type": "text",
+          "content": "프로그래밍 & 스토리텔링 ",
+          "parent_id": "QVrKU",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 464,
+              "y": 372,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "QogHn",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "nRuRX-ZvjU",
+          "type": "text",
+          "content": "텍스트를 코드이게끔 하는 것",
+          "parent_id": "QogHn",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 291,
+              "y": 200,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "XEUzzWeiyo",
+          "type": "text",
+          "content": "저장",
+          "parent_id": "QogHn",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 304,
+              "y": 317,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "JnN_dgml3f",
+          "type": "text",
+          "content": "입출력",
+          "parent_id": "QogHn",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 296,
+              "y": 506,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "9dOue4biKz",
+          "type": "text",
+          "content": "시스템 접근",
+          "parent_id": "QogHn",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 298,
+              "y": 425,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "qkRXU8TjiY",
+          "type": "text",
+          "content": "분기",
+          "parent_id": "QogHn",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 298,
+              "y": 591,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "VTQEx",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "Bd38kN45WA",
+          "type": "text",
+          "content": "if (...) else (...)",
+          "parent_id": "VTQEx",
+          "markdown": {
+            "type": "h2",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "tPSN9Z3IBO",
+          "type": "text",
+          "content": "",
+          "parent_id": "VTQEx",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "KsVAb8KNom",
+          "type": "text",
+          "content": "분기와 비선형구조",
+          "parent_id": "VTQEx",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": false,
+            "geometry": {
+              "x": -9999,
+              "y": -9999,
+              "width": 0
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
     }
   ]
 }
