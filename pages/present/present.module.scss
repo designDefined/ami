@@ -1,0 +1,83 @@
+.Present {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  cursor: pointer;
+  &.nextPage{
+
+    transition: 1s;
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+}
+
+.Page {
+  width: 100%;
+  height: 100%;
+}
+
+.Atom {
+  position: absolute;
+  animation: 1s ease fromLeft;
+  &.h1 {
+    font-size: 80px;
+    font-weight: 900;
+  }
+
+  &.h2 {
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+  &.h3 {
+    font-size: 48px;
+    font-weight: 600;
+  }
+
+  &.h4 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  &.p {
+    font-size: 24px;
+    text-align: justify;
+  }
+
+}
+
+@keyframes toLeft{
+  0%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+}
+
+
+@keyframes toRight{
+  0%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateX(500px);
+  }
+}
+
+@keyframes fromLeft  {
+    0%{
+      opacity: 0;
+      transform: translateX(-200px);
+    }
+   100%{
+     opacity: 1;
+     transform: translateX(0);
+   }
+}
+
+

@@ -7,7 +7,7 @@ import {
 } from "../../../../store/base/markDown";
 import _ from "lodash";
 import { Edge } from "../../../../store/base/edge";
-import { findPreviousWithId } from "../../../../api/arrayFunctions";
+import { findPreviousWithId } from "../../../../localApi/arrayFunctions";
 
 const project = useProjectStore;
 const selectedMarkDown = useSelectedMarkDown;

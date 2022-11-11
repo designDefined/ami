@@ -25,7 +25,7 @@ const Moim: NextPage = () => {
 
   return (
     <article className={cx("Project")}>
-      <Header name={name} />
+      {/*<Header name={name} />*/}
       {status === "read" && <ReadByPage pages={pages} />}
       {status === "memo" && <Memo pages={pages} />}
       <button
