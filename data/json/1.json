@@ -1418,102 +1418,7 @@
         "to": []
       }
     },
-    {
-      "id": "zvS3p",
-      "page_name": "new_page",
-      "atoms": [
-        {
-          "id": "kSyRaGLEQS",
-          "type": "text",
-          "content": "그래프 구조",
-          "parent_id": "zvS3p",
-          "markdown": {
-            "type": "h1",
-            "depth": 0
-          },
-          "style": {
-            "placed": true,
-            "geometry": {
-              "x": 747,
-              "y": 128,
-              "width": 1000
-            },
-            "color": "#000000",
-            "interaction": []
-          }
-        },
-        {
-          "id": "wY7TuaAC_n",
-          "type": "text",
-          "content": "꼭짓점과 모서리",
-          "parent_id": "zvS3p",
-          "markdown": {
-            "type": "p",
-            "depth": 0
-          },
-          "style": {
-            "placed": true,
-            "geometry": {
-              "x": 858,
-              "y": 298,
-              "width": 1000
-            },
-            "color": "#000000",
-            "interaction": []
-          }
-        },
-        {
-          "id": "eTLeGaIhXU",
-          "type": "text",
-          "content": "내용과 통로",
-          "parent_id": "zvS3p",
-          "markdown": {
-            "type": "h4",
-            "depth": 0
-          },
-          "style": {
-            "placed": true,
-            "geometry": {
-              "x": 856,
-              "y": 420,
-              "width": 1000
-            },
-            "color": "#000000",
-            "interaction": []
-          }
-        },
-        {
-          "id": "lwxLjpglOd",
-          "type": "text",
-          "content": "감정상태와 열람 동기",
-          "parent_id": "zvS3p",
-          "markdown": {
-            "type": "h3",
-            "depth": 0
-          },
-          "style": {
-            "placed": true,
-            "geometry": {
-              "x": 731,
-              "y": 562,
-              "width": 1000
-            },
-            "color": "#000000",
-            "interaction": []
-          }
-        }
-      ],
-      "background": "#ffffff",
-      "height": 937,
-      "graph": {
-        "placed": false,
-        "geometry": {
-          "x": -9999,
-          "y": -9999
-        },
-        "to": []
-      }
-    },
+
     {
       "id": "QVrKU",
       "page_name": "new_page",
@@ -2016,6 +1921,102 @@
             "geometry": {
               "x": 506,
               "y": 127,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        }
+      ],
+      "background": "#ffffff",
+      "height": 937,
+      "graph": {
+        "placed": false,
+        "geometry": {
+          "x": -9999,
+          "y": -9999
+        },
+        "to": []
+      }
+    },
+    {
+      "id": "zvS3p",
+      "page_name": "new_page",
+      "atoms": [
+        {
+          "id": "kSyRaGLEQS",
+          "type": "text",
+          "content": "그래프 구조",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "h1",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 747,
+              "y": 128,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "wY7TuaAC_n",
+          "type": "text",
+          "content": "꼭짓점과 모서리",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "p",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 858,
+              "y": 298,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "eTLeGaIhXU",
+          "type": "text",
+          "content": "내용과 통로",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "h4",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 856,
+              "y": 420,
+              "width": 1000
+            },
+            "color": "#000000",
+            "interaction": []
+          }
+        },
+        {
+          "id": "lwxLjpglOd",
+          "type": "text",
+          "content": "감정상태와 열람 동기",
+          "parent_id": "zvS3p",
+          "markdown": {
+            "type": "h3",
+            "depth": 0
+          },
+          "style": {
+            "placed": true,
+            "geometry": {
+              "x": 731,
+              "y": 562,
               "width": 1000
             },
             "color": "#000000",
