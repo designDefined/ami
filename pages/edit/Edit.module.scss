@@ -7,6 +7,10 @@
   align-items: center;
   background-color: #383838;
   padding:100px;
+  &.weave{
+    background: transparent;
+    padding: 0;
+  }
   .toHome{
     position: fixed;
     left:10px;

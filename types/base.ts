@@ -22,8 +22,9 @@ export type IProjectSum = Pick<IProject, "id" | "writer" | "project_name">;
 export interface IPage extends IWithId<string> {
   page_name: string;
   atoms: IAtom[];
-  color?: string;
-  height?: string;
+  background: string;
+  height: number;
+  graph: IGraph;
 }
 
 export interface IAtom extends IWithId<string> {
@@ -43,7 +44,15 @@ interface IMarkdown {
 
 type Interaction = "fade_in" | "fade_out" | "slide_in_left" | "slide_in_top";
 
-interface IStyle {
+export interface IGraph {
+  placed: boolean;
+  geometry: { x: number; y: number };
+  to: string[];
+}
+
+export interface IStyle {
+  placed?: boolean;
   geometry: { x: number; y: number; width: number };
+  color: string;
   interaction: Interaction[];
 }

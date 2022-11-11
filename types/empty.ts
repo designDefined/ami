@@ -26,6 +26,9 @@ const page = (): IPage => {
     id,
     page_name: "new_page",
     atoms: [atom(id)],
+    background: "#ffffff",
+    height: 937,
+    graph: { placed: false, geometry: { x: -9999, y: -9999 }, to: [] },
   };
 };
 
@@ -35,7 +38,12 @@ const atom = (parent_id: string, depth: number = 0): IAtom => ({
   content: "",
   parent_id,
   markdown: { type: "p", depth },
-  style: { geometry: { x: -9999, y: -9999, width: 0 }, interaction: [] },
+  style: {
+    placed: false,
+    geometry: { x: -9999, y: -9999, width: 0 },
+    color: "#000000",
+    interaction: [],
+  },
 });
 
 const createEmpty = { token, user, project, page, atom };

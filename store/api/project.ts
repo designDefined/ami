@@ -17,6 +17,7 @@ interface ProjectStoreStatus extends IProject {
   load: (Project: IProject) => void;
   setProjectTitle: (title: string) => void;
   setPages: (pages: IPage[]) => void;
+  updatePage: (updatedPage: IPage) => void;
   updateAtoms: (atoms: IAtom[]) => void;
   deleteAtom: (atom: IAtom) => void;
 }
@@ -29,6 +30,8 @@ export const useProjectStore = create<ProjectStoreStatus>()((set) => ({
     set({
       pages,
     }),
+  updatePage: (updatedPage) =>
+    set((state) => ({ pages: manipulateWithId(state.pages)(updatedPage) })),
   updateAtoms: (atoms) =>
     set((state) => {
       if (atoms.length < 1) {

@@ -12,6 +12,7 @@ import Hint from "../../components/edit/Hint/Hint";
 import Read from "../../components/edit/readComponents/Read";
 import ReadByPage from "../../components/edit/readComponents/ReadByPage";
 import { IEditStatus } from "../../types/status";
+import Weave from "../../components/edit/weaveComponents/Weave";
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,7 @@ const Edit: NextPage = () => {
   const name = useProjectStore((state) => state.project_name);
   const pages = useProjectStore((state) => state.pages);
   const setProjectTitle = useProjectStore((state) => state.setProjectTitle);
-  const [status, setStatus] = useState<IEditStatus>("memo");
+  const [status, setStatus] = useState<IEditStatus>("weave");
   useEffect(() => {
     if (router.query.project_id) {
       getProject(Number(router.query.project_id)).then((result) => {
@@ -32,10 +33,11 @@ const Edit: NextPage = () => {
   }, [router.query]);
 
   return (
-    <article className={cx("Project")}>
+    <article className={cx("Project", { weave: status === "weave" })}>
       <Header name={name} status={status} setStatus={setStatus} />
       {status === "preview" && <ReadByPage pages={pages} />}
       {status === "memo" && <Memo pages={pages} />}
+      {status === "weave" && <Weave name={name} pages={pages} />}
       <button
         className={cx("toHome")}
         onClick={() => {
