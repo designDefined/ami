@@ -15,7 +15,7 @@
 
 AMI 0.3.0
 
-__AMI 1.0.1: Grayscale__
+__AMI 1.0.0: Grayscale__
 
 
 
