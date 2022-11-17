@@ -8,8 +8,9 @@ interface Todo {
   name: string;
 }
 const todos: Todo[] = [
-  { name: "Component Name 정리하기" },
-  { name: "Array 조작 함수 고치기" },
+  { name: "flatten data objects" },
+  { name: "refactor component name & path" },
+  { name: "simplify array manipulation apis" },
 ];
 
 const Todo = ({ todo, index }: { todo: Todo; index: number }) => {
