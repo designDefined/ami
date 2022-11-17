@@ -1,58 +1,55 @@
-interface IWithId<T> {
+/******************** Basic ********************/
+export interface IWithId<T> {
   id: T;
 }
+export interface IPlaceable {
+  isPlaced: boolean;
+  placedX: number;
+  placedY: number;
+}
 
+/******************** Authorization ********************/
 export interface IToken {
   access: string;
   refresh: string;
 }
-
 export interface IUser extends IWithId<string> {
-  user_name: string;
+  userName: string;
 }
 
+/******************** Atom ********************/
+export type IAtomType = "text" | "image";
+export type IMarkDownType = "h1" | "h2" | "h3" | "h4" | "p" | "uli" | "oli";
+export interface ICommonAtom extends IWithId<string> {
+  type: IAtomType;
+  parentPageId: string;
+}
+export interface ITextAtom extends ICommonAtom, IPlaceable {
+  markdownType: IMarkDownType;
+  content: string;
+  //style
+  offsetWidth: number;
+  fontSize: number;
+  fontColor: string;
+}
+export type IAtom = ITextAtom;
+
+/******************** page ********************/
+export interface IPage extends IWithId<string>, IPlaceable {
+  pageName: string;
+  atoms: IAtom[];
+  //edge
+  edgeColor: string;
+  //style
+  background: string;
+  offsetHeight: number;
+}
+
+/******************** Project ********************/
 export interface IProject extends IWithId<number> {
-  writer: IUser;
+  writer: IUser; //read only
   project_name: string;
   pages: IPage[];
 }
 
-export type IProjectSum = Pick<IProject, "id" | "writer" | "project_name">;
-
-export interface IPage extends IWithId<string> {
-  page_name: string;
-  atoms: IAtom[];
-  background: string;
-  height: number;
-  graph: IGraph;
-}
-
-export interface IAtom extends IWithId<string> {
-  type: "text" | "image";
-  content: string;
-  markdown: IMarkdown;
-  style: IStyle;
-  parent_id: string;
-}
-
-export type IMarkDownType = "h1" | "h2" | "h3" | "h4" | "p" | "uli" | "oli";
-
-interface IMarkdown {
-  type: IMarkDownType;
-  depth: number;
-}
-
-type Interaction = "fade_in" | "fade_out" | "slide_in_left" | "slide_in_top";
-
-export interface IGraph {
-  placed: boolean;
-  geometry: { x: number; y: number };
-  to: string[];
-}
-
-export interface IStyle {
-  placed?: boolean;
-  geometry: { x: number; y: number; width: number };
-  color: string;
-  interaction: Interaction[];
-}
+export type IProjectSum = Omit<IProject, "pages">;
