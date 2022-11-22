@@ -1,20 +1,18 @@
 import { NextPage } from "next";
-import HomeHeader from "../components/home/Header/Header";
-import SectionBillboard from "../components/home/Section/SectionBillboard";
-import styles from "./Home.module.scss";
-import classNames from "classnames/bind";
-import SectionHorizon from "../components/home/Section/SectionHorizon";
 import { useCallback, useEffect } from "react";
-import { useRouter } from "next/router";
 import { useProjectList } from "../store/projectList";
 import { getMyProjects, getTopProjects } from "../API/local/localStorageAPI";
-import { toast } from "react-toastify";
-import { modal } from "../components/common/Modal/Modal";
+
+import HomeHeader from "../components/home/Header/Header";
+import SectionBillboard from "../components/home/Section/SectionBillboard";
+import SectionHorizon from "../components/home/Section/SectionHorizon";
+
+import styles from "./Home.module.scss";
+import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
 const Home: NextPage = () => {
-  const router = useRouter();
   const topProjectsList = useProjectList((state) => state.topProjects);
   const myProjectsList = useProjectList((state) => state.myProjects);
   const loadTopProjects = useProjectList((state) => state.setTopProjects);
@@ -35,8 +33,6 @@ const Home: NextPage = () => {
       } else {
       }
     });
-    toast.success("hello!");
-    modal.test();
   }, []);
 
   return (
