@@ -14,12 +14,11 @@ import {
 const cx = classNames.bind(styles);
 
 export const AtomReader = ({ atom }: { atom: IAtom }) => {
-  const { markdown, content } = atom;
-  const { type, depth } = markdown;
+  const { markdownType, markdownDepth, content } = atom;
   return (
     <li
-      className={cx("Atom", "reader", type, "depth-" + depth)}
-      onClick={handleClickAtom(atom)}
+      className={cx("Atom", "reader", markdownType, "depth-" + markdownDepth)}
+      // onClick={handleClickAtom(atom)}
     >
       {content}
     </li>
@@ -36,7 +35,6 @@ export const AtomWriter = () => {
   const ref = useRef<HTMLTextAreaElement>(null);
   const atom: IAtom = useSelectedAtomStore((state) => state.source[0]);
   const input: string = useSelectedAtomStore((state) => state.input);
-  const { type, depth } = atom.markdown;
 
   useEffect(() => {
     resizeTextarea(ref.current);
@@ -49,9 +47,9 @@ export const AtomWriter = () => {
         className={cx("textArea")}
         placeholder="내용을 입력하세요"
         value={input}
-        onBlur={handleBlurAtom(atom)}
-        onKeyDown={handleKeyDownAtom(atom, input)}
-        onChange={handleChangeSelectedInput}
+        // onBlur={handleBlurAtom(atom)}
+        // onKeyDown={handleKeyDownAtom(atom, input)}
+        // onChange={handleChangeSelectedInput}
         autoFocus
       />
     </li>

@@ -1,27 +1,28 @@
-.Project{
+.Project {
   position: relative;
-  width:100%;
-  min-height:100vh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #383838;
-  padding:100px;
-  &.weave{
+  &.memo {
+    background-color: #383838;
+  }
+  &.weave {
     background: transparent;
     padding: 0;
   }
-  .toHome{
+  .toHome {
     position: fixed;
-    left:10px;
-    top:40px;
-    border:none;
+    left: 10px;
+    top: 40px;
+    border: none;
     background: none;
-    font:inherit;
+    font: inherit;
     font-size: 24px;
     color: #eaeaea;
     cursor: pointer;
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }

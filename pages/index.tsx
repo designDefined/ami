@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useCallback, useEffect } from "react";
 import { useProjectList } from "../store/projectList";
-import { getMyProjects, getTopProjects } from "../API/local/localStorageAPI";
+import localStorageAPI from "../API/local/localStorageAPI";
 
 import HomeHeader from "../components/home/Header/Header";
 import SectionBillboard from "../components/home/Section/SectionBillboard";
@@ -21,13 +21,13 @@ const Home: NextPage = () => {
   const onAddMyProject = useCallback(() => {}, []);
 
   useEffect(() => {
-    getTopProjects().then(({ status, data }) => {
+    localStorageAPI.getTopProjects().then(({ status, data }) => {
       if (status === "localAPISuccess") {
         loadTopProjects(data);
       } else {
       }
     });
-    getMyProjects().then(({ status, data }) => {
+    localStorageAPI.getMyProjects().then(({ status, data }) => {
       if (status === "localAPISuccess") {
         loadMyProjects(data);
       } else {

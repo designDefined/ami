@@ -11,9 +11,7 @@ const TOP_PROJECTS = "ami_top_projects" as const;
 const MY_PROJECTS = "ami_my_projects" as const;
 const PROJECT = (id: number) => `ami_project_${id}` as const;
 
-export const getTopProjects = async (): Promise<
-  LocalResponse<IProjectSummary[]>
-> => {
+const getTopProjects = async (): Promise<LocalResponse<IProjectSummary[]>> => {
   try {
     const stringData = await localStorage.getItem(TOP_PROJECTS);
     if (stringData) {
@@ -32,9 +30,7 @@ export const getTopProjects = async (): Promise<
   }
 };
 
-export const getMyProjects = async (): Promise<
-  LocalResponse<IProjectSummary[]>
-> => {
+const getMyProjects = async (): Promise<LocalResponse<IProjectSummary[]>> => {
   try {
     const stringData = await localStorage.getItem(MY_PROJECTS);
     if (stringData) {
@@ -48,9 +44,7 @@ export const getMyProjects = async (): Promise<
   }
 };
 
-export const getProjectById = async (
-  id: number,
-): Promise<LocalResponse<IProject>> => {
+const getProjectById = async (id: number): Promise<LocalResponse<IProject>> => {
   try {
     const stringData = await localStorage.getItem(PROJECT(id));
     if (stringData) {
@@ -68,3 +62,6 @@ export const getProjectById = async (
     return Promise.resolve(localWrongKey());
   }
 };
+
+const localStorageAPI = { getTopProjects, getMyProjects, getProjectById };
+export default localStorageAPI;

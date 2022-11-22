@@ -1,7 +1,6 @@
 import { IAtom, IPage } from "../../../types/base";
 import classNames from "classnames/bind";
 import styles from "./MemoComponents.module.scss";
-import { useSelectedAtomStore } from "../../../store/api/selectedAtom";
 import { AtomReader, AtomWriter } from "./Atom";
 
 interface Props {
@@ -25,13 +24,13 @@ const selectAtom = (atom: IAtom, selected: IAtom[]) => {
 };
 
 const Page = ({ page }: Props) => {
-  const { page_name, atoms } = page;
-  const selectedAtom = useSelectedAtomStore((state) => state.source);
+  const { pageName, atoms } = page;
+  // const selectedAtom = useSelectedAtomStore((state) => state.source);
   return (
     <div className={cx("Page")}>
-      <label className={cx("name")}>{page_name}</label>
+      <label className={cx("name")}>{pageName}</label>
       <ul className={cx("list")}>
-        {atoms.map((atom) => selectAtom(atom, selectedAtom))}
+        {atoms.map((atom) => selectAtom(atom, []))}
       </ul>
     </div>
   );

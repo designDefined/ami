@@ -1,98 +1,98 @@
 @use "./styles/material";
 
-.Memo{
-  .addPage{
-    width:1080px;
-    height:60px;
+.Memo {
+  padding: 100px 0 0 0;
+  .addPage {
+    width: 1080px;
+    height: 60px;
     margin-top: 20px;
     border: 0;
     text-shadow: 0 0 1em transparentize(black, 0.5);
     border-radius: 20px;
     background: transparentize(#ececec, 0.5);
     backdrop-filter: blur(20px);
-    font-family:inherit;
-    font-size:18px;
+    font-family: inherit;
+    font-size: 18px;
     font-weight: bold;
-    color:white;
+    color: white;
     cursor: pointer;
     transition: 0.5s;
-    &:hover{
+    &:hover {
       background: transparentize(#ececec, 0.2);
     }
   }
 }
 
-.Page{
+.Page {
   @include material.shadow(2);
   position: relative;
-  width:1080px;
-  min-height:300px;
-  background-color: transparentize(#f3f3f3,0.1);
-  padding:30px;
+  width: 1080px;
+  min-height: 300px;
+  background-color: transparentize(#f3f3f3, 0.1);
+  padding: 30px;
   border-radius: 20px 0 20px 20px;
   font-weight: 300;
-  font-size:20px;
+  font-size: 20px;
   margin-bottom: 60px;
 
-  .name{
+  .name {
     display: flex;
     align-items: center;
     position: absolute;
-    height:40px;
-    top:-40px;
-    right:0;
-    padding-left:10px;
-    padding-right:10px;
-    border-radius: 15px 15px 0 0 ;
-    background-color: transparentize(#f3f3f3,0.1);
-    .modify{
+    height: 40px;
+    top: -40px;
+    right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px 15px 0 0;
+    background-color: transparentize(#f3f3f3, 0.1);
+    .modify {
       display: flex;
       align-items: center;
       justify-content: center;
     }
   }
 
-  .list{
+  .list {
     list-style: none;
     padding: 0;
   }
 }
 
-@mixin atomMarkdownTypes{
-  &.h1{
+@mixin atomMarkdownTypes {
+  &.h1 {
     font-size: 60px;
     font-weight: 900;
     margin-top: 40px;
   }
-  &.h2{
+  &.h2 {
     font-size: 48px;
     font-weight: 700;
     margin-top: 24px;
   }
-  &.h3{
+  &.h3 {
     font-size: 32px;
     font-weight: 600;
     margin-top: 16px;
   }
-  &.h4{
+  &.h4 {
     font-size: 24px;
     font-weight: 500;
     margin-top: 8px;
   }
-  &.p{
-    font-size:20px;
+  &.p {
+    font-size: 20px;
     font-weight: 400;
   }
 }
 
-
-.Atom{
+.Atom {
   @include atomMarkdownTypes;
   //position
-  position:relative;
+  position: relative;
   //sizing
-  width:100%;
-  min-height:2em;
+  width: 100%;
+  min-height: 2em;
   padding: 0.4em 10px;
   //inside
   display: flex;
@@ -101,46 +101,45 @@
   //look
   border-radius: 5px;
   //font
-  font:inherit;
+  font: inherit;
   animation: 0.3s popup ease;
-  &.reader{
+  &.reader {
     cursor: pointer;
     animation: none;
-    &:hover{
+    &:hover {
       background-color: rgba(204, 231, 193, 0.5);
     }
   }
-  &.writer{
+  &.writer {
     @include material.shadow(1);
     background-color: white;
-    .textArea{
+    .textArea {
       //sizing
-      width:100%;
-      height:1em;
+      width: 100%;
+      height: 1em;
       //inside
-      padding:0;
+      padding: 0;
       //overflow-y: hidden;
       //font
-      font:inherit;
+      font: inherit;
       text-align: justify;
       //clear textarea
       resize: none;
-      border:none;
+      border: none;
       //animation
-      &:focus{
+      &:focus {
         outline: none;
       }
     }
   }
 }
 
-
 @keyframes popup {
-  0%{
+  0% {
     transform: translateY(-100%);
     opacity: 0.3;
   }
-  100%{
+  100% {
     transform: translateY(0);
     opacity: 1;
   }

@@ -1,16 +1,13 @@
 import styles from "./Header.module.scss";
 import classNames from "classnames/bind";
-import { IEditStatus } from "../../../types/status";
-import { useCallback } from "react";
+import { IEditStatus, useProject } from "../../../store/project";
 const cx = classNames.bind(styles);
 
-interface Props {
-  name: string;
-  status: IEditStatus;
-  setStatus: (status: IEditStatus) => void;
-}
+const Header = () => {
+  const status = useProject((state) => state.editStatus);
+  const setStatus = useProject((state) => state.setEditStatus);
+  const projectName = useProject((state) => state.projectName);
 
-const Header = ({ name, status, setStatus }: Props) => {
   const handleStatusButton =
     (target: IEditStatus): React.MouseEventHandler<HTMLButtonElement> =>
     (e) => {
@@ -21,7 +18,7 @@ const Header = ({ name, status, setStatus }: Props) => {
 
   return (
     <header className={cx("Header")}>
-      {name}
+      {projectName}
       <div className={cx("modes")}>
         <button
           className={cx({ selected: status === "memo" })}

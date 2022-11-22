@@ -1,12 +1,14 @@
 import { IProject } from "../../types/base";
 import { sampleUserData } from "./user";
+import { nanoid } from "nanoid";
+import createEmpty from "../createEmpty";
 
 export const sampleProjectData: IProject[] = [
   {
     id: 1,
     writer: sampleUserData,
     projectName: "AMI 1.0: GrayScale",
-    pages: [],
+    pages: [createEmpty.page(1)],
   },
   {
     id: 2,

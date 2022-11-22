@@ -41,6 +41,7 @@ const atom = (parentId: string, depth: number = 0): IAtom => ({
   id: nanoid(),
   type: "text",
   markdownType: "p",
+  markdownDepth: depth,
   content: "",
   parentPageId: parentId,
   offsetWidth: -1,

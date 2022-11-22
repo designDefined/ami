@@ -3,7 +3,11 @@ import { ILoadable, IPage, IProject, IUser } from "../types/base";
 import codes from "../types/codes";
 import { manipulateWithId } from "./helper/manipulateWithId";
 
+export type IEditStatus = "memo" | "weave" | "preview";
+
 interface IProjectStore extends IProject, ILoadable {
+  editStatus: IEditStatus;
+  setEditStatus: (editStatus: IEditStatus) => void;
   //Basics
   load: (project: IProject) => void;
   clear: () => void;
@@ -25,6 +29,8 @@ const loadingProject = {
 export const useProject = create<IProjectStore>()((set) => ({
   ...loadingProject,
   loadStatus: "loading",
+  editStatus: "memo",
+  setEditStatus: (editStatus: IEditStatus) => set({ editStatus }),
   //Basics
   load: (project) => set({ ...project, loadStatus: "success" }),
   clear: () => set({ ...loadingProject, loadStatus: "loading" }),

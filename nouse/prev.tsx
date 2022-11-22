@@ -1,18 +1,14 @@
-import styles from "./Edit.module.scss";
+import styles from "../pages/edit/Edit.module.scss";
 import { NextPage } from "next";
 import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getProject, useProjectStore } from "../../store/api/project";
-import Header from "../../components/edit/Header/Header";
-import Saver from "../../components/edit/Saver/Saver";
-import Memo from "../../components/edit/memoComponents/Memo";
-import createEmpty from "../../data/createEmpty";
-import Hint from "../../components/edit/Hint/Hint";
-import Read from "../../components/edit/readComponents/Read";
-import ReadByPage from "../../components/edit/readComponents/ReadByPage";
-import { IEditStatus } from "../../types/status";
-import Weave from "../../components/edit/weaveComponents/Weave";
+import { getProject, useProjectStore } from "../store/api/project";
+import Header from "../components/edit/Header/Header";
+import Memo from "../components/edit/memoComponents/Memo";
+import ReadByPage from "../components/edit/readComponents/ReadByPage";
+import { IEditStatus } from "../types/status";
+import Weave from "../components/edit/weaveComponents/Weave";
 
 const cx = classNames.bind(styles);
 

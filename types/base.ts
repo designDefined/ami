@@ -31,6 +31,7 @@ export interface ICommonAtom extends IWithId<string> {
 export interface ITextAtom extends ICommonAtom, IPlaceable {
   type: "text";
   markdownType: IMarkDownType;
+  markdownDepth: number;
   content: string;
   //style
   offsetWidth: number;
