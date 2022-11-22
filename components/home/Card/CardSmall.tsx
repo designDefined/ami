@@ -1,17 +1,17 @@
 import styles from "./Card.module.scss";
 import classNames from "classnames/bind";
 import ReactParallaxTilt from "react-parallax-tilt";
-import { IProjectSum } from "../../../types/base";
+import { IProjectSummary } from "../../../types/base";
 import { useRouter } from "next/router";
 
 interface Props {
-  project: IProjectSum;
+  project: IProjectSummary;
 }
 
 const cx = classNames.bind(styles);
 const CardSmall = ({ project }: Props) => {
-  const { id, project_name } = project;
   const router = useRouter();
+  const { id, project_name } = project;
   return (
     <ReactParallaxTilt
       tiltReverse

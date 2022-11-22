@@ -1,8 +1,8 @@
-import { Edge } from "../../../store/base/edge";
+import { Edge } from "../../../nouse/base/edge";
 import classNames from "classnames/bind";
 import styles from "./EdgeMemo.module.scss";
-import { MarkDown } from "../../../store/base/markDown";
-import { useSelectedMarkDown } from "../../../store/selectedMarkdown";
+import { MarkDown } from "../../../nouse/base/markDown";
+import { useSelectedMarkDown } from "../../../nouse/selectedMarkdown";
 import MemoMarkDownReader from "./MemoMarkDown/MarkDownReader";
 import MemoMarkDownWriter from "./MemoMarkDown/MarkDownWriter";
 

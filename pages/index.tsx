@@ -4,38 +4,47 @@ import SectionBillboard from "../components/home/Section/SectionBillboard";
 import styles from "./Home.module.scss";
 import classNames from "classnames/bind";
 import SectionHorizon from "../components/home/Section/SectionHorizon";
-import {
-  getProjects,
-  postMyProject,
-  useProjectsListStore,
-} from "../store/api/projectsList";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useProjectList } from "../store/projectList";
+import { getMyProjects, getTopProjects } from "../API/local/localStorageAPI";
 
 const cx = classNames.bind(styles);
 
 const Home: NextPage = () => {
-  const all = useProjectsListStore((state) => state.all);
-  const my = useProjectsListStore((state) => state.my);
   const router = useRouter();
+  const topProjectsList = useProjectList((state) => state.topProjects);
+  const myProjectsList = useProjectList((state) => state.myProjects);
+  const loadTopProjects = useProjectList((state) => state.setTopProjects);
+  const loadMyProjects = useProjectList((state) => state.setMyProjects);
+
+  const onAddMyProject = useCallback(() => {}, []);
+
   useEffect(() => {
-    getProjects().then((res) => {});
+    getTopProjects().then(({ status, data }) => {
+      if (status === "localAPISuccess") {
+        loadTopProjects(data);
+      } else {
+      }
+    });
+    getMyProjects().then(({ status, data }) => {
+      if (status === "localAPISuccess") {
+        loadMyProjects(data);
+      } else {
+      }
+    });
   }, []);
 
   return (
     <article className={cx("Home")}>
       <HomeHeader />
       <main className={cx("sections")}>
-        <SectionBillboard projectsList={all} />
+        <SectionBillboard projectsList={topProjectsList} />
         <SectionHorizon
-          projectsList={my}
+          projectsList={myProjectsList}
           writable={{
             is: true,
-            callback: (e) => {
-              postMyProject().then((res) => {
-                router.push(`/edit/${res.id}`);
-              });
-            },
+            callback: onAddMyProject,
           }}
         />
       </main>

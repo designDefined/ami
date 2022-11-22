@@ -1,4 +1,4 @@
-import { useProjectStore } from "../../../store/project";
+import { useProjectStore } from "../../../nouse/project";
 import EdgeMemo from "./EdgeMemo";
 import classNames from "classnames/bind";
 import styles from "./EdgeMemo.module.scss";

@@ -1,5 +1,5 @@
-import { Edge } from "../../../store/base/edge";
-import { MarkDown } from "../../../store/base/markDown";
+import { Edge } from "../../../nouse/base/edge";
+import { MarkDown } from "../../../nouse/base/markDown";
 import styles from "./EdgeParser.module.scss";
 import classNames from "classnames/bind";
 

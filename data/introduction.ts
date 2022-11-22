@@ -1,4 +1,4 @@
-import { Edge } from "../store/base/edge";
+import { Edge } from "../nouse/base/edge";
 
 interface Project {
   title: string;

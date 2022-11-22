@@ -1,6 +1,6 @@
-import { MarkDownType } from "../../../store/base/markDown";
+import { MarkDownType } from "../../../nouse/base/markDown";
 import _, { toNumber } from "lodash";
-import { Edge } from "../../../store/base/edge";
+import { Edge } from "../../../nouse/base/edge";
 import classNames from "classnames/bind";
 import styles from "./Navigator.module.scss";
 import NavItem from "./NavItem";

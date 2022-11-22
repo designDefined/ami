@@ -1,5 +1,5 @@
 import styles from "./MemoMarkDown.module.scss";
-import { MarkDown } from "../../../../store/base/markDown";
+import { MarkDown } from "../../../../nouse/base/markDown";
 import classNames from "classnames/bind";
 import { handleClickMD } from "./MarkDownEventHandler";
 

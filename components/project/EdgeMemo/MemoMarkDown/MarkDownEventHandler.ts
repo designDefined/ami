@@ -1,12 +1,12 @@
-import { useSelectedMarkDown } from "../../../../store/selectedMarkdown";
-import { useProjectStore } from "../../../../store/project";
+import { useSelectedMarkDown } from "../../../../nouse/selectedMarkdown";
+import { useProjectStore } from "../../../../nouse/project";
 import {
   createNewMarkDownFrom,
   MarkDown,
   MarkDownType,
-} from "../../../../store/base/markDown";
+} from "../../../../nouse/base/markDown";
 import _ from "lodash";
-import { Edge } from "../../../../store/base/edge";
+import { Edge } from "../../../../nouse/base/edge";
 import { findPreviousWithId } from "../../../../localApi/arrayFunctions";
 
 const project = useProjectStore;

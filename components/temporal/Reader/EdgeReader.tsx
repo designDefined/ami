@@ -1,4 +1,4 @@
-import { useProjectStore } from "../../../store/project";
+import { useProjectStore } from "../../../nouse/project";
 import EdgeParser from "../Parser/EdgeParser";
 import styles from "./EdgeReader.module.scss";
 import classNames from "classnames/bind";

@@ -25,6 +25,7 @@ export interface ICommonAtom extends IWithId<string> {
   parentPageId: string;
 }
 export interface ITextAtom extends ICommonAtom, IPlaceable {
+  type: "text";
   markdownType: IMarkDownType;
   content: string;
   //style
@@ -34,7 +35,7 @@ export interface ITextAtom extends ICommonAtom, IPlaceable {
 }
 export type IAtom = ITextAtom;
 
-/******************** page ********************/
+/******************** Page ********************/
 export interface IPage extends IWithId<string>, IPlaceable {
   pageName: string;
   atoms: IAtom[];
@@ -51,5 +52,4 @@ export interface IProject extends IWithId<number> {
   project_name: string;
   pages: IPage[];
 }
-
-export type IProjectSum = Omit<IProject, "pages">;
+export type IProjectSummary = Omit<IProject, "pages">;
