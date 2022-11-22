@@ -8,6 +8,8 @@ import { useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useProjectList } from "../store/projectList";
 import { getMyProjects, getTopProjects } from "../API/local/localStorageAPI";
+import { toast } from "react-toastify";
+import { modal } from "../components/common/Modal/Modal";
 
 const cx = classNames.bind(styles);
 
@@ -33,6 +35,8 @@ const Home: NextPage = () => {
       } else {
       }
     });
+    toast.success("hello!");
+    modal.test();
   }, []);
 
   return (

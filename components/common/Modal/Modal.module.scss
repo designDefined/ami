@@ -1,0 +1,39 @@
+@use "./styles/flexbox";
+
+.Modal {
+  .container {
+    @include flexbox.centered;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: transparentize(black, 0.9);
+
+    &.easeIn {
+      animation: 0.5s ease easeIn;
+    }
+    &.easeOut {
+      animation: 0.5s ease easeOut;
+    }
+  }
+}
+
+@keyframes easeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes easeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
