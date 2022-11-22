@@ -8,6 +8,10 @@ export interface IPlaceable {
   placedY: number;
 }
 
+export interface ILoadable {
+  loadStatus: "loading" | "success" | "fail";
+}
+
 /******************** Authorization ********************/
 export interface IToken {
   access: string;
@@ -39,6 +43,7 @@ export type IAtom = ITextAtom;
 export interface IPage extends IWithId<string>, IPlaceable {
   pageName: string;
   atoms: IAtom[];
+  parentProjectId: number;
   //edge
   edgeColor: string;
   //style
@@ -49,7 +54,7 @@ export interface IPage extends IWithId<string>, IPlaceable {
 /******************** Project ********************/
 export interface IProject extends IWithId<number> {
   writer: IUser; //read only
-  project_name: string;
+  projectName: string;
   pages: IPage[];
 }
 export type IProjectSummary = Omit<IProject, "pages">;

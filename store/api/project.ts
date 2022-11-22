@@ -4,14 +4,14 @@ import {
   manipulateWithIds,
 } from "../../localApi/arrayFunctions";
 import create from "zustand";
-import createEmpty from "../../types/empty";
+import createEmpty from "../../data/createEmpty";
 import axios from "axios";
 import { isLocal } from "../../localApi/environment";
 import {
   localGetProject,
   localPostCurrentProject,
 } from "../../localApi/manageLocalStorage";
-import { samples } from "../../data/samples";
+import { samples } from "../../data/json/samples";
 
 interface ProjectStoreStatus extends IProject {
   load: (Project: IProject) => void;

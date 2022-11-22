@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { UserRequest, UserResponse } from "../../../store/api/user";
-import createEmpty from "../../../types/empty";
+import createEmpty from "../../../data/createEmpty";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {

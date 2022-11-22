@@ -7,7 +7,7 @@ import { getProject, useProjectStore } from "../../store/api/project";
 import Header from "../../components/edit/Header/Header";
 import Saver from "../../components/edit/Saver/Saver";
 import Memo from "../../components/edit/memoComponents/Memo";
-import createEmpty from "../../types/empty";
+import createEmpty from "../../data/createEmpty";
 import Hint from "../../components/edit/Hint/Hint";
 import Read from "../../components/edit/readComponents/Read";
 import ReadByPage from "../../components/edit/readComponents/ReadByPage";
