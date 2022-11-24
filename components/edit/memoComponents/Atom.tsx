@@ -9,7 +9,9 @@ import {
   handleChangeSelectedInput,
   handleClickAtom,
   handleKeyDownAtom,
-} from "../handlers/AtomEventHandler";
+} from "../handlers/memoEventHandler";
+import { type } from "os";
+import { useAtom } from "../../../store/atom";
 
 const cx = classNames.bind(styles);
 
@@ -33,22 +35,23 @@ const resizeTextarea = (ref: HTMLTextAreaElement | null): void => {
 
 export const AtomWriter = () => {
   const ref = useRef<HTMLTextAreaElement>(null);
-  const atom: IAtom = useSelectedAtomStore((state) => state.source[0]);
-  const input: string = useSelectedAtomStore((state) => state.input);
+  const id = useAtom((state) => state.id);
+  const markdownType = useAtom((state) => state.markdownType);
+  const content = useAtom((state) => state.content);
 
   useEffect(() => {
     resizeTextarea(ref.current);
   });
 
   return (
-    <li className={cx("Atom", "writer", type)}>
+    <li className={cx("Atom", "writer", markdownType)}>
       <textarea
         ref={ref}
         className={cx("textArea")}
         placeholder="내용을 입력하세요"
-        value={input}
+        value={content}
         // onBlur={handleBlurAtom(atom)}
-        // onKeyDown={handleKeyDownAtom(atom, input)}
+        onKeyDown={handleKeyDownAtom}
         // onChange={handleChangeSelectedInput}
         autoFocus
       />

@@ -12,6 +12,10 @@ export interface ILoadable {
   loadStatus: "loading" | "success" | "fail";
 }
 
+export interface INullable {
+  isNull: boolean;
+}
+
 /******************** Authorization ********************/
 export interface IToken {
   access: string;
