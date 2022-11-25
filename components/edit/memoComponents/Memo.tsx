@@ -1,4 +1,4 @@
-import Page from "./Page";
+import Page, { PageAdd } from "./Page";
 import Hint from "../Hint/Hint";
 import Saver from "../Saver/Saver";
 import styles from "./MemoComponents.module.scss";
@@ -16,15 +16,7 @@ const Memo = () => {
       {pages.map((page) => (
         <Page key={page.id} page={page} />
       ))}
-      <ReactParallaxTilt
-        tiltReverse
-        glareEnable={false}
-        perspective={3000}
-        transitionSpeed={8000}
-        tiltAxis="y"
-      >
-        <button className={cx("addPage")}>페이지 추가하기 +</button>
-      </ReactParallaxTilt>
+      <PageAdd />
       <Hint />
     </section>
   );

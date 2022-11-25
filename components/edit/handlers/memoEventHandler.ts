@@ -1,155 +1,120 @@
-import { useProjectStore } from "../../../store/api/project";
-import { useSelectedAtomStore } from "../../../store/api/selectedAtom";
 import { IAtom, IMarkDownType, IPage } from "../../../types/base";
-import { findPreviousWithId } from "../../../localApi/arrayFunctions";
 import createEmpty from "../../../data/createEmpty";
-import { useAtom } from "../../../store/atom";
 import { useProject } from "../../../store/project";
-import { toast } from "react-toastify";
+import { useText } from "../../../store/text";
+import { findAtomRelatively } from "../../../store/helper/manipulateWithParent";
 
-const project = useProject;
-const target = useAtom;
+const projectStore = useProject;
+const textStore = useText;
 
-const findAtomParent = (): IPage | false => {
-  const { id, parentPageId } = target.getState();
-  const result = project
-    .getState()
-    .pages.find((page) => page.id === parentPageId);
-  return result ? result : false;
-};
-const findAtom = (): IAtom | false => {
-  const { id, parentPageId } = target.getState();
-  const parent = project
-    .getState()
-    .pages.find((page) => page.id === parentPageId);
-  const result = parent ? parent.atoms.find((atom) => atom.id === id) : false;
-  return result ? result : false;
-};
+export const onClickAtom =
+  (atom: IAtom): React.MouseEventHandler<HTMLLIElement> =>
+  (e) => {
+    textStore.setState({ identifier: atom.id, input: atom.content });
+  };
 
-//const changeAtom = (partialAtom : Partial<IAtom>):IAtom=>
-
-// const changedAtom = (
-//   type: IMarkDownType = selectedAtom.getState().source[0].markdown.type,
-//   input: string = selectedAtom.getState().input,
-// ): IAtom => ({
-//   ...selectedAtom.getState().source[0],
-//   markdown: { ...selectedAtom.getState().source[0].markdown, type },
-//   content: input,
-// });
-//
-// const findAtomBefore = (atom: IAtom) => {
-//   const page = findAtomParent(atom);
-//   if (page) {
-//     return findPreviousWithId(page.atoms)(atom);
-//   }
-//   return false;
-// };
-//
-// export const handleClickAtom =
-//   (clickedMD: IAtom): React.MouseEventHandler<HTMLLIElement> =>
-//   (e) => {
-//     e.stopPropagation();
-//     if (selectedAtom.getState().source.length > 0) {
-//       project.getState().updateAtoms([changedAtom()]);
-//     }
-//     selectedAtom.getState().select(clickedMD);
-//   };
-//
-export const handleKeyDownAtom: React.KeyboardEventHandler<
-  HTMLTextAreaElement
-> = (e) => {
-  const { isNull, id, content, markdownType } = target.getState();
-  if (!isNull) {
+export const onKeyDownAtom =
+  (atom: IAtom): React.KeyboardEventHandler<HTMLTextAreaElement> =>
+  (e) => {
+    const input = textStore.getState().input;
     switch (e.key) {
       case "Enter":
         e.preventDefault();
-        const sourceAtom = findAtom();
-        if (sourceAtom) {
-          const changedAtom = { ...sourceAtom, content };
-          const newAtom = createEmpty.atom(
-            changedAtom.parentPageId,
-            changedAtom.markdownDepth,
-          );
-          project.getState().manipulateAtom([changedAtom, newAtom]);
-          target.getState().load(newAtom);
-        } else {
-          toast.error("Fail to Handle Keydown Atom");
-        }
+        const changedAtom = { ...atom, content: input };
+        const newAtom = createEmpty.atom(
+          changedAtom.parentPageId,
+          changedAtom.markdownDepth,
+        );
+        projectStore.getState().manipulateAtom([changedAtom, newAtom]);
+        textStore.setState({ identifier: newAtom.id, input: newAtom.content });
         break;
-      /*
+
       case "Backspace":
-        if (content === "" && markdownType !== "p") {
-          handleChangeMDType("p");
+        if (input === "" && atom.markdownType !== "p") {
+          projectStore
+            .getState()
+            .manipulateAtom({ ...atom, markdownType: "p" });
+          return;
         }
-        if (input === "" && triggeredAtom.markdown.type === "p") {
-          const beforeAtom = findAtomBefore(triggeredAtom);
+        if (input === "" && atom.markdownType === "p") {
+          const beforeAtom = findAtomRelatively(
+            projectStore.getState().pages,
+            atom,
+            -1,
+          );
           if (beforeAtom) {
-            project.getState().deleteAtom(triggeredAtom);
-            selectedAtom.getState().select(beforeAtom);
+            projectStore.getState().manipulateAtom(atom, { isDelete: true });
+            textStore.setState({
+              identifier: beforeAtom.id,
+              input: beforeAtom.content,
+            });
           }
+          return;
         }
         break;
-        */
       default:
         break;
     }
+  };
+
+const countSharp = (source: string): number => {
+  const array = source.split("");
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "#") {
+      count++;
+    } else {
+      break;
+    }
   }
+  return count;
 };
-//
-// export const handleBlurAtom =
-//   (blurredAtom: IAtom): React.FocusEventHandler<HTMLTextAreaElement> =>
-//   (e) => {
-//     if (selectedAtom.getState().source.length > 0) {
-//       project.getState().updateAtoms([changedAtom()]);
-//     }
-//     selectedAtom.getState().deselect();
-//   };
-//
-// export const handleChangeMDType = (type: IMarkDownType) => {
-//   const newAtom = changedAtom(type);
-//   project.getState().updateAtoms([newAtom]);
-//   selectedAtom.getState().select(newAtom);
-// };
-//
-// export const handleChangeSelectedInput: React.ChangeEventHandler<
-//   HTMLTextAreaElement
-// > = (e) => {
-//   let input = e.target.value;
-//   if (input.length < 1) {
-//   } else if (input.length === 1) {
-//   } else {
-//     let sharpCount = 0;
-//     for (let i = 0; i < input.length; i++) {
-//       if (input[i] === "#") {
-//         sharpCount++;
-//       } else if (input[i] === " ") {
-//         if (
-//           sharpCount === 1 ||
-//           sharpCount === 2 ||
-//           sharpCount === 3 ||
-//           sharpCount === 4
-//         ) {
-//           const newMarkDown = changedAtom(
-//             `h${sharpCount}`,
-//             input.slice(sharpCount + 1),
-//           );
-//           project.getState().updateAtoms([newMarkDown]);
-//           selectedAtom.getState().select(newMarkDown);
-//           return;
-//         }
-//         break;
-//       } else {
-//         break;
-//       }
-//     }
-//   }
-//   selectedAtom.getState().setInput(input);
-// };
-/*
-export const handleAddPage: React.MouseEventHandler<HTMLButtonElement> = (
-  e,
-) => {
-  const { pages, setPages } = project.getState();
-  project.getState().setPages([...pages, createEmpty.page()]);
-};
-*/
+
+export const onChangeInput =
+  (atom: IAtom): React.ChangeEventHandler<HTMLTextAreaElement> =>
+  (e) => {
+    const input: string = e.target.value;
+    const split = input.split(" ", 2);
+    if (split.length === 2) {
+      const [prefix, source] = split;
+      /***** Headings (#) *****/
+      const sharps = countSharp(prefix);
+      if (sharps > 0 && sharps <= 4) {
+        const newType = `h${sharps}` as IMarkDownType;
+        const newAtom = { ...atom, markdownType: newType, content: source };
+        projectStore.getState().manipulateAtom(newAtom);
+      }
+      /***** ordered list (1.) *****/
+      /***** unordered list (-) *****/
+    }
+    textStore.setState({ input });
+  };
+
+export const onBlurAtom =
+  (atom: IAtom): React.FocusEventHandler<HTMLTextAreaElement> =>
+  (e) => {
+    projectStore
+      .getState()
+      .manipulateAtom({ ...atom, content: textStore.getState().input });
+    textStore.getState().clear();
+  };
+
+export const onAddPage =
+  (): React.MouseEventHandler<HTMLButtonElement> => (e) => {
+    const { id, manipulatePage } = projectStore.getState();
+    manipulatePage(createEmpty.page(id));
+  };
+
+export const onDeletePage =
+  (page: IPage | IPage[]): React.MouseEventHandler<HTMLButtonElement> =>
+  (e) => {
+    const { manipulatePage } = projectStore.getState();
+    manipulatePage(page, { isDelete: true });
+  };
+
+export const onModifyPageName =
+  (page: IPage, input: string): React.MouseEventHandler<HTMLButtonElement> =>
+  (e) => {
+    const { manipulatePage } = projectStore.getState();
+    manipulatePage({ ...page, pageName: input });
+  };

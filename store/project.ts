@@ -1,8 +1,11 @@
 import create from "zustand";
 import { IAtom, ILoadable, IPage, IProject, IUser } from "../types/base";
 import codes from "../types/codes";
-import { manipulateWithId } from "./helper/manipulateWithId";
-import { array } from "prop-types";
+import {
+  IManipulateWithIdConfig,
+  manipulateWithId,
+} from "./helper/manipulateWithId";
+import { findAtomParent } from "./helper/manipulateWithParent";
 
 export type IEditStatus = "memo" | "weave" | "preview";
 
@@ -17,9 +20,15 @@ interface IProjectStore extends IProject, ILoadable {
   setProjectName: (name: string) => void;
   //Page Depth
   setPages: (Pages: IPage[]) => void;
-  manipulatePage: (page: IPage | IPage[]) => void;
+  manipulatePage: (
+    page: IPage | IPage[],
+    config?: Partial<IManipulateWithIdConfig>,
+  ) => void;
   //Atom Depth
-  manipulateAtom: (atom: IAtom | IAtom[]) => void;
+  manipulateAtom: (
+    atom: IAtom | IAtom[],
+    config?: Partial<IManipulateWithIdConfig>,
+  ) => void;
 }
 
 const loadingProject = {
@@ -44,44 +53,21 @@ export const useProject = create<IProjectStore>()((set) => ({
 
   //Page Depth
   setPages: (pages) => set({ pages: pages }),
-  manipulatePage: (page) =>
-    set((state) => ({ pages: manipulateWithId(state.pages, page) })),
+  manipulatePage: (page, config) =>
+    set((state) => ({ pages: manipulateWithId(state.pages, page, config) })),
 
   //Atom Depth
-  manipulateAtom: (atom) =>
+  manipulateAtom: (atom, config) =>
     set((state) => {
-      if (Array.isArray(atom)) {
-        if (atom.length > 0) {
-          const parentPage = state.pages.find(
-            (page) => page.id === atom[0].parentPageId,
-          );
-          if (parentPage) {
-            return {
-              pages: manipulateWithId(state.pages, {
-                ...parentPage,
-                atoms: manipulateWithId(parentPage.atoms, atom),
-              }),
-            };
-          } else {
-            return state;
-          }
-        } else {
-          return state;
-        }
-      } else {
-        const parentPage = state.pages.find(
-          (page) => page.id === atom.parentPageId,
-        );
-        if (parentPage) {
-          return {
-            pages: manipulateWithId(state.pages, {
-              ...parentPage,
-              atoms: manipulateWithId(parentPage.atoms, atom),
-            }),
-          };
-        } else {
-          return state;
-        }
+      const parentPage = findAtomParent(state.pages, atom);
+      if (!parentPage) {
+        return state;
       }
+      return {
+        pages: manipulateWithId(state.pages, {
+          ...parentPage,
+          atoms: manipulateWithId(parentPage.atoms, atom, config),
+        }),
+      };
     }),
 }));

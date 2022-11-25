@@ -1,5 +1,8 @@
 /******************** Basic ********************/
-export interface IWithId<T> {
+
+export type IIdentifier = string | number;
+
+export interface IWithId<T extends IIdentifier> {
   id: T;
 }
 export interface IPlaceable {

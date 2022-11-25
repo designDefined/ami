@@ -2,25 +2,27 @@ import { IAtom } from "../../../types/base";
 import styles from "./MemoComponents.module.scss";
 import classNames from "classnames/bind";
 import { useEffect, useRef } from "react";
-import { useSelectedAtomStore } from "../../../store/api/selectedAtom";
 
 import {
-  handleBlurAtom,
-  handleChangeSelectedInput,
-  handleClickAtom,
-  handleKeyDownAtom,
+  onBlurAtom,
+  onChangeInput,
+  onClickAtom,
+  onKeyDownAtom,
 } from "../handlers/memoEventHandler";
-import { type } from "os";
-import { useAtom } from "../../../store/atom";
+import { useText } from "../../../store/text";
+
+interface Props {
+  atom: IAtom;
+}
 
 const cx = classNames.bind(styles);
 
-export const AtomReader = ({ atom }: { atom: IAtom }) => {
+export const AtomReader = ({ atom }: Props) => {
   const { markdownType, markdownDepth, content } = atom;
   return (
     <li
       className={cx("Atom", "reader", markdownType, "depth-" + markdownDepth)}
-      // onClick={handleClickAtom(atom)}
+      onClick={onClickAtom(atom)}
     >
       {content}
     </li>
@@ -33,15 +35,19 @@ const resizeTextarea = (ref: HTMLTextAreaElement | null): void => {
   }
 };
 
-export const AtomWriter = () => {
+export const AtomWriter = ({ atom }: Props) => {
+  const { markdownType } = atom;
+  const input = useText((state) => state.input);
+  const setInput = useText((state) => state.setInput);
+
   const ref = useRef<HTMLTextAreaElement>(null);
-  const id = useAtom((state) => state.id);
-  const markdownType = useAtom((state) => state.markdownType);
-  const content = useAtom((state) => state.content);
 
   useEffect(() => {
+    setInput(atom.content);
+  }, [atom]);
+  useEffect(() => {
     resizeTextarea(ref.current);
-  });
+  }, [ref, input]);
 
   return (
     <li className={cx("Atom", "writer", markdownType)}>
@@ -49,10 +55,10 @@ export const AtomWriter = () => {
         ref={ref}
         className={cx("textArea")}
         placeholder="내용을 입력하세요"
-        value={content}
-        // onBlur={handleBlurAtom(atom)}
-        onKeyDown={handleKeyDownAtom}
-        // onChange={handleChangeSelectedInput}
+        value={input}
+        onBlur={onBlurAtom(atom)}
+        onKeyDown={onKeyDownAtom(atom)}
+        onChange={onChangeInput(atom)}
         autoFocus
       />
     </li>

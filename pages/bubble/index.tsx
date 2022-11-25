@@ -12,7 +12,7 @@ import {
   rawBubble,
   clear,
   checkStage,
-} from "../../components/bubble";
+} from "../../components/bubble/bubble";
 import _ from "lodash";
 import { Simulate } from "react-dom/test-utils";
 

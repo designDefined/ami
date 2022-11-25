@@ -1,57 +1,73 @@
 import { IWithId } from "../../types/base";
 
-interface IConfig {
+export interface IManipulateWithIdConfig {
   addContinuously: boolean;
   indexToAdd: number;
+  isDelete: boolean;
 }
 
-const defaultConfig = (indexToAdd: number): IConfig => ({
+export const defaultManipulateWithIdConfig = (
+  indexToAdd: number,
+): IManipulateWithIdConfig => ({
   addContinuously: true,
   indexToAdd,
+  isDelete: false,
 });
 
 export const manipulateWithId = <T extends IWithId<number | string>>(
   array: T[],
   target: T | T[],
-  inputConfig?: Partial<IConfig>,
+  inputConfig?: Partial<IManipulateWithIdConfig>,
 ): T[] => {
   //set config
   const config = inputConfig
-    ? { ...defaultConfig(array.length), ...inputConfig }
-    : defaultConfig(array.length);
+    ? { ...defaultManipulateWithIdConfig(array.length), ...inputConfig }
+    : defaultManipulateWithIdConfig(array.length);
+  /****** Delete ******/
+  if (config.isDelete) {
+    if (Array.isArray(target)) {
+      const targetIds = target.map((item) => item.id);
+      return array.filter((item) => !targetIds.includes(item.id));
+    } else {
+      return array.filter((item) => item.id !== target.id);
+    }
+  }
 
-  //manipulate array
+  /****** Manipulate (Add or Modify) ******/
+  const newArray = array.slice();
   if (Array.isArray(target)) {
     //multiple targets
     let nextIndex = config.indexToAdd;
     for (let i = 0; i < target.length; i++) {
-      const targetIndex = array.findIndex((item) => item.id === target[i].id);
+      const targetIndex = newArray.findIndex(
+        (item) => item.id === target[i].id,
+      );
       if (targetIndex < 0) {
         //add new item
-        array.splice(nextIndex, 0, target[i]);
+        newArray.splice(nextIndex, 0, target[i]);
       } else {
         //change existing item
-        array[targetIndex] = target[i];
+        newArray[targetIndex] = target[i];
       }
       //change index
       if (config.addContinuously) {
         nextIndex = targetIndex + 1;
       } else {
-        nextIndex = array.length;
+        nextIndex = newArray.length;
       }
     }
-    return array;
+    return newArray;
   } else {
     //single target
-    const targetIndex = array.findIndex((item) => item.id === target.id);
+    const targetIndex = newArray.findIndex((item) => item.id === target.id);
     if (targetIndex < 0) {
       //add new item
-      array.splice(config.indexToAdd, 0, target);
-      return array;
+      newArray.splice(config.indexToAdd, 0, target);
+      return newArray;
     } else {
       //change existing item
-      array[targetIndex] = target;
-      return array;
+      newArray[targetIndex] = target;
+      return newArray;
     }
   }
 };

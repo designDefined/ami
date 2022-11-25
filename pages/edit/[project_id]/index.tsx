@@ -10,6 +10,7 @@ import Memo from "../../../components/edit/memoComponents/Memo";
 import Weave from "../../../components/edit/weaveComponents/Weave";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
+import { manipulateWithId } from "../../../store/helper/manipulateWithId";
 
 const cx = classNames.bind(styles);
 
