@@ -1,6 +1,7 @@
 import { IProject, IProjectSummary } from "../../types/base";
 import {
   localEmptyData,
+  LocalPost,
   LocalResponse,
   localSuccess,
   localWrongKey,
@@ -63,5 +64,16 @@ const getProjectById = async (id: number): Promise<LocalResponse<IProject>> => {
   }
 };
 
-const localStorageAPI = { getTopProjects, getMyProjects, getProjectById };
+const postProjectById = async (data: IProject): Promise<LocalPost> => {
+  const stringData = JSON.stringify(data);
+  localStorage.setItem(PROJECT(data.id), stringData);
+  return Promise.resolve({ success: true });
+};
+
+const localStorageAPI = {
+  getTopProjects,
+  getMyProjects,
+  getProjectById,
+  postProjectById,
+};
 export default localStorageAPI;

@@ -1,8 +1,8 @@
 import styles from "./weaveComponents.module.scss";
 import classNames from "classnames/bind";
-import { IAtom, IPage, IProject } from "../../../types/base";
+import { IAtom, IPage, IProject } from "../../types/base";
 import { useState } from "react";
-import { submitAtom, submitPage } from "../handlers/WeaveEventHandler";
+import { submitAtom, submitPage } from "./WeaveEventHandler";
 import AtomForm from "./AtomForm";
 
 const cx = classNames.bind(styles);

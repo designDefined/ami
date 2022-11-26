@@ -10,8 +10,11 @@ import { findAtomParent } from "./helper/manipulateWithParent";
 export type IEditStatus = "memo" | "weave" | "preview";
 
 interface IProjectStore extends IProject, ILoadable {
+  //status
   editStatus: IEditStatus;
+  pageStatus: number;
   setEditStatus: (editStatus: IEditStatus) => void;
+  setPageStatus: (pageNum: number) => void;
   //Basics
   load: (project: IProject) => void;
   clear: () => void;
@@ -41,8 +44,10 @@ const loadingProject = {
 export const useProject = create<IProjectStore>()((set) => ({
   ...loadingProject,
   loadStatus: "loading",
-  editStatus: "memo",
+  editStatus: "weave",
+  pageStatus: -1,
   setEditStatus: (editStatus: IEditStatus) => set({ editStatus }),
+  setPageStatus: (pageNum) => set({ pageStatus: pageNum }),
   //Basics
   load: (project) => set({ ...project, loadStatus: "success" }),
   clear: () => set({ ...loadingProject, loadStatus: "loading" }),

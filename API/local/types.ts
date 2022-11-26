@@ -20,6 +20,10 @@ interface LocalResponseFail {
 
 export type LocalResponse<T> = LocalResponseSuccess<T> | LocalResponseFail;
 
+export interface LocalPost {
+  success: boolean;
+}
+
 export const localSuccess = <T>(data: T): LocalResponseSuccess<T> => ({
   status: localSuccessCode,
   data,

@@ -1,4 +1,4 @@
-@use "styles/material";
+@use "../../styles/material";
 .Weave {
   position: relative;
   width: 100%;
@@ -18,75 +18,74 @@
     height: 600px;
     background: #ababab;
     overflow: hidden;
-    .vertex{
+    .vertex {
       border: 3px solid #969696;
       position: absolute;
-      width:100px;
-      height:40px;
+      width: 100px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 15px;
       cursor: grab;
-      &.grabbed{
+      &.grabbed {
         cursor: grabbing;
       }
     }
   }
-  .side{
+  .side {
     @include material.shadow(3);
-    width:300px;
-    height:800px;
+    width: 300px;
+    height: 800px;
     background: white;
-    margin-left:100px;
+    margin-left: 100px;
     display: flex;
     flex-direction: column;
     border-radius: 16px;
-    .info{
-      padding:16px;
-      font-size:20px;
+    .info {
+      padding: 16px;
+      font-size: 20px;
 
       border-radius: 16px;
       border-bottom: 1px solid transparentize(black, 0.8);
-      .connect{
+      .connect {
         @include material.shadow(2);
         border: 0;
         cursor: pointer;
-        &.on{
+        &.on {
           background: #eeff8b;
         }
       }
     }
   }
-  .pageItem{
-    padding:20px 20px;
+  .pageItem {
+    padding: 20px 20px;
     border-bottom: 1px solid transparentize(black, 0.8);
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       background: #f1f1f1;
     }
-    &.selected{
+    &.selected {
       background: #ababab;
     }
   }
 }
 
-
-.Page{
+.Page {
   width: 100%;
   height: 100%;
   position: relative;
   display: flex;
   align-items: center;
-  .side{
+  .side {
     @include material.shadow(3);
     position: absolute;
-    right:30px;
-    width:300px;
-    height:800px;
+    right: 30px;
+    width: 300px;
+    height: 800px;
     background: white;
-    margin-left:100px;
+    margin-left: 100px;
     display: flex;
     flex-direction: column;
     border-radius: 16px;
@@ -96,30 +95,30 @@
       border-radius: 16px;
       border-bottom: 1px solid transparentize(black, 0.8);
     }
-    .atomItem{
-      padding:20px 20px;
+    .atomItem {
+      padding: 20px 20px;
       border-bottom: 1px solid transparentize(black, 0.8);
       cursor: pointer;
 
-      &:hover{
+      &:hover {
         background: #f1f1f1;
       }
-      &.selected{
+      &.selected {
         background: #ababab;
       }
     }
   }
-  .atoms{
-    width:100%;
-    height:100%;
+  .atoms {
+    width: 100%;
+    height: 100%;
     position: relative;
-    .atom{
+    .atom {
       position: absolute;
       cursor: grab;
-      padding:5px;
+      padding: 5px;
 
-      &.selected{
-        border: 3px #bbfacc solid
+      &.selected {
+        border: 3px #bbfacc solid;
       }
 
       &.h1 {
@@ -146,21 +145,20 @@
         font-size: 24px;
         text-align: justify;
       }
-
     }
   }
-
 }
 
-.atomForm{}
+.atomForm {
+}
 
-.toPrev{
+.toPrev {
   @include material.shadow(1);
   position: absolute;
-  left:160px;
-  bottom:30px;
-  width:80px;
-  height:40px;
+  left: 160px;
+  bottom: 30px;
+  width: 80px;
+  height: 40px;
   cursor: pointer;
   font-size: 20px;
   display: flex;
@@ -169,18 +167,18 @@
   justify-content: center;
   border-radius: 15px;
   color: black;
-  &:hover{
+  &:hover {
     background: #c2c2c2;
   }
 }
 
-.toNext{
+.toNext {
   @include material.shadow(1);
   position: absolute;
-  right:160px;
-  bottom:30px;
-  width:80px;
-  height:40px;
+  right: 160px;
+  bottom: 30px;
+  width: 80px;
+  height: 40px;
   cursor: pointer;
   font-size: 20px;
   display: flex;
@@ -189,7 +187,7 @@
   justify-content: center;
   border-radius: 15px;
   color: black;
-  &:hover{
+  &:hover {
     background: #c2c2c2;
   }
 }

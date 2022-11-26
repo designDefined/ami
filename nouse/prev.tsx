@@ -8,7 +8,7 @@ import Header from "../components/edit/Header/Header";
 import Memo from "../components/edit/memoComponents/Memo";
 import ReadByPage from "../components/edit/readComponents/ReadByPage";
 import { IEditStatus } from "../types/status";
-import Weave from "../components/edit/weaveComponents/Weave";
+import Weave from "./Weave/Weave";
 
 const cx = classNames.bind(styles);
 

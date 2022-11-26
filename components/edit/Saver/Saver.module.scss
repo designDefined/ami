@@ -1,26 +1,25 @@
 @use "./styles/material";
-.SaveLoader{
+.SaveLoader {
   position: fixed;
-  top:50px;
-  right:5px;
+  bottom: 20px;
+  right: 5px;
   z-index: 1000;
-  .button{
+  .button {
     @include material.shadow(3);
     border: 0;
     margin-right: 15px;
-    width:70px;
-    height:30px;
+    width: 70px;
+    height: 30px;
     border-radius: 15px;
     background-color: white;
     cursor: pointer;
-    &:hover{
+    &:hover {
       @include material.shadow(2);
       background-color: #c2c2c2;
     }
-    &.save{
+    &.save {
     }
-    &.load{
-
+    &.load {
     }
   }
 }

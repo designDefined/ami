@@ -1,8 +1,8 @@
 import styles from "./weaveComponents.module.scss";
 import classNames from "classnames/bind";
-import { IPage, IProject } from "../../../types/base";
+import { IPage, IProject } from "../../types/base";
 import { useState } from "react";
-import { submitPage } from "../handlers/WeaveEventHandler";
+import { submitPage } from "./WeaveEventHandler";
 
 const cx = classNames.bind(styles);
 

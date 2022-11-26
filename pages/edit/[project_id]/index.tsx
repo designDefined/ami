@@ -5,12 +5,11 @@ import { useProject } from "../../../store/project";
 import localStorageAPI from "../../../API/local/localStorageAPI";
 import { toast } from "react-toastify";
 import Header from "../../../components/edit/Header/Header";
-import ReadByPage from "../../../components/edit/readComponents/ReadByPage";
 import Memo from "../../../components/edit/memoComponents/Memo";
-import Weave from "../../../components/edit/weaveComponents/Weave";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
-import { manipulateWithId } from "../../../store/helper/manipulateWithId";
+import Saver from "../../../components/edit/Saver/Saver";
+import Weave from "../../../components/edit/weaveComponents/Weave";
 
 const cx = classNames.bind(styles);
 
@@ -20,6 +19,7 @@ const Edit: NextPage = () => {
   const load = useProject((state) => state.load);
   const id = useProject((state) => state.id);
   const editStatus = useProject((state) => state.editStatus);
+  const clear = useProject((state) => state.clear);
 
   //load project logic
   useEffect(() => {
@@ -52,15 +52,17 @@ const Edit: NextPage = () => {
           <Header />
           {editStatus === "memo" && <Memo />}
           {/*{editStatus === "preview" && <ReadByPage />}*/}
-          {/*{editStatus === "weave" && <Weave />}*/}
+          {editStatus === "weave" && <Weave />}
           <button
             className={cx("toHome")}
             onClick={() => {
+              clear();
               router.push("/");
             }}
           >
             {"< 홈으로 돌아가기"}
           </button>
+          <Saver />
         </>
       )}
       {loadStatus === "loading" && <div>loading</div>}

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getProject, useProjectStore } from "../../store/api/project";
 import { useRouter } from "next/router";
 import { IAtom, IPage } from "../../types/base";
-import { submitAtom } from "../../components/edit/handlers/WeaveEventHandler";
+import { submitAtom } from "../Weave/WeaveEventHandler";
 
 const cx = classNames.bind(styles);
 

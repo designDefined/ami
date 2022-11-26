@@ -1,5 +1,5 @@
-import { useProjectStore } from "../../../store/api/project";
-import { IAtom, IPage } from "../../../types/base";
+import { useProjectStore } from "../../store/api/project";
+import { IAtom, IPage } from "../../types/base";
 
 const project = useProjectStore;
 
