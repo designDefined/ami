@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getProject, useProjectStore } from "../store/api/project";
+import { getProject, useProjectStore } from "./store/api/project";
 import Header from "../components/edit/Header/Header";
 import Memo from "../components/edit/memoComponents/Memo";
 import ReadByPage from "../components/edit/readComponents/ReadByPage";

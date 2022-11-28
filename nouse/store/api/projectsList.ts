@@ -1,14 +1,14 @@
-import { IProjectSum } from "../../types/base";
+import { IProjectSum } from "../../../types/base";
 import create from "zustand";
 import axios from "axios";
-import { isLocal } from "../../localApi/environment";
+import { isLocal } from "../../../localApi/environment";
 import { allSample } from "../../data/json/samples";
 import {
   localGetAll,
   localGetMine,
   localPostMyProject,
-} from "../../localApi/manageLocalStorage";
-import createEmpty from "../../data/createEmpty";
+} from "../../../localApi/manageLocalStorage";
+import createEmpty from "../../../data/createEmpty";
 
 interface ProjectsListStatus {
   all: IProjectSum[];

@@ -3,6 +3,8 @@ import classNames from "classnames/bind";
 import { useProject } from "../../../../store/project";
 import { IPage } from "../../../../types/base";
 import PageNavigator from "./PageNavigator";
+import AtomWidget from "./AtomWidget";
+import { PageInfo } from "./PageWidget";
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +19,7 @@ const Sidebar = ({ pages }: Props) => {
     <div className={cx("wrapper")}>
       <div className={cx("handle")} />
       <PageNavigator pages={pages} />
-      {pageStatus < 0 ? <div /> : <div />}
+      {pageStatus < 0 ? <div /> : <AtomWidget page={pages[pageStatus]} />}
     </div>
   );
 };

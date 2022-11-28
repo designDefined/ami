@@ -5,7 +5,7 @@ interface Props {
 }
 
 const PageMap = ({ pages }: Props) => {
-  return <div>{}</div>;
+  return <div></div>;
 };
 
 export default PageMap;

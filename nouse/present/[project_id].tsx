@@ -2,7 +2,7 @@ import styles from "./present.module.scss";
 import classNames from "classnames/bind";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { getProject, useProjectStore } from "../../store/api/project";
+import { getProject, useProjectStore } from "../store/api/project";
 import { useRouter } from "next/router";
 import { IAtom, IPage } from "../../types/base";
 import { submitAtom } from "../Weave/WeaveEventHandler";

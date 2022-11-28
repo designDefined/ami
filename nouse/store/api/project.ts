@@ -1,16 +1,16 @@
-import { IAtom, IPage, IProject, IUser } from "../../types/base";
+import { IAtom, IPage, IProject, IUser } from "../../../types/base";
 import {
   manipulateWithId,
   manipulateWithIds,
-} from "../../localApi/arrayFunctions";
+} from "../../../localApi/arrayFunctions";
 import create from "zustand";
-import createEmpty from "../../data/createEmpty";
+import createEmpty from "../../../data/createEmpty";
 import axios from "axios";
-import { isLocal } from "../../localApi/environment";
+import { isLocal } from "../../../localApi/environment";
 import {
   localGetProject,
   localPostCurrentProject,
-} from "../../localApi/manageLocalStorage";
+} from "../../../localApi/manageLocalStorage";
 import { samples } from "../../data/json/samples";
 
 interface ProjectStoreStatus extends IProject {

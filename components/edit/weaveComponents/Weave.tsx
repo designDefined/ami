@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./Weave.module.scss";
 import classNames from "classnames/bind";
 import { useProject } from "../../../store/project";

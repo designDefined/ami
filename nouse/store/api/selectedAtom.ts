@@ -1,5 +1,5 @@
 import create from "zustand";
-import { IAtom } from "../../types/base";
+import { IAtom } from "../../../types/base";
 
 interface SelectedAtomStatus {
   source: IAtom[];

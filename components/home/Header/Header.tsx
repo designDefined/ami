@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import { useEffect } from "react";
-import { postLogin, useUserStore } from "../../../store/api/user";
+import { postLogin, useUserStore } from "../../../nouse/store/api/user";
 
 const cx = classNames.bind(styles);
 

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { useUserStore } from "../../store/api/user";
+import { useUserStore } from "../store/api/user";
 import axios from "axios";
 
 const Login: NextPage = () => {

@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useProjectStore } from "../../store/api/project";
+import { useProjectStore } from "../store/api/project";
 import Header from "../../components/edit/Header/Header";
 import Read from "../../components/edit/readComponents/Read";
 import Memo from "../../components/edit/memoComponents/Memo";

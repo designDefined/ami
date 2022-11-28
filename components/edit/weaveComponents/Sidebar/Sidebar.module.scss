@@ -1,3 +1,4 @@
+@use "./styles/flexbox";
 @use "./styles/material";
 @use "./styles/simple";
 
@@ -10,6 +11,12 @@
   background: transparentize(#ececec, 0.5);
   backdrop-filter: blur(20px);
   color: #222222;
+  margin-bottom: 16px;
+}
+@mixin widgetName {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #5d5d5d;
 }
 
 .wrapper {
@@ -27,33 +34,62 @@
 .handle {
 }
 
+.widgetName {
+  @include widgetName;
+}
+
 .PageNavigator {
   @include widget;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .navLabel {
-    margin-bottom: 10px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #5d5d5d;
+    @include widgetName;
   }
-  .nav {
+  .pageNumber {
     display: flex;
-    justify-content: center;
-    .navButton {
+    width: 50%;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+    .currentPage {
+      @include simple.textInput;
+      width: 40px;
+    }
+    .numButton {
       @include simple.textButton;
       @include material.shadow(1);
       border-radius: 5px;
       color: gray;
     }
-    .pageNumber {
-      display: flex;
-      width: 100px;
-      align-items: center;
-      justify-content: space-between;
-      margin: 0 20px;
-      .currentPage {
-        @include simple.textInput;
-        width: 40px;
-      }
+  }
+  .navButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .navButton {
+      @include simple.textButton;
+      @include material.shadow(1);
+      width: 40%;
+      border-radius: 5px;
+      color: gray;
     }
   }
+}
+
+.PageInfo {
+  @include widget;
+}
+
+.AtomList {
+  @include widget;
+  list-style: none;
+  .item {
+    cursor: pointer;
+    margin: 10px 0;
+  }
+}
+.AtomInfo {
+  @include widget;
 }
