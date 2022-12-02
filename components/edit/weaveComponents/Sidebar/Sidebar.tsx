@@ -2,9 +2,9 @@ import styles from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
 import { useProject } from "../../../../store/project";
 import { IPage } from "../../../../types/base";
-import PageNavigator from "./PageNavigator";
-import AtomWidget from "./AtomWidget";
-import { PageInfo } from "./PageWidget";
+import PageNavigator from "./PageNavigator/PageNavigator";
+import AtomWidget from "./AtomWidget/AtomWidget";
+import { PageInfo } from "./PageWidget/PageWidget";
 
 const cx = classNames.bind(styles);
 

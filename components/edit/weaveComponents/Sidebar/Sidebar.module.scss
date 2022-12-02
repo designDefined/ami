@@ -2,23 +2,6 @@
 @use "./styles/material";
 @use "./styles/simple";
 
-@mixin widget {
-  @include material.shadow(2);
-  position: relative;
-  padding: 1em;
-  border-radius: 1em 0 1em 0;
-  text-shadow: 0 0 1em transparentize(black, 0.7);
-  background: transparentize(#ececec, 0.5);
-  backdrop-filter: blur(20px);
-  color: #222222;
-  margin-bottom: 16px;
-}
-@mixin widgetName {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #5d5d5d;
-}
-
 .wrapper {
   position: fixed;
   top: 0;
@@ -34,62 +17,32 @@
 .handle {
 }
 
-.widgetName {
-  @include widgetName;
-}
-
-.PageNavigator {
-  @include widget;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  .navLabel {
-    @include widgetName;
-  }
-  .pageNumber {
-    display: flex;
-    width: 50%;
-    align-items: center;
-    justify-content: space-around;
-    margin: 10px 0;
-    .currentPage {
-      @include simple.textInput;
-      width: 40px;
+.WidgetWrapper {
+  @include material.shadow(2);
+  position: relative;
+  border-radius: 16px 0 16px 0;
+  text-shadow: 0 0 1em transparentize(black, 0.7);
+  background: transparentize(#ececec, 0.5);
+  backdrop-filter: blur(20px);
+  color: #222222;
+  margin-bottom: 16px;
+  .header {
+    border-radius: 16px 0 0 0;
+    padding: 16px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #5d5d5d;
+    &:hover {
+      background: rgba(194, 194, 194, 0.21);
+      cursor: pointer;
     }
-    .numButton {
-      @include simple.textButton;
-      @include material.shadow(1);
-      border-radius: 5px;
-      color: gray;
+    .open {
     }
   }
-  .navButtons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    .navButton {
-      @include simple.textButton;
-      @include material.shadow(1);
-      width: 40%;
-      border-radius: 5px;
-      color: gray;
+  .content {
+    padding: 0 1em 1.5em 1em;
+    &.closed {
+      display: none;
     }
   }
-}
-
-.PageInfo {
-  @include widget;
-}
-
-.AtomList {
-  @include widget;
-  list-style: none;
-  .item {
-    cursor: pointer;
-    margin: 10px 0;
-  }
-}
-.AtomInfo {
-  @include widget;
 }

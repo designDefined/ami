@@ -1,0 +1,17 @@
+.AtomList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  .item {
+    cursor: pointer;
+    padding: 8px;
+    &:hover {
+      background: #ffffff;
+    }
+    .index {
+      margin-right: 12px;
+    }
+  }
+}
+.AtomInfo {
+}
