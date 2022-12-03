@@ -1,0 +1,18 @@
+@use "./styles/flexbox";
+@use "./styles/font";
+@use "./styles/color";
+.HomeBackground {
+  @include font.handwriting;
+  @include flexbox.centered;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: color.$gray6;
+  cursor: default;
+}

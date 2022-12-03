@@ -4,8 +4,12 @@ $homeBackground: linear-gradient(color.$gray11, color.$gray8);
 
 .Home {
   position: relative;
-  min-height: 100vh;
+  min-height: 200vh;
   background: $homeBackground;
+
+  //background-size: 40px 40px;
+  //background-image: linear-gradient(to right, grey 1px, transparent 1px),
+  //  linear-gradient(to bottom, grey 1px, transparent 1px);
 
   .sections {
     position: relative;

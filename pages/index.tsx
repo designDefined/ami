@@ -9,6 +9,7 @@ import SectionHorizon from "../components/home/Section/SectionHorizon";
 
 import styles from "./Home.module.scss";
 import classNames from "classnames/bind";
+import HomeBackground from "../components/home/Background/HomeBackground";
 
 const cx = classNames.bind(styles);
 
@@ -38,6 +39,7 @@ const Home: NextPage = () => {
   return (
     <article className={cx("Home")}>
       <HomeHeader />
+      <HomeBackground />
       <main className={cx("sections")}>
         <SectionBillboard projectsList={topProjectsList} />
         <SectionHorizon

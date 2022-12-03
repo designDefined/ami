@@ -30,7 +30,7 @@ const CardLarge = ({ project }: Props) => {
         }}
       >
         <div className={cx("thumbnail")}>
-          <Image src={thumbnail1} alt="sample Thumbnail" fill />
+          <Image src={thumbnail1} alt="sample Thumbnail" width={200} />
         </div>
         <div className={cx("content")}>
           <div className={cx("title")}>{projectName}</div>
