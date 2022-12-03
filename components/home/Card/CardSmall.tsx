@@ -11,7 +11,7 @@ interface Props {
 const cx = classNames.bind(styles);
 const CardSmall = ({ project }: Props) => {
   const router = useRouter();
-  const { id, project_name } = project;
+  const { id, projectName } = project;
   return (
     <ReactParallaxTilt
       tiltReverse
@@ -25,7 +25,10 @@ const CardSmall = ({ project }: Props) => {
           router.push(`/edit/${id}`);
         }}
       >
-        <label className={cx("name")}>{project_name}</label>
+        <div className={cx("thumbnail")}></div>
+        <div className={cx("content")}>
+          <div className={cx("name")}>{projectName}</div>
+        </div>
       </div>
     </ReactParallaxTilt>
   );
