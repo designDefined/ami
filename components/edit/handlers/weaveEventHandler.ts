@@ -17,3 +17,8 @@ export const onChangePage =
       toast.error("wrong page number");
     }
   };
+
+export const onPressAtom =
+  (): React.MouseEventHandler<HTMLLIElement> => (e) => {};
+
+export const onReleaseAtom = () => {};

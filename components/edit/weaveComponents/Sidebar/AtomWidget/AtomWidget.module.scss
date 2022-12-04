@@ -5,11 +5,14 @@
   .item {
     cursor: pointer;
     padding: 8px;
-    &:hover {
-      background: #ffffff;
-    }
     .index {
       margin-right: 12px;
+    }
+    &.selected {
+      background-color: red;
+    }
+    &:hover {
+      background: #ffffff;
     }
   }
 }
