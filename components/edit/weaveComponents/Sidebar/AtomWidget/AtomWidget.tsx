@@ -4,6 +4,8 @@ import classNames from "classnames/bind";
 import { PageInfo } from "../PageWidget/PageWidget";
 import { useSelection } from "../../../../../store/selection";
 import WidgetWrapper from "../Widget";
+import { useCursor } from "../../../../../store/cursor";
+import { onPressAtom } from "../../../handlers/weaveEventHandler";
 const cx = classNames.bind(styles);
 
 interface PropPage {
@@ -23,6 +25,7 @@ const AtomInfo = ({ selectedAtom: atom }: PropAtom) => {
 
 const AtomList = ({ page, selectedAtom }: PropPage) => {
   const selectAtom = useSelection((state) => state.selectAtom);
+  const startDragAtom = useCursor((state) => state.startDragAtom);
   return (
     <WidgetWrapper name="요소 목록">
       <ol className={cx("AtomList")}>
@@ -36,9 +39,7 @@ const AtomList = ({ page, selectedAtom }: PropPage) => {
               e.preventDefault();
               selectAtom(atom);
             }}
-            onMouseDown={(e) => {
-              e.preventDefault();
-            }}
+            onMouseDown={onPressAtom(atom)}
           >
             <span className={cx("index")}>{index + 1}</span>
             <span>{atom.content}</span>

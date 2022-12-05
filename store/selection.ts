@@ -1,14 +1,9 @@
 import create from "zustand";
 import { IAtom, IPage, IProject } from "../types/base";
-
-type SelectableType =
-  | { type: "atom"; data: IAtom }
-  | { type: "page"; data: IPage }
-  | { type: "project"; data: IProject }
-  | { type: "none"; data: null };
+import { ISelectableType } from "../types/interaction";
 
 interface ISelectionStore {
-  current: SelectableType;
+  current: ISelectableType;
   selectAtom: (atom: IAtom) => void;
   selectPage: (page: IPage) => void;
   selectProject: (project: IProject) => void;

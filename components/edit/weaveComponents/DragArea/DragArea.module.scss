@@ -1,0 +1,17 @@
+@use "../../../../styles/flexbox";
+.DragArea {
+  @include flexbox.full;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.DragTarget {
+  position: absolute;
+  top: 0;
+  left: 0;
+  &.dummy {
+    width: 100px;
+    height: 60px;
+    background-color: red;
+  }
+}

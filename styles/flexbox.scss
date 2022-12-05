@@ -14,3 +14,12 @@
 @mixin overflowItem {
   flex: 0 0 auto;
 }
+
+@mixin full {
+  //parent element must be position:absolute or position:relative
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
