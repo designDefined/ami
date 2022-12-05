@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 import { useSelection } from "../../../store/selection";
 import { useCursor } from "../../../store/cursor";
 import { IAtom } from "../../../types/base";
+import { useWeaveSidebarLayout } from "../../../store/layout/weaveSidebar";
 
 const projectStore = useProject;
 const selectStore = useSelection;
 const cursorStore = useCursor;
+const weaveSidebarLayout = useWeaveSidebarLayout;
 
 type empty = (e: null) => void;
 
@@ -30,7 +32,10 @@ export const onPressAtom =
   (atom: IAtom): React.MouseEventHandler<HTMLLIElement> =>
   (e) => {
     e.preventDefault();
-    console.log(e.screenY);
+
+    if (weaveSidebarLayout.getState().status === "open") {
+      weaveSidebarLayout.getState().setStatus("temporal");
+    }
     if (!isDragging()) {
       const { screenX, screenY, nativeEvent } = e;
       const { offsetX, offsetY } = nativeEvent;
@@ -57,6 +62,9 @@ export const onDrag = (): React.MouseEventHandler<HTMLDivElement> => (e) => {
 export const onReleaseAtom =
   (): React.MouseEventHandler<HTMLDivElement> => (e) => {
     e.preventDefault();
+    if (weaveSidebarLayout.getState().status === "temporal") {
+      weaveSidebarLayout.getState().setStatus("open");
+    }
     if (isDragging()) {
       cursorStore.getState().releaseDrag();
     }

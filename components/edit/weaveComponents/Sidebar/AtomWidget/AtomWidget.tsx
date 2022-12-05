@@ -8,14 +8,18 @@ import { useCursor } from "../../../../../store/cursor";
 import { onPressAtom } from "../../../handlers/weaveEventHandler";
 const cx = classNames.bind(styles);
 
-interface PropPage {
+interface PropList {
   page: IPage;
   selectedAtom: IAtom | false;
 }
-interface PropAtom {
+interface PropInfo {
   selectedAtom: IAtom | false;
 }
-const AtomInfo = ({ selectedAtom: atom }: PropAtom) => {
+interface PropWidget {
+  page: IPage;
+}
+
+const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
   return (
     <WidgetWrapper name={"요소 정보"}>
       {atom ? <div>{atom.id}</div> : <div>선택된 Atom 없음</div>}
@@ -23,7 +27,7 @@ const AtomInfo = ({ selectedAtom: atom }: PropAtom) => {
   );
 };
 
-const AtomList = ({ page, selectedAtom }: PropPage) => {
+const AtomList = ({ page, selectedAtom }: PropList) => {
   const selectAtom = useSelection((state) => state.selectAtom);
   const startDragAtom = useCursor((state) => state.startDragAtom);
   return (
@@ -50,7 +54,7 @@ const AtomList = ({ page, selectedAtom }: PropPage) => {
   );
 };
 
-const AtomWidget = ({ page }: PropPage) => {
+const AtomWidget = ({ page }: PropWidget) => {
   const { type, data: atom } = useSelection((state) => state.current);
   return (
     <>

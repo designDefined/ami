@@ -12,9 +12,16 @@
   flex-direction: column;
   padding-top: 60px;
   padding-right: 20px;
+  transition: 0.7s;
+  &.isClosed {
+    transform: translate(370px);
+  }
 }
 
 .handle {
+  position: absolute;
+  top: 60px;
+  left: -30px;
 }
 
 .WidgetWrapper {
