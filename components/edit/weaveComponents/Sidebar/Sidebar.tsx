@@ -4,7 +4,6 @@ import { useProject } from "../../../../store/project";
 import { IPage } from "../../../../types/base";
 import PageNavigator from "./PageNavigator/PageNavigator";
 import AtomWidget from "./AtomWidget/AtomWidget";
-import { PageInfo } from "./PageWidget/PageWidget";
 import { useWeaveSidebarLayout } from "../../../../store/layout/weaveSidebar";
 
 const cx = classNames.bind(styles);

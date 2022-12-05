@@ -31,7 +31,7 @@ const page = (projectId: number): IPage => {
     edgeColor: "#bbbbbb",
     background: "#ffffff",
     offsetHeight: 937,
-    isPlaced: false,
+    isPlaced: "notPlaced",
     placedX: -1,
     placedY: -1,
   };
@@ -47,7 +47,7 @@ const atom = (parentId: string, depth: number = 0): IAtom => ({
   offsetWidth: -1,
   fontSize: -1,
   fontColor: "#000000",
-  isPlaced: false,
+  isPlaced: "notPlaced",
   placedX: -1,
   placedY: -1,
 });

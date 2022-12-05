@@ -5,7 +5,7 @@ import { PageInfo } from "../PageWidget/PageWidget";
 import { useSelection } from "../../../../../store/selection";
 import WidgetWrapper from "../Widget";
 import { useCursor } from "../../../../../store/cursor";
-import { onPressAtom } from "../../../handlers/weaveEventHandler";
+import { onPressListedAtom } from "../../../handlers/weaveEventHandler";
 const cx = classNames.bind(styles);
 
 interface PropList {
@@ -43,7 +43,7 @@ const AtomList = ({ page, selectedAtom }: PropList) => {
               e.preventDefault();
               selectAtom(atom);
             }}
-            onMouseDown={onPressAtom(atom)}
+            onMouseDown={onPressListedAtom(atom)}
           >
             <span className={cx("index")}>{index + 1}</span>
             <span>{atom.content}</span>

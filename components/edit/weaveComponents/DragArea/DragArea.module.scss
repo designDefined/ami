@@ -3,15 +3,21 @@
   @include flexbox.full;
   pointer-events: none;
   overflow: hidden;
+  z-index: 99;
 }
 
 .DragTarget {
   position: absolute;
   top: 0;
   left: 0;
+  opacity: 0.5;
+
   &.dummy {
     width: 100px;
     height: 60px;
     background-color: red;
+  }
+  &.textAtom {
+    font-size: 24px;
   }
 }

@@ -6,7 +6,7 @@ export interface IWithId<T extends IIdentifier> {
   id: T;
 }
 export interface IPlaceable {
-  isPlaced: boolean;
+  isPlaced: "placed" | "notPlaced" | "nowPlacing";
   placedX: number;
   placedY: number;
 }
@@ -29,7 +29,7 @@ export interface IUser extends IWithId<string> {
 }
 
 /******************** Atom ********************/
-export type IAtomType = "text" | "image";
+export type IAtomType = "text" | "image" | "button";
 export type IMarkDownType = "h1" | "h2" | "h3" | "h4" | "p" | "uli" | "oli";
 export interface ICommonAtom extends IWithId<string> {
   type: IAtomType;

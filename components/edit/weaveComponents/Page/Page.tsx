@@ -12,9 +12,11 @@ interface Props {
 const Page = ({ page }: Props) => {
   return (
     <div className={cx("Page")}>
-      {page.atoms.map((atom) => (
-        <Atom key={atom.id} atom={atom} />
-      ))}
+      {page.atoms
+        .filter((atom) => atom.isPlaced === "placed")
+        .map((atom) => (
+          <Atom key={atom.id} atom={atom} />
+        ))}
     </div>
   );
 };
