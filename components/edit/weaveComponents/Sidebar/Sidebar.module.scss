@@ -17,13 +17,41 @@
 
   &.isClosed {
     transform: translate(370px);
+    .handleBg {
+      transform: translate(40px);
+    }
   }
 }
 
 .handle {
   position: absolute;
-  top: 60px;
+  top: 75px;
   left: -30px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  .handleBg {
+    @include material.shadow(2);
+    display: block;
+    position: absolute;
+    content: "";
+    width: 40px;
+    height: 28px;
+    top: -4px;
+    left: -8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: #e5e5e5;
+    transition: 0.5s ease;
+    &:hover {
+      @include material.shadow(1);
+      opacity: 0.7;
+    }
+  }
 }
 
 .WidgetWrapper {
@@ -36,6 +64,7 @@
   color: #222222;
   margin-bottom: 16px;
   .header {
+    position: relative;
     border-radius: 16px 0 0 0;
     padding: 16px;
     font-size: 1.2em;
@@ -45,7 +74,12 @@
       background: rgba(194, 194, 194, 0.21);
       cursor: pointer;
     }
-    .open {
+    .toggle {
+      position: absolute;
+      margin-left: 4px;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
     }
   }
   .content {

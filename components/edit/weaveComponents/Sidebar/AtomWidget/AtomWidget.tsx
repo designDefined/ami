@@ -29,7 +29,6 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
 
 const AtomList = ({ page, selectedAtom }: PropList) => {
   const selectAtom = useSelection((state) => state.selectAtom);
-  const startDragAtom = useCursor((state) => state.startDragAtom);
   return (
     <WidgetWrapper name="요소 목록">
       <ol className={cx("AtomList")}>

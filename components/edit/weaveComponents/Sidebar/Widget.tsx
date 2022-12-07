@@ -1,6 +1,7 @@
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
 import { useState } from "react";
+import LineToggleButton from "../../../common/Buttons/LineToggleButton/LineToggleButton";
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +22,14 @@ const WidgetWrapper = ({ name, children }: Props) => {
         }}
         onMouseDown={(e) => e.preventDefault()}
       >
-        <span className={cx("name")}>{name}</span>
+        <span className={cx("name")}>{name}</span>{" "}
+        <span className={cx("toggle")}>
+          <LineToggleButton
+            isOpen={open}
+            isVertical={true}
+            isReversed={false}
+          />
+        </span>
       </div>
       <div className={cx("content", { closed: !open })}>{children}</div>
     </div>

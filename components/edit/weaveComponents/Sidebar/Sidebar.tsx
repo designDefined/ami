@@ -5,6 +5,7 @@ import { IPage } from "../../../../types/base";
 import PageNavigator from "./PageNavigator/PageNavigator";
 import AtomWidget from "./AtomWidget/AtomWidget";
 import { useWeaveSidebarLayout } from "../../../../store/layout/weaveSidebar";
+import LineToggleButton from "../../../common/Buttons/LineToggleButton/LineToggleButton";
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +30,12 @@ const Sidebar = ({ pages }: Props) => {
           }
         }}
       >
-        핸들
+        <div className={cx("handleBg")} />
+        <LineToggleButton
+          isOpen={sidebarStatus === "open"}
+          isVertical={false}
+          isReversed={true}
+        />
       </button>
       <PageNavigator pages={pages} />
       {pageStatus < 0 ? <div /> : <AtomWidget page={pages[pageStatus]} />}
