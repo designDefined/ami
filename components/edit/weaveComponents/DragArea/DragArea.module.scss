@@ -1,4 +1,6 @@
 @use "../../../../styles/flexbox";
+@use "../../../../styles/color";
+
 .DragArea {
   @include flexbox.full;
   pointer-events: none;
@@ -19,5 +21,6 @@
   }
   &.textAtom {
     font-size: 24px;
+    border: 1px solid transparentize(color.$green1, 0.5);
   }
 }

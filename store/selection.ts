@@ -27,7 +27,10 @@ export const checkSelectedPage = (target: IPage): boolean => {
   return type === "page" ? data.id === target.id : false;
 };
 
-export const checkSelectedAtom = (target: IAtom): boolean => {
-  const { type, data } = useSelection.getState().current;
+export const checkSelectedAtom = (
+  current: ISelectableType,
+  target: IAtom,
+): boolean => {
+  const { type, data } = current;
   return type === "atom" ? data.id === target.id : false;
 };

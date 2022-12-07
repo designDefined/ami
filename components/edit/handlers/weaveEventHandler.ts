@@ -64,14 +64,12 @@ export const onPressPlacedAtom =
       selectStore.getState().selectAtom(atom);
       const { clientX, clientY, nativeEvent } = e;
       const { offsetX, offsetY } = nativeEvent;
-      console.log(clientX);
-      console.log(offsetX);
       projectStore
         .getState()
         .manipulateAtom({ ...atom, isPlaced: "nowPlacing" });
       cursorStore.getState().startDragAtom(
         atom,
-        { initX: clientX - offsetX, initY: clientY - offsetY },
+        { initX: clientX - offsetX - 1, initY: clientY - offsetY - 1 },
         {
           diffX: offsetX + 1,
           diffY: offsetY + 1,
@@ -99,12 +97,14 @@ export const onReleaseAtom =
       const { xDiff, yDiff, current } = cursorStore.getState();
       const { type, data } = current;
       if (type === "atom") {
-        projectStore.getState().manipulateAtom({
+        const newAtom: IAtom = {
           ...data,
           isPlaced: "placed",
           placedX: clientX - xDiff,
           placedY: clientY - yDiff,
-        });
+        };
+        projectStore.getState().manipulateAtom(newAtom);
+        selectStore.getState().selectAtom(newAtom);
       }
       cursorStore.getState().releaseDrag();
     } else {

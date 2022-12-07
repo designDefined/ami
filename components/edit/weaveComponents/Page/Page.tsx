@@ -11,6 +11,7 @@ interface Props {
 }
 
 const Page = ({ page }: Props) => {
+  const current = useSelection((state) => state.current);
   return (
     <div className={cx("Page")}>
       {page.atoms
@@ -19,7 +20,7 @@ const Page = ({ page }: Props) => {
           <Atom
             key={atom.id}
             atom={atom}
-            isSelected={checkSelectedAtom(atom)}
+            isSelected={checkSelectedAtom(current, atom)}
           />
         ))}
     </div>

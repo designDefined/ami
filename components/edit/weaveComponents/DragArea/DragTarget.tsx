@@ -13,9 +13,7 @@ interface TextAtomProps {
 
 export const TextAtomDragTarget = ({ x, y, atom }: TextAtomProps) => {
   const { content, offsetWidth } = atom;
-  useEffect(() => {
-    //    console.log(y);
-  }, [y]);
+
   return (
     <div
       className={cx("DragTarget", "textAtom")}
