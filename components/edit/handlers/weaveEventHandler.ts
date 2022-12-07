@@ -64,6 +64,8 @@ export const onPressPlacedAtom =
       selectStore.getState().selectAtom(atom);
       const { clientX, clientY, nativeEvent } = e;
       const { offsetX, offsetY } = nativeEvent;
+      console.log(clientX);
+      console.log(offsetX);
       projectStore
         .getState()
         .manipulateAtom({ ...atom, isPlaced: "nowPlacing" });
@@ -71,8 +73,8 @@ export const onPressPlacedAtom =
         atom,
         { initX: clientX - offsetX, initY: clientY - offsetY },
         {
-          diffX: offsetX,
-          diffY: offsetY,
+          diffX: offsetX + 1,
+          diffY: offsetY + 1,
         },
       );
     }

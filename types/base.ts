@@ -40,8 +40,9 @@ export interface ITextAtom extends ICommonAtom, IPlaceable {
   markdownType: IMarkDownType;
   markdownDepth: number;
   content: string;
-  //style
+  //size
   offsetWidth: number;
+  //background
   fontSize: number;
   fontColor: string;
 }

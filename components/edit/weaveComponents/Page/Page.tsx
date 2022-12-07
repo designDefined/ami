@@ -2,6 +2,7 @@ import { IPage } from "../../../../types/base";
 import styles from "./Page.module.scss";
 import classNames from "classnames/bind";
 import Atom from "../Atom/Atom";
+import { checkSelectedAtom, useSelection } from "../../../../store/selection";
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +16,11 @@ const Page = ({ page }: Props) => {
       {page.atoms
         .filter((atom) => atom.isPlaced === "placed")
         .map((atom) => (
-          <Atom key={atom.id} atom={atom} />
+          <Atom
+            key={atom.id}
+            atom={atom}
+            isSelected={checkSelectedAtom(atom)}
+          />
         ))}
     </div>
   );

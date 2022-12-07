@@ -21,3 +21,13 @@ export const useSelection = create<ISelectionStore>()((set) => ({
     set({ current: { type: "project", data: project } }),
   deselect: () => set({ current: { type: "none", data: null } }),
 }));
+
+export const checkSelectedPage = (target: IPage): boolean => {
+  const { type, data } = useSelection.getState().current;
+  return type === "page" ? data.id === target.id : false;
+};
+
+export const checkSelectedAtom = (target: IAtom): boolean => {
+  const { type, data } = useSelection.getState().current;
+  return type === "atom" ? data.id === target.id : false;
+};

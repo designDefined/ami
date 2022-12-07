@@ -4,7 +4,6 @@ import classNames from "classnames/bind";
 import { PageInfo } from "../PageWidget/PageWidget";
 import { useSelection } from "../../../../../store/selection";
 import WidgetWrapper from "../Widget";
-import { useCursor } from "../../../../../store/cursor";
 import { onPressListedAtom } from "../../../handlers/weaveEventHandler";
 const cx = classNames.bind(styles);
 
@@ -21,8 +20,8 @@ interface PropWidget {
 
 const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
   return (
-    <WidgetWrapper name={"요소 정보"}>
-      {atom ? <div>{atom.id}</div> : <div>선택된 Atom 없음</div>}
+    <WidgetWrapper name={"상세"}>
+      {atom ? <div>{atom.placedX}</div> : <div>요소를 선택하세요</div>}
     </WidgetWrapper>
   );
 };
@@ -30,7 +29,7 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
 const AtomList = ({ page, selectedAtom }: PropList) => {
   const selectAtom = useSelection((state) => state.selectAtom);
   return (
-    <WidgetWrapper name="요소 목록">
+    <WidgetWrapper name="모든 요소">
       <ol className={cx("AtomList")}>
         {page.atoms.map((atom, index) => (
           <li
@@ -57,9 +56,9 @@ const AtomWidget = ({ page }: PropWidget) => {
   const { type, data: atom } = useSelection((state) => state.current);
   return (
     <>
-      <PageInfo page={page} />
       <AtomInfo selectedAtom={type == "atom" ? atom : false} />
       <AtomList page={page} selectedAtom={type == "atom" ? atom : false} />
+      <PageInfo page={page} />
     </>
   );
 };
