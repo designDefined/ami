@@ -35,6 +35,7 @@ export interface ICommonAtom extends IWithId<string> {
   type: IAtomType;
   parentPageId: string;
 }
+export type ITextAlign = "justify" | "left" | "right" | "center";
 export interface ITextAtom extends ICommonAtom, IPlaceable {
   type: "text";
   markdownType: IMarkDownType;
@@ -42,9 +43,21 @@ export interface ITextAtom extends ICommonAtom, IPlaceable {
   content: string;
   //size
   offsetWidth: number;
-  //background
+  offsetPadding: number;
+  //font
+  fontFamily: string;
   fontSize: number;
+  fontWeight: number;
   fontColor: string;
+  textAlign: ITextAlign;
+  //background
+  backgroundColor: string;
+  //border
+  borderColor: string;
+  borderWidth: number;
+  borderRadius: number;
+  //layer
+  layer: number;
 }
 export type IAtom = ITextAtom;
 

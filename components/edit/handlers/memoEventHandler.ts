@@ -1,5 +1,5 @@
 import { IAtom, IMarkDownType, IPage } from "../../../types/base";
-import createEmpty from "../../../data/createEmpty";
+import createEmpty from "../../../functions/create/createEmpty";
 import { useProject } from "../../../store/project";
 import { useText } from "../../../store/text";
 import { findAtomRelatively } from "../../../store/helper/manipulateWithParent";

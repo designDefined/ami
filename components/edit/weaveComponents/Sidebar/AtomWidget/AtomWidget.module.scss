@@ -4,17 +4,19 @@
 @mixin infoStyle {
   .section {
     position: relative;
-    padding: 8px 0;
-    margin-bottom: 4px;
     border-bottom: dashed 1px color.$gray8;
+    padding-bottom: 4px;
     .sectionLabel {
       color: color.$gray6;
       font-weight: 700;
       cursor: default;
+      margin-top: 8px;
       margin-bottom: 4px;
     }
     .sectionHorizontal {
       display: flex;
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
   }
 
@@ -26,9 +28,22 @@
       cursor: default;
       margin-right: 8px;
     }
+
     .attributeInput {
       @include simple.textInput;
       width: 50px;
+      height: 20px;
+      &.small {
+        width: 40px;
+      }
+    }
+    .attributeButton {
+      @include simple.textButton;
+    }
+    .attributeSelect {
+      font: inherit;
+      font-size: 14px;
+      height: 20px;
     }
   }
 }
@@ -57,6 +72,9 @@
 }
 .AtomInfo {
   @include infoStyle;
+  .fontSize {
+    width: 40px !important;
+  }
   .inputContent {
     @include simple.scrollbar(4px);
     width: 328px;

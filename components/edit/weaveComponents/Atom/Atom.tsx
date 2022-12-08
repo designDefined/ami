@@ -2,6 +2,8 @@ import styles from "./Atom.module.scss";
 import classNames from "classnames/bind";
 import { IAtom } from "../../../../types/base";
 import { onPressPlacedAtom } from "../../handlers/weaveEventHandler";
+import { CSSProperties, useMemo } from "react";
+import createStyle from "../../../../functions/create/createStyle";
 
 interface Props {
   atom: IAtom;
@@ -10,11 +12,15 @@ interface Props {
 const cx = classNames.bind(styles);
 
 const Atom = ({ atom, isSelected }: Props) => {
-  const { content, offsetWidth, placedX, placedY } = atom;
+  const { content } = atom;
+  const atomStyle = useMemo(
+    (): CSSProperties => createStyle.atom(atom),
+    [atom],
+  );
   return (
     <div
       className={cx("Atom", { isSelected })}
-      style={{ width: offsetWidth, top: `${placedY}px`, left: `${placedX}px` }}
+      style={atomStyle}
       onMouseDown={onPressPlacedAtom(atom)}
     >
       {content}

@@ -1,4 +1,4 @@
-import { IAtom, IPage, IProject, IToken, IUser } from "../types/base";
+import { IAtom, IPage, IProject, IToken, IUser } from "../../types/base";
 import { nanoid } from "nanoid";
 
 export const emptyId = "empty_id" as const;
@@ -39,17 +39,34 @@ const page = (projectId: number): IPage => {
 
 const atom = (parentId: string, depth: number = 0): IAtom => ({
   id: nanoid(),
+  parentPageId: parentId,
+  //markdown
   type: "text",
   markdownType: "p",
   markdownDepth: depth,
+  //content
   content: "",
-  parentPageId: parentId,
-  offsetWidth: -1,
-  fontSize: -1,
-  fontColor: "#000000",
+  //position
   isPlaced: "notPlaced",
   placedX: -1,
   placedY: -1,
+  //size
+  offsetWidth: 400,
+  offsetPadding: 0,
+  //font
+  fontFamily: "inherit",
+  fontSize: 24,
+  fontWeight: 300,
+  fontColor: "#000000",
+  textAlign: "justify",
+  //background
+  backgroundColor: "transparent",
+  //border
+  borderColor: "transparent",
+  borderWidth: 0,
+  borderRadius: 0,
+  //layer
+  layer: 5,
 });
 
 const createEmpty = { token, user, project, page, atom };

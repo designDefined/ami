@@ -1,6 +1,6 @@
 import create from "zustand";
 import { IToken, IUser } from "../../../types/base";
-import createEmpty from "../../../data/createEmpty";
+import createEmpty from "../../../functions/create/createEmpty";
 
 export interface UserRequest {
   user_id: string;

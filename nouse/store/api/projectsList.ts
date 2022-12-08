@@ -8,7 +8,7 @@ import {
   localGetMine,
   localPostMyProject,
 } from "../../../localApi/manageLocalStorage";
-import createEmpty from "../../../data/createEmpty";
+import createEmpty from "../../../functions/create/createEmpty";
 
 interface ProjectsListStatus {
   all: IProjectSum[];

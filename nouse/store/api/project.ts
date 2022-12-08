@@ -4,7 +4,7 @@ import {
   manipulateWithIds,
 } from "../../../localApi/arrayFunctions";
 import create from "zustand";
-import createEmpty from "../../../data/createEmpty";
+import createEmpty from "../../../functions/create/createEmpty";
 import axios from "axios";
 import { isLocal } from "../../../localApi/environment";
 import {

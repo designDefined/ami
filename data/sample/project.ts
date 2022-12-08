@@ -1,7 +1,7 @@
 import { IProject } from "../../types/base";
 import { sampleUserData } from "./user";
 import { nanoid } from "nanoid";
-import createEmpty from "../createEmpty";
+import createEmpty from "../../functions/create/createEmpty";
 
 export const sampleProjectData: IProject[] = [
   {

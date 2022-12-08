@@ -98,26 +98,55 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
           </div>
         </div>
         <div className={cx("section")}>
-          <div className={cx("sectionLabel")}>서체</div>
+          <div className={cx("sectionLabel")}>글자</div>
           <div className={cx("sectionHorizontal")}>
-            <select></select>
             <div className={cx("attribute")}>
               <div className={cx("attributeLabel")}>크기:</div>
               <input
-                className={cx("attributeInput")}
+                className={cx("attributeInput", "small")}
                 type="text"
                 value={atom.fontSize}
                 onChange={onChangeAtomNumberAttribute("fontSize", atom)}
               />
             </div>
             <div className={cx("attribute")}>
+              <div className={cx("attributeLabel")}>두께:</div>
+              <input
+                className={cx("attributeInput", "small")}
+                type="text"
+                value={atom.fontWeight}
+                onChange={onChangeAtomNumberAttribute("fontWeight", atom)}
+              />
+            </div>
+            <div className={cx("attribute")}>
               <div className={cx("attributeLabel")}>색상:</div>
               <input
                 className={cx("attributeInput")}
-                type="text"
+                type="color"
                 value={atom.fontColor}
                 onChange={onChangeAtomStringAttribute("fontColor", atom)}
               />
+            </div>
+          </div>
+          <div className={cx("sectionHorizontal")}>
+            <div className={cx("attribute")}>
+              <div className={cx("attributeLabel")}>폰트:</div>
+              <select className={cx("attributeSelect")}>
+                <option>기본</option>
+              </select>
+            </div>
+            <div className={cx("attribute")}>
+              <div className={cx("attributeLabel")}>정렬:</div>
+              <select
+                className={cx("attributeSelect")}
+                value={atom.textAlign}
+                onChange={onChangeAtomStringAttribute("textAlign", atom)}
+              >
+                <option value="justify">양쪽</option>
+                <option value="left">좌측</option>
+                <option value="center">중앙</option>
+                <option value="right">우측</option>
+              </select>
             </div>
           </div>
         </div>
@@ -127,18 +156,28 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
             <div className={cx("attribute")}>
               <div className={cx("attributeLabel")}>여백:</div>
               <input
-                className={cx("attributeInput")}
+                className={cx("attributeInput", "small")}
                 type="text"
-                value={atom.offsetWidth}
+                value={atom.offsetPadding}
+                onChange={onChangeAtomNumberAttribute("offsetPadding", atom)}
               />
             </div>
             <div className={cx("attribute")}>
               <div className={cx("attributeLabel")}>색상:</div>
               <input
                 className={cx("attributeInput")}
-                type="text"
-                value={atom.offsetWidth}
+                type="color"
+                value={atom.backgroundColor}
+                onChange={onChangeAtomStringAttribute("backgroundColor", atom)}
               />
+              <button
+                className={cx("attributeButton")}
+                onClick={() =>
+                  updateAtomInfo({ ...atom, backgroundColor: "transparent" })
+                }
+              >
+                투명
+              </button>
             </div>
           </div>
         </div>
@@ -177,9 +216,9 @@ const AtomWidget = ({ page }: PropWidget) => {
   const { type, data: atom } = useSelection((state) => state.current);
   return (
     <>
-      <PageInfo page={page} />
       <AtomInfo selectedAtom={type == "atom" ? atom : false} />
       <AtomList page={page} selectedAtom={type == "atom" ? atom : false} />
+      <PageInfo page={page} />
     </>
   );
 };

@@ -36,10 +36,21 @@ export const onChangePage =
 /******************** Atom ********************/
 type IAtomModifiableNumberAttribute =
   | "offsetWidth"
+  | "offsetPadding"
   | "fontSize"
+  | "fontWeight"
+  | "borderWidth"
+  | "borderRadius"
   | "placedX"
-  | "placedY";
-type IAtomModifiableStringAttribute = "content" | "fontColor";
+  | "placedY"
+  | "layer";
+type IAtomModifiableStringAttribute =
+  | "content"
+  | "fontFamily"
+  | "fontColor"
+  | "textAlign"
+  | "backgroundColor"
+  | "borderColor";
 
 export const updateAtomInfo = (atom: IAtom) => {
   projectStore.getState().manipulateAtom(atom);
@@ -50,7 +61,9 @@ export const onChangeAtomStringAttribute =
   (
     attribute: IAtomModifiableStringAttribute,
     atom: IAtom,
-  ): React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =>
+  ): React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  > =>
   (e) =>
     updateAtomInfo({ ...atom, [attribute]: e.target.value });
 
