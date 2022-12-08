@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import Page from "./Page/Page";
 import PageMap from "./Page/PageMap";
 import { MainDragArea } from "./DragArea/DragArea";
-import { onDrag, onReleaseAtom } from "../handlers/weaveEventHandler";
+import { onDrag, onRelease } from "../handlers/weaveEventHandler";
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +17,7 @@ const Weave = () => {
     <section
       className={cx("Weave")}
       onMouseMove={onDrag()}
-      onMouseUp={onReleaseAtom()}
+      onMouseUp={onRelease()}
     >
       <Sidebar pages={pages} />
       {pageStatus < 0 ? (

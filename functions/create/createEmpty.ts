@@ -24,16 +24,20 @@ const page = (projectId: number): IPage => {
   const id = nanoid();
   return {
     id,
-    pageName: "new_page",
+    pageName: "새 페이지",
     parentProjectId: projectId,
     atoms: [atom(id)],
-    //edge
-    edgeColor: "#bbbbbb",
-    backgroundColor: "transparent",
-    offsetHeight: 907,
+    //position
     isPlaced: "notPlaced",
     placedX: -1,
     placedY: -1,
+    //map
+    symbolColor: "#bbbbbb",
+    connectedTo: [],
+    connectedFrom: [],
+    //style
+    backgroundColor: "transparent",
+    offsetHeight: 937,
   };
 };
 

@@ -64,6 +64,46 @@ export const onChangePageStringAttribute =
       [attribute]: e.target.value,
     });
 
+export const onConnectPage =
+  (
+    from: IPage,
+    to: IPage,
+    isConnect: boolean = true,
+  ): React.MouseEventHandler<HTMLSpanElement> =>
+  (e) => {
+    e.preventDefault();
+    if (isConnect) {
+      projectStore.getState().manipulatePage([
+        { ...from, connectedTo: [...from.connectedTo, to.id] },
+        { ...to, connectedTo: [...to.connectedTo, from.id] },
+      ]);
+      selectStore
+        .getState()
+        .selectPage({ ...from, connectedTo: [...from.connectedTo, to.id] });
+    } else {
+      projectStore.getState().manipulatePage([
+        {
+          ...from,
+          connectedTo: from.connectedTo.filter(
+            (connection) => connection !== to.id,
+          ),
+        },
+        {
+          ...to,
+          connectedTo: to.connectedTo.filter(
+            (connection) => connection !== from.id,
+          ),
+        },
+      ]);
+      selectStore.getState().selectPage({
+        ...from,
+        connectedTo: from.connectedTo.filter(
+          (connection) => connection !== to.id,
+        ),
+      });
+    }
+  };
+
 /******************** Atom ********************/
 type IAtomModifiableNumberAttribute =
   | "offsetWidth"
@@ -109,12 +149,11 @@ export const onChangeAtomNumberAttribute =
       [attribute]: passStringIfNumber(e.target.value, atom[attribute]),
     });
 
-/******************** Drag ********************/
+/******************** Drag Atom ********************/
 export const onPressListedAtom =
   (atom: IAtom): React.MouseEventHandler<HTMLLIElement> =>
   (e) => {
     e.preventDefault();
-
     if (!isDragging()) {
       if (atom.isPlaced === "notPlaced") {
         selectStore.getState().selectAtom(atom);
@@ -131,6 +170,32 @@ export const onPressListedAtom =
           {
             diffX: atom.offsetWidth / 2,
             diffY: 10,
+          },
+        );
+      }
+    }
+  };
+export const onPressListedPage =
+  (page: IPage): React.MouseEventHandler<HTMLLIElement> =>
+  (e) => {
+    e.preventDefault();
+
+    if (!isDragging()) {
+      if (page.isPlaced === "notPlaced") {
+        selectStore.getState().selectPage(page);
+        const { clientX, clientY } = e;
+        if (weaveSidebarLayout.getState().status === "open") {
+          weaveSidebarLayout.getState().setStatus("temporal");
+        }
+        projectStore
+          .getState()
+          .manipulatePage({ ...page, isPlaced: "nowPlacing" });
+        cursorStore.getState().startDragPage(
+          page,
+          { initX: clientX - 30, initY: clientY - 20 },
+          {
+            diffX: 30,
+            diffY: 20,
           },
         );
       }
@@ -162,6 +227,31 @@ export const onPressPlacedAtom =
     }
   };
 
+export const onPressPlacedPage =
+  (page: IPage): React.MouseEventHandler<HTMLDivElement> =>
+  (e) => {
+    e.preventDefault();
+    if (weaveSidebarLayout.getState().status === "open") {
+      weaveSidebarLayout.getState().setStatus("temporal");
+    }
+    if (!isDragging()) {
+      selectStore.getState().selectPage(page);
+      const { clientX, clientY, nativeEvent } = e;
+      const { offsetX, offsetY } = nativeEvent;
+      projectStore
+        .getState()
+        .manipulatePage({ ...page, isPlaced: "nowPlacing" });
+      cursorStore.getState().startDragPage(
+        page,
+        { initX: clientX - offsetX - 1, initY: clientY - offsetY - 1 },
+        {
+          diffX: offsetX + 1,
+          diffY: offsetY + 1,
+        },
+      );
+    }
+  };
+
 export const onDrag = (): React.MouseEventHandler<HTMLDivElement> => (e) => {
   e.preventDefault();
   if (isDragging()) {
@@ -173,30 +263,42 @@ export const onDrag = (): React.MouseEventHandler<HTMLDivElement> => (e) => {
       );
       cursorStore.getState().updateCursor(x, y);
     }
+    if (current.type === "page") {
+      cursorStore.getState().updateCursor(e.clientX - xDiff, e.clientY - yDiff);
+    }
   }
 };
 
-export const onReleaseAtom =
-  (): React.MouseEventHandler<HTMLDivElement> => (e) => {
-    e.preventDefault();
-    if (weaveSidebarLayout.getState().status === "temporal") {
-      weaveSidebarLayout.getState().setStatus("open");
+export const onRelease = (): React.MouseEventHandler<HTMLDivElement> => (e) => {
+  e.preventDefault();
+  if (weaveSidebarLayout.getState().status === "temporal") {
+    weaveSidebarLayout.getState().setStatus("open");
+  }
+  if (isDragging()) {
+    const { current, x, y } = cursorStore.getState();
+    const { type, data } = current;
+    if (type === "atom") {
+      const newAtom: IAtom = {
+        ...data,
+        isPlaced: "placed",
+        placedX: x,
+        placedY: y,
+      };
+      projectStore.getState().manipulateAtom(newAtom);
+      selectStore.getState().selectAtom(newAtom);
     }
-    if (isDragging()) {
-      const { current, x, y } = cursorStore.getState();
-      const { type, data } = current;
-      if (type === "atom") {
-        const newAtom: IAtom = {
-          ...data,
-          isPlaced: "placed",
-          placedX: x,
-          placedY: y,
-        };
-        projectStore.getState().manipulateAtom(newAtom);
-        selectStore.getState().selectAtom(newAtom);
-      }
-      cursorStore.getState().releaseDrag();
-    } else {
-      //selectStore.getState().deselect();
+    if (type === "page") {
+      const newPage: IPage = {
+        ...data,
+        isPlaced: "placed",
+        placedX: x,
+        placedY: y,
+      };
+      projectStore.getState().manipulatePage(newPage);
+      selectStore.getState().selectPage(newPage);
     }
-  };
+    cursorStore.getState().releaseDrag();
+  } else {
+    //selectStore.getState().deselect();
+  }
+};

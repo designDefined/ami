@@ -26,6 +26,12 @@
     font-size: 24px;
     border: 1px solid transparentize(color.$green1, 0.5);
   }
+  &.pageSymbol {
+    font-size: 24px;
+    border: 1px solid transparentize(color.$green1, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+  }
 }
 
 .guide {

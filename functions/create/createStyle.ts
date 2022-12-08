@@ -8,6 +8,22 @@ const page = ({ offsetHeight, backgroundColor }: IPage): CSSProperties => ({
   background: backgroundColor,
 });
 
+const pageSymbol = (
+  { placedX, placedY, symbolColor }: IPage,
+  transform: { is: boolean; x: number; y: number } = { is: false, x: 0, y: 0 },
+): CSSProperties => {
+  const position: CSSProperties = transform.is
+    ? {
+        transform: `translate(${transform.x}px, ${transform.y}px)`,
+      }
+    : { top: `${placedY}px`, left: `${placedX}px` };
+  const basics: CSSProperties = {
+    backgroundColor: symbolColor,
+  };
+
+  return { ...position, ...basics };
+};
+
 const atom = (
   {
     //position
@@ -57,6 +73,6 @@ const atom = (
   return { ...position, ...basics };
 };
 
-const createStyle = { page, atom };
+const createStyle = { page, pageSymbol, atom };
 
 export default createStyle;

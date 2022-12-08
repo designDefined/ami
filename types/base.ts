@@ -66,12 +66,15 @@ export interface IPage extends IWithId<string>, IPlaceable {
   pageName: string;
   atoms: IAtom[];
   parentProjectId: number;
-  //edge
-  edgeColor: string;
+  //map
+  symbolColor: string;
+  connectedTo: string[];
   //style
   backgroundColor: string;
   offsetHeight: number;
 }
+
+export interface IConnection {}
 
 /******************** Project ********************/
 export interface IProject extends IWithId<number> {

@@ -1,7 +1,7 @@
 import { IAtom, IMarkDownType, IPage } from "../../../../../types/base";
 import styles from "./AtomWidget.module.scss";
 import classNames from "classnames/bind";
-import { PageInfo } from "../PageWidget/PageWidget";
+import { PageConnection, PageInfo } from "../PageWidget/PageWidget";
 import { useSelection } from "../../../../../store/selection";
 import WidgetWrapper from "../Widget";
 import {
@@ -20,6 +20,7 @@ interface PropList {
 }
 interface PropInfo {
   selectedAtom: IAtom | false;
+  page: IPage;
 }
 interface PropWidget {
   page: IPage;
@@ -49,7 +50,7 @@ const AtomContent = ({ selectedAtom: atom }: { selectedAtom: IAtom }) => {
   );
 };
 
-const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
+const AtomInfo = ({ selectedAtom: atom, page }: PropInfo) => {
   if (!atom) {
     return (
       <WidgetWrapper name={"요소를 선택하세요"}>
@@ -181,6 +182,51 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
             </div>
           </div>
         </div>
+        <div className={cx("section")}>
+          <div className={cx("sectionLabel")}>클릭</div>
+
+          <div className={cx("attribute")}>
+            <div className={cx("attributeLabel")}>페이지:</div>
+            <select
+              className={cx("attributeSelect")}
+              value={atom.textAlign}
+              onChange={onChangeAtomStringAttribute("textAlign", atom)}
+            >
+              <PageConnection selectedPage={page} modifiable={false} />
+            </select>
+          </div>
+        </div>
+        <div className={cx("section")}>
+          <div className={cx("sectionLabel")}>스크롤</div>
+          <div className={cx("sectionHorizontal")}>
+            <div className={cx("attribute")}>
+              <div className={cx("attributeLabel")}>여백:</div>
+              <input
+                className={cx("attributeInput", "small")}
+                type="text"
+                value={atom.offsetPadding}
+                onChange={onChangeAtomNumberAttribute("offsetPadding", atom)}
+              />
+            </div>
+            <div className={cx("attribute")}>
+              <div className={cx("attributeLabel")}>색상:</div>
+              <input
+                className={cx("attributeInput")}
+                type="color"
+                value={atom.backgroundColor}
+                onChange={onChangeAtomStringAttribute("backgroundColor", atom)}
+              />
+              <button
+                className={cx("attributeButton")}
+                onClick={() =>
+                  updateAtomInfo({ ...atom, backgroundColor: "transparent" })
+                }
+              >
+                투명
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </WidgetWrapper>
   );
@@ -251,8 +297,8 @@ const AtomWidget = ({ page }: PropWidget) => {
   const { type, data: atom } = useSelection((state) => state.current);
   return (
     <>
-      <AtomInfo selectedAtom={type == "atom" ? atom : false} />
-      <AtomList page={page} selectedAtom={type == "atom" ? atom : false} />
+      <AtomInfo selectedAtom={type === "atom" ? atom : false} page={page} />
+      <AtomList page={page} selectedAtom={type === "atom" ? atom : false} />
       <PageInfo selectedPage={page} />
     </>
   );
