@@ -19,7 +19,12 @@ const Sidebar = ({ pages }: Props) => {
   const setSidebarStatus = useWeaveSidebarLayout((state) => state.setStatus);
 
   return (
-    <div className={cx("wrapper", { isClosed: sidebarStatus !== "open" })}>
+    <div
+      className={cx("wrapper", { isClosed: sidebarStatus !== "open" })}
+      onClick={(e) => e.stopPropagation()}
+      onMouseUp={(e) => e.stopPropagation()}
+      onMouseDown={(e) => e.stopPropagation()}
+    >
       <button
         className={cx("handle")}
         onClick={() => {

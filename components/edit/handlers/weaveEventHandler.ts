@@ -5,14 +5,21 @@ import { useCursor } from "../../../store/cursor";
 import { IAtom } from "../../../types/base";
 import { useWeaveSidebarLayout } from "../../../store/layout/weaveSidebar";
 
+/******************** Stores ********************/
+
 const projectStore = useProject;
 const selectStore = useSelection;
 const cursorStore = useCursor;
 const weaveSidebarLayout = useWeaveSidebarLayout;
 
+/******************** Common ********************/
 const isDragging = () => cursorStore.getState().status === "drag";
-//const consoleCursor = () => console.log(cursorStore.getState());
+const consoleCursor = () => console.log(cursorStore.getState());
 
+const passStringIfNumber = (input: string, original: number): number =>
+  Number.isNaN(Number(input)) ? original : Number(input);
+
+/******************** Page ********************/
 export const onChangePage =
   (input: number, length: number): React.FormEventHandler<HTMLFormElement> =>
   (e) => {
@@ -26,6 +33,39 @@ export const onChangePage =
     }
   };
 
+/******************** Atom ********************/
+type IAtomModifiableNumberAttribute =
+  | "offsetWidth"
+  | "fontSize"
+  | "placedX"
+  | "placedY";
+type IAtomModifiableStringAttribute = "content" | "fontColor";
+
+const updateAtomInfo = (atom: IAtom) => {
+  projectStore.getState().manipulateAtom(atom);
+  selectStore.getState().selectAtom(atom);
+};
+
+export const onChangeAtomStringAttribute =
+  (
+    attribute: IAtomModifiableStringAttribute,
+    atom: IAtom,
+  ): React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =>
+  (e) =>
+    updateAtomInfo({ ...atom, [attribute]: e.target.value });
+
+export const onChangeAtomNumberAttribute =
+  (
+    attribute: IAtomModifiableNumberAttribute,
+    atom: IAtom,
+  ): React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> =>
+  (e) =>
+    updateAtomInfo({
+      ...atom,
+      [attribute]: passStringIfNumber(e.target.value, atom[attribute]),
+    });
+
+/******************** Drag ********************/
 export const onPressListedAtom =
   (atom: IAtom): React.MouseEventHandler<HTMLLIElement> =>
   (e) => {
@@ -108,6 +148,6 @@ export const onReleaseAtom =
       }
       cursorStore.getState().releaseDrag();
     } else {
-      selectStore.getState().deselect();
+      //selectStore.getState().deselect();
     }
   };

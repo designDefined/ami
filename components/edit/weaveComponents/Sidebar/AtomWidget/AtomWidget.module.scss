@@ -1,3 +1,38 @@
+@use "./styles/color";
+@use "./styles/simple";
+
+@mixin infoStyle {
+  .section {
+    position: relative;
+    padding: 8px 0;
+    margin-bottom: 4px;
+    border-bottom: dashed 1px color.$gray8;
+    .sectionLabel {
+      color: color.$gray6;
+      font-weight: 700;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+    .sectionHorizontal {
+      display: flex;
+    }
+  }
+
+  .attribute {
+    display: flex;
+    margin-right: 20px;
+    .attributeLabel {
+      color: color.$gray3;
+      cursor: default;
+      margin-right: 8px;
+    }
+    .attributeInput {
+      @include simple.textInput;
+      width: 50px;
+    }
+  }
+}
+
 .AtomList {
   list-style: none;
   padding: 0;
@@ -21,4 +56,5 @@
   }
 }
 .AtomInfo {
+  @include infoStyle;
 }
