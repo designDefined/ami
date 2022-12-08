@@ -1,4 +1,4 @@
-import { IAtom, IPage } from "../../../../../types/base";
+import { IAtom, IMarkDownType, IPage } from "../../../../../types/base";
 import styles from "./AtomWidget.module.scss";
 import classNames from "classnames/bind";
 import { PageInfo } from "../PageWidget/PageWidget";
@@ -186,16 +186,37 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
   );
 };
 
+const translateType = (type: IMarkDownType): string => {
+  switch (type) {
+    case "h1":
+      return "제목1";
+    case "h2":
+      return "제목2";
+    case "h3":
+      return "제목3";
+    case "h4":
+      return "제목4";
+    default:
+      return "본문";
+  }
+};
+
 const AtomList = ({ page, selectedAtom }: PropList) => {
   const selectAtom = useSelection((state) => state.selectAtom);
   return (
     <WidgetWrapper name="모든 요소">
       <ol className={cx("AtomList")}>
+        <li className={cx("itemLabel")}>
+          <span className={cx("itemSpan", "index")}>#</span>
+          <span className={cx("itemSpan", "content")}>내용</span>
+          <span className={cx("itemSpan", "type")}>타입</span>
+        </li>
         {page.atoms.map((atom, index) => (
           <li
             key={atom.id}
             className={cx("item", {
               selected: selectedAtom && selectedAtom.id === atom.id,
+              placed: atom.isPlaced !== "notPlaced",
             })}
             onClick={(e) => {
               e.preventDefault();
@@ -203,8 +224,11 @@ const AtomList = ({ page, selectedAtom }: PropList) => {
             }}
             onMouseDown={onPressListedAtom(atom)}
           >
-            <span className={cx("index")}>{index + 1}</span>
-            <span>{atom.content}</span>
+            <span className={cx("itemSpan", "index")}>{index + 1}</span>
+            <span className={cx("itemSpan", "content")}>{atom.content}</span>
+            <span className={cx("itemSpan", "type")}>
+              {translateType(atom.markdownType)}
+            </span>
           </li>
         ))}
       </ol>
