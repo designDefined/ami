@@ -206,6 +206,8 @@ const cutContent = (content: string): string =>
 
 const AtomList = ({ page, selectedAtom }: PropList) => {
   const selectAtom = useSelection((state) => state.selectAtom);
+  const deselect = useSelection((state) => state.deselect);
+
   return (
     <WidgetWrapper name="모든 요소">
       <ol className={cx("AtomList")}>
@@ -223,7 +225,11 @@ const AtomList = ({ page, selectedAtom }: PropList) => {
             })}
             onClick={(e) => {
               e.preventDefault();
-              selectAtom(atom);
+              if (selectedAtom && selectedAtom.id === atom.id) {
+                deselect();
+              } else {
+                selectAtom(atom);
+              }
             }}
             onMouseDown={onPressListedAtom(atom)}
           >
