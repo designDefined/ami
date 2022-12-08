@@ -41,7 +41,7 @@ type IAtomModifiableNumberAttribute =
   | "placedY";
 type IAtomModifiableStringAttribute = "content" | "fontColor";
 
-const updateAtomInfo = (atom: IAtom) => {
+export const updateAtomInfo = (atom: IAtom) => {
   projectStore.getState().manipulateAtom(atom);
   selectStore.getState().selectAtom(atom);
 };

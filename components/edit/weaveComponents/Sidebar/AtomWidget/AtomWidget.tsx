@@ -8,7 +8,10 @@ import {
   onChangeAtomNumberAttribute,
   onChangeAtomStringAttribute,
   onPressListedAtom,
+  updateAtomInfo,
 } from "../../../handlers/weaveEventHandler";
+import { useText } from "../../../../../store/text";
+import { useEffect } from "react";
 const cx = classNames.bind(styles);
 
 interface PropList {
@@ -21,6 +24,30 @@ interface PropInfo {
 interface PropWidget {
   page: IPage;
 }
+
+const AtomContent = ({ selectedAtom: atom }: { selectedAtom: IAtom }) => {
+  const { input, setInput } = useText((state) => state);
+  useEffect(() => {
+    setInput(atom.content);
+  }, [atom]);
+
+  return (
+    <textarea
+      className={cx("inputContent")}
+      value={input}
+      onChange={(e) => setInput(e.target.value)}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          updateAtomInfo({ ...atom, content: input });
+        }
+      }}
+      onBlur={() => {
+        updateAtomInfo({ ...atom, content: input });
+      }}
+    />
+  );
+};
 
 const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
   if (!atom) {
@@ -36,7 +63,7 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
       <div className={cx("AtomInfo")}>
         <div className={cx("section")}>
           <div className={cx("sectionLabel")}>내용</div>
-          <textarea></textarea>
+          <AtomContent selectedAtom={atom} />
         </div>
         <div className={cx("section")}>
           <div className={cx("sectionLabel")}>크기</div>

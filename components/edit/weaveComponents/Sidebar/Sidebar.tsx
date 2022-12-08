@@ -21,9 +21,9 @@ const Sidebar = ({ pages }: Props) => {
   return (
     <div
       className={cx("wrapper", { isClosed: sidebarStatus !== "open" })}
-      onClick={(e) => e.stopPropagation()}
-      onMouseUp={(e) => e.stopPropagation()}
-      onMouseDown={(e) => e.stopPropagation()}
+      //onClick={(e) => e.stopPropagation()}
+      //onMouseUp={(e) => e.stopPropagation()}
+      //onMouseDown={(e) => e.stopPropagation()}
     >
       <button
         className={cx("handle")}
@@ -42,8 +42,10 @@ const Sidebar = ({ pages }: Props) => {
           isReversed={true}
         />
       </button>
-      <PageNavigator pages={pages} />
-      {pageStatus < 0 ? <div /> : <AtomWidget page={pages[pageStatus]} />}
+      <div className={cx("container")}>
+        <PageNavigator pages={pages} />
+        {pageStatus < 0 ? <div /> : <AtomWidget page={pages[pageStatus]} />}
+      </div>
     </div>
   );
 };

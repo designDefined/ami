@@ -1,4 +1,5 @@
 @use "./flexbox";
+@use "./color";
 
 @mixin textButton {
   @include flexbox.centered;
@@ -19,4 +20,26 @@
   font: inherit;
   padding: 0 5px;
   box-shadow: 1px 1px 3px transparentize(black, 0.7) inset;
+}
+
+@mixin scrollbar($size: 5px) {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    width: 0;
+  }
+  &::-webkit-scrollbar {
+    position: absolute;
+    width: $size;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: color.$gray9;
+    transition: 0.5s ease;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: color.$gray3;
+    }
+  }
 }
