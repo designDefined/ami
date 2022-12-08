@@ -69,7 +69,7 @@ export interface IPage extends IWithId<string>, IPlaceable {
   //edge
   edgeColor: string;
   //style
-  background: string;
+  backgroundColor: string;
   offsetHeight: number;
 }
 

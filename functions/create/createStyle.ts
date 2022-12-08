@@ -1,5 +1,12 @@
-import { IAtom } from "../../types/base";
+import { IAtom, IPage } from "../../types/base";
 import { CSSProperties } from "react";
+import { size } from "lodash";
+
+const page = ({ offsetHeight, backgroundColor }: IPage): CSSProperties => ({
+  //size
+  height: offsetHeight,
+  background: backgroundColor,
+});
 
 const atom = (
   {
@@ -50,6 +57,6 @@ const atom = (
   return { ...position, ...basics };
 };
 
-const createStyle = { atom };
+const createStyle = { page, atom };
 
 export default createStyle;

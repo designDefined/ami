@@ -1,7 +1,7 @@
 import styles from "./DragArea.module.scss";
 import classNames from "classnames/bind";
 import { IAtom } from "../../../../types/base";
-import { CSSProperties, useEffect, useMemo } from "react";
+import { CSSProperties, useMemo } from "react";
 import createStyle from "../../../../functions/create/createStyle";
 
 const cx = classNames.bind(styles);

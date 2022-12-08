@@ -29,8 +29,8 @@ const page = (projectId: number): IPage => {
     atoms: [atom(id)],
     //edge
     edgeColor: "#bbbbbb",
-    background: "#ffffff",
-    offsetHeight: 937,
+    backgroundColor: "transparent",
+    offsetHeight: 907,
     isPlaced: "notPlaced",
     placedX: -1,
     placedY: -1,

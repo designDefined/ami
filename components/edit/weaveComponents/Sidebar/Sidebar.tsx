@@ -6,6 +6,8 @@ import PageNavigator from "./PageNavigator/PageNavigator";
 import AtomWidget from "./AtomWidget/AtomWidget";
 import { useWeaveSidebarLayout } from "../../../../store/layout/weaveSidebar";
 import LineToggleButton from "../../../common/Buttons/LineToggleButton/LineToggleButton";
+import PageWidgets from "./PageWidget/PageWidget";
+import PageWidget from "./PageWidget/PageWidget";
 
 const cx = classNames.bind(styles);
 
@@ -44,7 +46,11 @@ const Sidebar = ({ pages }: Props) => {
       </button>
       <div className={cx("container")}>
         <PageNavigator pages={pages} />
-        {pageStatus < 0 ? <div /> : <AtomWidget page={pages[pageStatus]} />}
+        {pageStatus < 0 ? (
+          <PageWidget pages={pages} />
+        ) : (
+          <AtomWidget page={pages[pageStatus]} />
+        )}
       </div>
     </div>
   );

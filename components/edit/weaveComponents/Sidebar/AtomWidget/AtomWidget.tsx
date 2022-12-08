@@ -66,7 +66,7 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
           <AtomContent selectedAtom={atom} />
         </div>
         <div className={cx("section")}>
-          <div className={cx("sectionLabel")}>크기</div>
+          <div className={cx("sectionLabel")}>위치</div>
           <div className={cx("sectionHorizontal")}>
             <div className={cx("attribute")}>
               <div className={cx("attributeLabel")}>X:</div>
@@ -253,7 +253,7 @@ const AtomWidget = ({ page }: PropWidget) => {
     <>
       <AtomInfo selectedAtom={type == "atom" ? atom : false} />
       <AtomList page={page} selectedAtom={type == "atom" ? atom : false} />
-      <PageInfo page={page} />
+      <PageInfo selectedPage={page} />
     </>
   );
 };

@@ -5,7 +5,6 @@ import Sidebar from "./Sidebar/Sidebar";
 import Page from "./Page/Page";
 import PageMap from "./Page/PageMap";
 import { MainDragArea } from "./DragArea/DragArea";
-import { useCursor } from "../../../store/cursor";
 import { onDrag, onReleaseAtom } from "../handlers/weaveEventHandler";
 
 const cx = classNames.bind(styles);

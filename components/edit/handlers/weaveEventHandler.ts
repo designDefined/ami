@@ -2,7 +2,7 @@ import { useProject } from "../../../store/project";
 import { toast } from "react-toastify";
 import { useSelection } from "../../../store/selection";
 import { useCursor } from "../../../store/cursor";
-import { IAtom } from "../../../types/base";
+import { IAtom, IPage } from "../../../types/base";
 import { useWeaveSidebarLayout } from "../../../store/layout/weaveSidebar";
 import { magnetAtom } from "../../../functions/drag/weaveDragHelper";
 
@@ -33,6 +33,36 @@ export const onChangePage =
       toast.error("wrong page number");
     }
   };
+type IPageModifiableNumberAttribute = "offsetHeight";
+type IPageModifiableStringAttribute = "pageName" | "backgroundColor";
+export const updatePageInfo = (page: IPage) => {
+  projectStore.getState().manipulatePage(page);
+};
+export const onChangePageNumberAttribute =
+  (
+    attribute: IPageModifiableNumberAttribute,
+    page: IPage,
+  ): React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  > =>
+  (e) =>
+    updatePageInfo({
+      ...page,
+      [attribute]: passStringIfNumber(e.target.value, page[attribute]),
+    });
+
+export const onChangePageStringAttribute =
+  (
+    attribute: IPageModifiableStringAttribute,
+    page: IPage,
+  ): React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  > =>
+  (e) =>
+    updatePageInfo({
+      ...page,
+      [attribute]: e.target.value,
+    });
 
 /******************** Atom ********************/
 type IAtomModifiableNumberAttribute =
@@ -86,8 +116,8 @@ export const onPressListedAtom =
     e.preventDefault();
 
     if (!isDragging()) {
-      selectStore.getState().selectAtom(atom);
       if (atom.isPlaced === "notPlaced") {
+        selectStore.getState().selectAtom(atom);
         const { clientX, clientY } = e;
         if (weaveSidebarLayout.getState().status === "open") {
           weaveSidebarLayout.getState().setStatus("temporal");
