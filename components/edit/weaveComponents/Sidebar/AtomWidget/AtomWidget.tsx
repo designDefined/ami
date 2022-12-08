@@ -143,8 +143,8 @@ const AtomInfo = ({ selectedAtom: atom }: PropInfo) => {
                 onChange={onChangeAtomStringAttribute("textAlign", atom)}
               >
                 <option value="justify">양쪽</option>
-                <option value="left">좌측</option>
                 <option value="center">중앙</option>
+                <option value="left">좌측</option>
                 <option value="right">우측</option>
               </select>
             </div>
@@ -201,6 +201,9 @@ const translateType = (type: IMarkDownType): string => {
   }
 };
 
+const cutContent = (content: string): string =>
+  content.length > 12 ? content.slice(0, 12) + "..." : content;
+
 const AtomList = ({ page, selectedAtom }: PropList) => {
   const selectAtom = useSelection((state) => state.selectAtom);
   return (
@@ -225,7 +228,9 @@ const AtomList = ({ page, selectedAtom }: PropList) => {
             onMouseDown={onPressListedAtom(atom)}
           >
             <span className={cx("itemSpan", "index")}>{index + 1}</span>
-            <span className={cx("itemSpan", "content")}>{atom.content}</span>
+            <span className={cx("itemSpan", "content")}>
+              {cutContent(atom.content)}
+            </span>
             <span className={cx("itemSpan", "type")}>
               {translateType(atom.markdownType)}
             </span>
