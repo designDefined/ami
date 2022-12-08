@@ -7,6 +7,9 @@
   overflow: hidden;
   z-index: 99;
 }
+.noDrag {
+  display: none;
+}
 
 .DragTarget {
   position: absolute;
@@ -22,5 +25,20 @@
   &.textAtom {
     font-size: 24px;
     border: 1px solid transparentize(color.$green1, 0.5);
+  }
+}
+
+.guide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: magenta;
+  &.vertical {
+    width: 1px;
+    height: 100%;
+  }
+  &.horizontal {
+    height: 1px;
+    width: 100%;
   }
 }

@@ -4,6 +4,7 @@ import { useSelection } from "../../../store/selection";
 import { useCursor } from "../../../store/cursor";
 import { IAtom } from "../../../types/base";
 import { useWeaveSidebarLayout } from "../../../store/layout/weaveSidebar";
+import { magnetAtom } from "../../../functions/drag/weaveDragHelper";
 
 /******************** Stores ********************/
 
@@ -134,8 +135,14 @@ export const onPressPlacedAtom =
 export const onDrag = (): React.MouseEventHandler<HTMLDivElement> => (e) => {
   e.preventDefault();
   if (isDragging()) {
-    const { xDiff, yDiff } = cursorStore.getState();
-    cursorStore.getState().updateCursor(e.clientX - xDiff, e.clientY - yDiff);
+    const { current, xDiff, yDiff } = cursorStore.getState();
+    if (current.type === "atom") {
+      const { x, y } = magnetAtom(
+        { x: e.clientX - xDiff, y: e.clientY - yDiff },
+        current.data,
+      );
+      cursorStore.getState().updateCursor(x, y);
+    }
   }
 };
 
@@ -146,15 +153,14 @@ export const onReleaseAtom =
       weaveSidebarLayout.getState().setStatus("open");
     }
     if (isDragging()) {
-      const { clientX, clientY } = e;
-      const { xDiff, yDiff, current } = cursorStore.getState();
+      const { current, x, y } = cursorStore.getState();
       const { type, data } = current;
       if (type === "atom") {
         const newAtom: IAtom = {
           ...data,
           isPlaced: "placed",
-          placedX: clientX - xDiff,
-          placedY: clientY - yDiff,
+          placedX: x,
+          placedY: y,
         };
         projectStore.getState().manipulateAtom(newAtom);
         selectStore.getState().selectAtom(newAtom);
