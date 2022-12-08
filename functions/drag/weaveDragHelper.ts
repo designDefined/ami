@@ -3,7 +3,7 @@ import { useProject } from "../../store/project";
 import { useDragGuide } from "../../store/dragGuide";
 
 const pageCenter = 960;
-const sensitivity = 10;
+const sensitivity = 6;
 
 const projectStore = useProject;
 const dragGuideStore = useDragGuide;
