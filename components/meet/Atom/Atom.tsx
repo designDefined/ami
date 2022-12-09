@@ -1,11 +1,10 @@
 import { IAtom } from "../../../types/base";
 import styles from "./Atom.module.scss";
 import classNames from "classnames/bind";
-import { CSSProperties, useCallback, useMemo } from "react";
+import { CSSProperties, useCallback, useEffect, useMemo, useRef } from "react";
 import createStyle from "../../../functions/create/createStyle";
 import { IAtomInteraction } from "../../../types/interaction";
 import { useRouter } from "next/router";
-
 const cx = classNames.bind(styles);
 
 interface Props {
@@ -24,6 +23,7 @@ const interactionsToClass = (interactions: IAtomInteraction[]) => {
 
 const Atom = ({ atom }: Props) => {
   const router = useRouter();
+  const ref = useRef<HTMLDivElement>(null);
   const atomStyle = useMemo(
     (): CSSProperties => createStyle.atom(atom),
     [atom],
@@ -42,12 +42,32 @@ const Atom = ({ atom }: Props) => {
         }
       }
       return () => null;
-    }, [atom]);
+    }, [atom.interactions]);
+  useEffect(() => {
+    if (ref.current) {
+      const observer = new IntersectionObserver(
+        ([entry], observer) => {
+          if (entry.isIntersecting) {
+            console.log(entry);
+            entry.target.classList.add("IO");
+          }
+        },
+        {
+          threshold: 1.0,
+          rootMargin: "20px",
+        },
+      );
+      observer.observe(ref.current);
+      return () => observer.disconnect();
+    }
+  }, [ref.current]);
+
   return (
     <div
       className={cx("Atom", ...interactionsToClass(atom.interactions))}
       style={atomStyle}
       onClick={interactionToClickEvent()}
+      ref={ref}
     >
       {atom.content}
     </div>
