@@ -310,14 +310,15 @@ export const onPressPlacedAtom =
     }
     if (!isDragging()) {
       selectStore.getState().selectAtom(atom);
-      const { clientX, clientY, nativeEvent } = e;
+      const { placedX, placedY } = atom;
+      const { nativeEvent } = e;
       const { offsetX, offsetY } = nativeEvent;
       projectStore
         .getState()
         .manipulateAtom({ ...atom, isPlaced: "nowPlacing" });
       cursorStore.getState().startDragAtom(
         atom,
-        { initX: clientX - offsetX - 1, initY: clientY - offsetY - 1 },
+        { initX: placedX, initY: placedY },
         {
           diffX: offsetX + 1,
           diffY: offsetY + 1,
@@ -353,11 +354,12 @@ export const onPressPlacedPage =
 
 export const onDrag = (): React.MouseEventHandler<HTMLDivElement> => (e) => {
   e.preventDefault();
+
   if (isDragging()) {
     const { current, xDiff, yDiff } = cursorStore.getState();
     if (current.type === "atom") {
       const { x, y } = magnetAtom(
-        { x: e.clientX - xDiff, y: e.clientY - yDiff },
+        { x: e.nativeEvent.offsetX - xDiff, y: e.nativeEvent.offsetY - yDiff },
         current.data,
       );
       cursorStore.getState().updateCursor(x, y);

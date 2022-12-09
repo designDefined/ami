@@ -14,18 +14,13 @@ const Weave = () => {
   const pageStatus = useProject((state) => state.pageStatus);
 
   return (
-    <section
-      className={cx("Weave")}
-      onMouseMove={onDrag()}
-      onMouseUp={onRelease()}
-    >
+    <section className={cx("Weave")}>
       <Sidebar pages={pages} />
       {pageStatus < 0 ? (
         <PageMap pages={pages} />
       ) : (
         <Page page={pages[pageStatus]} />
       )}
-      <MainDragArea />
     </section>
   );
 };

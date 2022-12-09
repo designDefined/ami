@@ -4,7 +4,11 @@ import classNames from "classnames/bind";
 import { checkSelectedPage } from "../../../../store/selection";
 import { CSSProperties, useMemo } from "react";
 import createStyle from "../../../../functions/create/createStyle";
-import { onPressPlacedPage } from "../../handlers/weaveEventHandler";
+import {
+  onDrag,
+  onPressPlacedPage,
+  onRelease,
+} from "../../handlers/weaveEventHandler";
 import { includes } from "lodash";
 
 const cx = classNames.bind(styles);
@@ -62,7 +66,11 @@ const edgeStyle = (page1: IPage, page2: IPage) => {
 
 const PageMap = ({ pages }: Props) => {
   return (
-    <div className={cx("PageMap")}>
+    <div
+      className={cx("PageMap")}
+      onMouseMove={onDrag()}
+      onMouseUp={onRelease()}
+    >
       {pages
         .filter((page) => page.isPlaced === "placed")
         .map((source) =>

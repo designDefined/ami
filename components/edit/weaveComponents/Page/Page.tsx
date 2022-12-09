@@ -5,6 +5,8 @@ import Atom from "../Atom/Atom";
 import { checkSelectedAtom, useSelection } from "../../../../store/selection";
 import { CSSProperties, useMemo } from "react";
 import createStyle from "../../../../functions/create/createStyle";
+import { onDrag, onRelease } from "../../handlers/weaveEventHandler";
+import { MainDragArea } from "../DragArea/DragArea";
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +21,12 @@ const Page = ({ page }: Props) => {
     [page],
   );
   return (
-    <div className={cx("Page")} style={pageStyle}>
+    <div
+      className={cx("Page")}
+      style={pageStyle}
+      onMouseMove={onDrag()}
+      onMouseUp={onRelease()}
+    >
       {page.atoms
         .filter((atom) => atom.isPlaced === "placed")
         .map((atom) => (
@@ -29,6 +36,7 @@ const Page = ({ page }: Props) => {
             isSelected={checkSelectedAtom(current, atom)}
           />
         ))}
+      <MainDragArea />
     </div>
   );
 };
