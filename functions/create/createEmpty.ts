@@ -74,6 +74,28 @@ const atom = (parentId: string, depth: number = 0): IAtom => ({
   interactions: [],
 });
 
-const createEmpty = { token, user, project, page, atom };
+const imageAtom = (parentId: string, depth: number = 0): IAtom => ({
+  id: nanoid(),
+  parentPageId: parentId,
+  //markdown
+  type: "image",
+  markdownType: "p",
+  markdownDepth: depth,
+  //content
+  content: "",
+  //position
+  isPlaced: "notPlaced",
+  placedX: -1,
+  placedY: -1,
+  //size
+  offsetWidth: 400,
+  offsetPadding: 0,
+  //layer
+  layer: 1,
+  //interaction
+  interactions: [],
+});
+
+const createEmpty = { token, user, project, page, atom, imageAtom };
 
 export default createEmpty;

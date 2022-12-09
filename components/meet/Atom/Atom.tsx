@@ -5,6 +5,11 @@ import { CSSProperties, useCallback, useEffect, useMemo, useRef } from "react";
 import createStyle from "../../../functions/create/createStyle";
 import { IAtomInteraction } from "../../../types/interaction";
 import { useRouter } from "next/router";
+import imageSample, {
+  imageSampleList,
+} from "../../../public/assets/images/images";
+import { onPressPlacedAtom } from "../../edit/handlers/weaveEventHandler";
+import Image from "next/image";
 const cx = classNames.bind(styles);
 
 interface Props {
@@ -61,6 +66,26 @@ const Atom = ({ atom }: Props) => {
       return () => observer.disconnect();
     }
   }, [ref.current]);
+
+  if (atom.type === "image") {
+    const source = atom.content as typeof imageSampleList[number];
+    return (
+      <div
+        className={cx("Atom", ...interactionsToClass(atom.interactions))}
+        style={atomStyle}
+        onClick={interactionToClickEvent()}
+        ref={ref}
+      >
+        {
+          <Image
+            src={imageSample[source]}
+            alt={atom.content}
+            width={atom.offsetWidth}
+          />
+        }
+      </div>
+    );
+  }
 
   return (
     <div

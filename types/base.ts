@@ -34,18 +34,21 @@ export type IAtomType = "text" | "image" | "button";
 export type IMarkDownType = "h1" | "h2" | "h3" | "h4" | "p" | "uli" | "oli";
 export interface ICommonAtom extends IWithId<string> {
   type: IAtomType;
+  markdownType: IMarkDownType;
+  markdownDepth: number;
   parentPageId: string;
+  content: string;
+  //interactions
   interactions: IAtomInteraction[];
+  //size
+  offsetWidth: number;
+  offsetPadding: number;
+  //layer
+  layer: number;
 }
 export type ITextAlign = "justify" | "left" | "right" | "center";
 export interface ITextAtom extends ICommonAtom, IPlaceable {
   type: "text";
-  markdownType: IMarkDownType;
-  markdownDepth: number;
-  content: string;
-  //size
-  offsetWidth: number;
-  offsetPadding: number;
   //font
   fontFamily: string;
   fontSize: number;
@@ -58,10 +61,12 @@ export interface ITextAtom extends ICommonAtom, IPlaceable {
   borderColor: string;
   borderWidth: number;
   borderRadius: number;
-  //layer
-  layer: number;
 }
-export type IAtom = ITextAtom;
+export interface IImageAtom extends ICommonAtom, IPlaceable {
+  type: "image";
+}
+
+export type IAtom = ITextAtom | IImageAtom;
 
 /******************** Page ********************/
 export interface IPage extends IWithId<string>, IPlaceable {

@@ -63,6 +63,19 @@
     background: color.$gray5;
     color: color.$gray10;
     height: 26px;
+    &.add {
+      @include material.shadow(2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: color.$gray9;
+      margin-top: 10px;
+      cursor: pointer;
+      color: color.$gray3;
+      &:hover {
+        @include material.shadow(1);
+      }
+    }
   }
   .item {
     position: relative;

@@ -7,6 +7,7 @@ import { useWeaveSidebarLayout } from "../../../store/layout/weaveSidebar";
 import { magnetAtom } from "../../../functions/drag/weaveDragHelper";
 import { IAtomInteraction } from "../../../types/interaction";
 import { ChangeEventHandler } from "react";
+import createEmpty from "../../../functions/create/createEmpty";
 
 /******************** Stores ********************/
 
@@ -247,6 +248,12 @@ export const onChangeClickInteraction = (
           });
         }
       };
+
+export const onAddImageAtom =
+  (parentId: string): React.MouseEventHandler<HTMLDivElement> =>
+  (e) => {
+    projectStore.getState().manipulateAtom(createEmpty.imageAtom(parentId));
+  };
 
 /******************** Drag Atom ********************/
 export const onPressListedAtom =

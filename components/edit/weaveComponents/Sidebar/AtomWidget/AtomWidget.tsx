@@ -7,6 +7,7 @@ import WidgetWrapper from "../Widget";
 import {
   getClickInteraction,
   getClickInteractionValue,
+  onAddImageAtom,
   onChangeAtomNumberAttribute,
   onChangeAtomStringAttribute,
   onChangeClickInteraction,
@@ -15,6 +16,7 @@ import {
 } from "../../../handlers/weaveEventHandler";
 import { useText } from "../../../../../store/text";
 import { useEffect } from "react";
+import { imageSampleList } from "../../../../../public/assets/images/images";
 const cx = classNames.bind(styles);
 
 interface PropList {
@@ -61,9 +63,62 @@ const AtomInfo = ({ selectedAtom: atom, page }: PropInfo) => {
       </WidgetWrapper>
     );
   }
+  if (atom.type === "image") {
+    return (
+      <WidgetWrapper name={"상세"}>
+        <div className={cx("AtomInfo")}>
+          <div className={cx("section")}>
+            <div className={cx("sectionLabel")}>이미지</div>
+            <select
+              className={cx("attributeSelect")}
+              value={atom.content}
+              onChange={onChangeAtomStringAttribute("content", atom)}
+            >
+              <option value="no image">없음</option>
+              {imageSampleList.map((imageName) => (
+                <option key={imageName} value={imageName}>
+                  {imageName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={cx("section")}>
+            <div className={cx("sectionLabel")}>위치</div>
+            <div className={cx("sectionHorizontal")}>
+              <div className={cx("attribute")}>
+                <div className={cx("attributeLabel")}>X:</div>
+                <input
+                  className={cx("attributeInput")}
+                  type="text"
+                  value={atom.placedX}
+                  onChange={onChangeAtomNumberAttribute("placedX", atom)}
+                />
+              </div>
+              <div className={cx("attribute")}>
+                <div className={cx("attributeLabel")}>Y:</div>
+                <input
+                  className={cx("attributeInput")}
+                  type="text"
+                  value={atom.placedY}
+                  onChange={onChangeAtomNumberAttribute("placedY", atom)}
+                />
+              </div>
+              <div className={cx("attribute")}>
+                <div className={cx("attributeLabel")}>넓이:</div>
+                <input
+                  className={cx("attributeInput")}
+                  type="text"
+                  value={atom.offsetWidth}
+                  onChange={onChangeAtomNumberAttribute("offsetWidth", atom)}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </WidgetWrapper>
+    );
+  }
 
-  // @ts-ignore
-  // @ts-ignore
   return (
     <WidgetWrapper name={"상세"}>
       <div className={cx("AtomInfo")}>
@@ -301,6 +356,12 @@ const AtomList = ({ page, selectedAtom }: PropList) => {
             </span>
           </li>
         ))}
+        <div
+          className={cx("itemLabel", "add")}
+          onClick={onAddImageAtom(page.id)}
+        >
+          이미지 추가
+        </div>
       </ol>
     </WidgetWrapper>
   );

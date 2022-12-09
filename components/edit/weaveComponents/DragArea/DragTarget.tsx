@@ -3,6 +3,11 @@ import classNames from "classnames/bind";
 import { IAtom, IPage } from "../../../../types/base";
 import { CSSProperties, useMemo } from "react";
 import createStyle from "../../../../functions/create/createStyle";
+import imageSample, {
+  imageSampleList,
+} from "../../../../public/assets/images/images";
+import { onPressPlacedAtom } from "../../handlers/weaveEventHandler";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -18,12 +23,26 @@ interface PageSymbolProps {
 }
 
 export const TextAtomDragTarget = ({ x, y, atom }: TextAtomProps) => {
-  const { content } = atom;
+  const { type, content, offsetWidth } = atom;
   const atomStyle = useMemo(
     (): CSSProperties => createStyle.atom(atom, { is: true, x, y }),
     [atom, x, y],
   );
-
+  if (type === "image") {
+    const source = content as typeof imageSampleList[number];
+    return (
+      <div className={cx("Atom")} style={atomStyle}>
+        {
+          <Image
+            src={imageSample[source]}
+            alt={content}
+            width={offsetWidth}
+            style={{ opacity: 0.5 }}
+          />
+        }
+      </div>
+    );
+  }
   return (
     <div className={cx("DragTarget", "textAtom")} style={atomStyle}>
       {content}
