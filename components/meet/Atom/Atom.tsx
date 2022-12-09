@@ -22,6 +22,9 @@ const interactionsToClass = (interactions: IAtomInteraction[]) => {
     if (interactions[i].interactionType === "click") {
       result.push("clickable");
     }
+    if (interactions[i].interactionType === "scroll") {
+      result.push("invisible");
+    }
   }
   return result;
 };
@@ -53,19 +56,28 @@ const Atom = ({ atom }: Props) => {
       const observer = new IntersectionObserver(
         ([entry], observer) => {
           if (entry.isIntersecting) {
-            console.log(entry);
-            entry.target.classList.add("IO");
+            //console.log(atom.interactions);
+
+            if (
+              atom.interactions.findIndex(
+                (item) => item.interactionType === "scroll",
+              ) >= 0
+            ) {
+              console.log(atom.interactions);
+
+              entry.target.classList.add("IO");
+            }
           }
         },
         {
           threshold: 1.0,
-          rootMargin: "20px",
+          rootMargin: "-30px",
         },
       );
       observer.observe(ref.current);
       return () => observer.disconnect();
     }
-  }, [ref.current]);
+  }, [ref.current, atom.interactions]);
 
   if (atom.type === "image") {
     const source = atom.content as typeof imageSampleList[number];

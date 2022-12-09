@@ -176,6 +176,37 @@ const deleteInteraction = (
         (interaction) => interaction.interactionType !== input.interactionType,
       );
 
+export const onAddScroll =
+  (atom: IAtom): React.MouseEventHandler<HTMLButtonElement> =>
+  () => {
+    updateAtomInfo({
+      ...atom,
+      interactions: addInteraction(
+        {
+          interactionType: "scroll",
+          value: "fadeIO",
+        },
+        atom.interactions,
+        false,
+      ),
+    });
+  };
+export const onDeleteScroll =
+  (atom: IAtom): React.MouseEventHandler<HTMLButtonElement> =>
+  () => {
+    updateAtomInfo({
+      ...atom,
+      interactions: deleteInteraction(
+        {
+          interactionType: "scroll",
+          value: "fadeIO",
+        },
+        atom.interactions,
+        false,
+      ),
+    });
+  };
+
 export const getClickInteraction = (
   interactions: IAtomInteraction[],
 ): { interactionType: "click"; to: string; external: boolean } | false => {
