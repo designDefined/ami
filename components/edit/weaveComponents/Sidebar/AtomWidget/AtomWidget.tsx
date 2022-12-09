@@ -5,8 +5,11 @@ import { PageConnection, PageInfo } from "../PageWidget/PageWidget";
 import { useSelection } from "../../../../../store/selection";
 import WidgetWrapper from "../Widget";
 import {
+  getClickInteraction,
+  getClickInteractionValue,
   onChangeAtomNumberAttribute,
   onChangeAtomStringAttribute,
+  onChangeClickInteraction,
   onPressListedAtom,
   updateAtomInfo,
 } from "../../../handlers/weaveEventHandler";
@@ -59,6 +62,8 @@ const AtomInfo = ({ selectedAtom: atom, page }: PropInfo) => {
     );
   }
 
+  // @ts-ignore
+  // @ts-ignore
   return (
     <WidgetWrapper name={"상세"}>
       <div className={cx("AtomInfo")}>
@@ -186,14 +191,22 @@ const AtomInfo = ({ selectedAtom: atom, page }: PropInfo) => {
           <div className={cx("sectionLabel")}>클릭</div>
 
           <div className={cx("attribute")}>
-            <div className={cx("attributeLabel")}>페이지:</div>
+            <div className={cx("attributeLabel")}>이동:</div>
             <select
               className={cx("attributeSelect")}
-              value={atom.textAlign}
-              onChange={onChangeAtomStringAttribute("textAlign", atom)}
+              value={getClickInteractionValue(atom.interactions)}
+              onChange={onChangeClickInteraction(atom, false)}
             >
+              <option value="clear">없음</option>
               <PageConnection selectedPage={page} modifiable={false} />
+              <option value="external">외부 링크</option>
             </select>
+            {getClickInteraction(atom.interactions) && (
+              <input
+                value={getClickInteraction(atom.interactions).to}
+                onChange={onChangeClickInteraction(atom, true)}
+              />
+            )}
           </div>
         </div>
         <div className={cx("section")}>

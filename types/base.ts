@@ -1,4 +1,5 @@
 /******************** Basic ********************/
+import { IAtomInteraction } from "./interaction";
 
 export type IIdentifier = string | number;
 
@@ -34,6 +35,7 @@ export type IMarkDownType = "h1" | "h2" | "h3" | "h4" | "p" | "uli" | "oli";
 export interface ICommonAtom extends IWithId<string> {
   type: IAtomType;
   parentPageId: string;
+  interactions: IAtomInteraction[];
 }
 export type ITextAlign = "justify" | "left" | "right" | "center";
 export interface ITextAtom extends ICommonAtom, IPlaceable {

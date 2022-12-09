@@ -59,7 +59,7 @@ const Meet: NextPage = () => {
         }
       }
     }
-  }, [router.query.project_id]);
+  }, [router.query.project_id, router.query.page_id]);
 
   return (
     <article className={cx("Meet")}>

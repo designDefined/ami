@@ -5,6 +5,8 @@ import { useCursor } from "../../../store/cursor";
 import { IAtom, IPage } from "../../../types/base";
 import { useWeaveSidebarLayout } from "../../../store/layout/weaveSidebar";
 import { magnetAtom } from "../../../functions/drag/weaveDragHelper";
+import { IAtomInteraction } from "../../../types/interaction";
+import { ChangeEventHandler } from "react";
 
 /******************** Stores ********************/
 
@@ -148,6 +150,103 @@ export const onChangeAtomNumberAttribute =
       ...atom,
       [attribute]: passStringIfNumber(e.target.value, atom[attribute]),
     });
+const addInteraction = (
+  input: IAtomInteraction,
+  interactions: IAtomInteraction[],
+  multiple: boolean,
+) =>
+  multiple
+    ? [...interactions, input]
+    : [
+        ...interactions.filter(
+          (interaction) =>
+            interaction.interactionType !== input.interactionType,
+        ),
+        input,
+      ];
+const deleteInteraction = (
+  input: IAtomInteraction,
+  interactions: IAtomInteraction[],
+  strict: boolean,
+) =>
+  strict
+    ? interactions.filter((interaction) => interaction !== input)
+    : interactions.filter(
+        (interaction) => interaction.interactionType !== input.interactionType,
+      );
+
+export const getClickInteraction = (
+  interactions: IAtomInteraction[],
+): { interactionType: "click"; to: string; external: boolean } | false => {
+  const target = interactions.find((item) => item.interactionType === "click");
+  if (target && target.interactionType === "click" && target.external) {
+    return target;
+  } else {
+    return false;
+  }
+};
+
+export const getClickInteractionValue = (
+  interactions: IAtomInteraction[],
+): string => {
+  const target = interactions.find((item) => item.interactionType === "click");
+  if (target && target.interactionType === "click") {
+    if (target.external) {
+      return "external";
+    } else {
+      return target.to;
+    }
+  } else {
+    return "clear";
+  }
+};
+
+export const onChangeClickInteraction = (
+  atom: IAtom,
+  isPath: boolean,
+): React.ChangeEventHandler<HTMLSelectElement | HTMLInputElement> =>
+  isPath
+    ? (e) => {
+        updateAtomInfo({
+          ...atom,
+          interactions: addInteraction(
+            {
+              interactionType: "click",
+              to: e.target.value,
+              external: true,
+            },
+            atom.interactions,
+            false,
+          ),
+        });
+      }
+    : (e) => {
+        const input: IAtomInteraction = {
+          interactionType: "click",
+          to: e.target.value,
+          external: false,
+        };
+        if (e.target.value === "clear") {
+          updateAtomInfo({
+            ...atom,
+            interactions: deleteInteraction(input, atom.interactions, false),
+          });
+        } else if (e.target.value === "external") {
+          updateAtomInfo({
+            ...atom,
+            interactions: addInteraction(
+              { ...input, external: true },
+              atom.interactions,
+              false,
+            ),
+          });
+        } else {
+          updateAtomInfo({
+            ...atom,
+            interactions: addInteraction(input, atom.interactions, false),
+          });
+        }
+      };
 
 /******************** Drag Atom ********************/
 export const onPressListedAtom =

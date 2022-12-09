@@ -1,4 +1,11 @@
 .Atom {
   position: absolute;
   font-size: 24px;
+
+  &.clickable {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

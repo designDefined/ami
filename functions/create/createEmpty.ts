@@ -34,7 +34,6 @@ const page = (projectId: number): IPage => {
     //map
     symbolColor: "#bbbbbb",
     connectedTo: [],
-    connectedFrom: [],
     //style
     backgroundColor: "transparent",
     offsetHeight: 937,
@@ -71,6 +70,8 @@ const atom = (parentId: string, depth: number = 0): IAtom => ({
   borderRadius: 0,
   //layer
   layer: 5,
+  //interaction
+  interactions: [],
 });
 
 const createEmpty = { token, user, project, page, atom };

@@ -47,7 +47,11 @@ export const PageConnection = ({
         {connected
           .map((connection) => pages.find((page) => page.id === connection))
           .map((page) =>
-            page ? <option key={page.id}>{page.pageName}</option> : null,
+            page ? (
+              <option key={page.id} value={page.id}>
+                {page.pageName}
+              </option>
+            ) : null,
           )}
       </>
     );

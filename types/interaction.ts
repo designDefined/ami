@@ -8,3 +8,7 @@ export type ISelectableType =
   | { type: "page"; data: IPage }
   | { type: "project"; data: IProject }
   | { type: "none"; data: null };
+
+export type IAtomInteraction =
+  | { interactionType: "click"; to: string; external: boolean }
+  | { interactionType: "scroll"; value: "fadeIO" };
