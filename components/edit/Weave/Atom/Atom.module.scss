@@ -1,0 +1,30 @@
+@use "../../../../styles/color";
+@use "./styles/flexbox";
+
+.Atom {
+  position: absolute;
+
+  &.read {
+  }
+
+  &.edit {
+    cursor: pointer;
+    .cursorState {
+      @include flexbox.full;
+      &:hover {
+        border: 1px solid color.$gray9;
+      }
+      &.isSelected {
+        border: 1px solid color.$green1;
+      }
+    }
+  }
+  &.drag {
+    cursor: grabbing;
+    opacity: 0.5;
+    .cursorState {
+      @include flexbox.full;
+      border: 1px solid color.$green1;
+    }
+  }
+}

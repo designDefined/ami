@@ -1,4 +1,4 @@
-import { IAtom } from "../../types/base";
+import { IAtom } from "../../types/old/base";
 import styles from "./weaveComponents.module.scss";
 import classNames from "classnames/bind";
 import { useState } from "react";

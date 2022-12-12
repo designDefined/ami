@@ -1,4 +1,4 @@
-import { IAtom } from "../../../types/base";
+import { IAtom } from "../../../types/old/base";
 import styles from "./ReadComponents.module.scss";
 import classNames from "classnames/bind";
 

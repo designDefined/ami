@@ -1,4 +1,4 @@
-import { IAtom, IIdentifier, IPage } from "../../../types/base";
+import { IAtom, IIdentifier, IPage } from "../../../types/old/base";
 import classNames from "classnames/bind";
 import styles from "./MemoComponents.module.scss";
 import { AtomReader, AtomWriter } from "./Atom";

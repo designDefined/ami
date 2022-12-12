@@ -1,11 +1,15 @@
 import create from "zustand";
-import { IAtom, ILoadable, IPage, IProject, IUser } from "../types/base";
 import codes from "../types/codes";
+import { findAtomParent } from "./helper/manipulateWithParent";
+import { IProject } from "../types/project";
+import { ILoadable } from "../types/general";
+import { IPage } from "../types/page";
+import { IAtom } from "../types/atom";
+
 import {
   IManipulateWithIdConfig,
   manipulateWithId,
 } from "./helper/manipulateWithId";
-import { findAtomParent } from "./helper/manipulateWithParent";
 
 export type IEditStatus = "memo" | "weave" | "preview";
 

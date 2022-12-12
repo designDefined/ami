@@ -1,5 +1,5 @@
 import create from "zustand";
-import { IProjectSummary } from "../types/base";
+import { IProjectSummary } from "../types/old/base";
 
 interface IProjectListStore {
   topProjects: IProjectSummary[];

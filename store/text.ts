@@ -1,5 +1,5 @@
 import create from "zustand";
-import { IAtom, IIdentifier } from "../types/base";
+import { IAtom, IIdentifier } from "../types/old/base";
 
 interface ITextStore {
   identifier: IIdentifier | null;

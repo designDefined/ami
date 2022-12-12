@@ -2,10 +2,10 @@ import { useProject } from "../../../store/project";
 import { toast } from "react-toastify";
 import { useSelection } from "../../../store/selection";
 import { useCursor } from "../../../store/cursor";
-import { IAtom, IPage } from "../../../types/base";
+import { IAtom, IPage } from "../../../types/old/base";
 import { useWeaveSidebarLayout } from "../../../store/layout/weaveSidebar";
 import { magnetAtom } from "../../../functions/drag/weaveDragHelper";
-import { IAtomInteraction } from "../../../types/interaction";
+import { IAtomInteraction } from "../../../types/old/interaction";
 import { ChangeEventHandler } from "react";
 import createEmpty from "../../../functions/create/createEmpty";
 
@@ -336,32 +336,6 @@ export const onPressListedPage =
           },
         );
       }
-    }
-  };
-
-export const onPressPlacedAtom =
-  (atom: IAtom): React.MouseEventHandler<HTMLDivElement> =>
-  (e) => {
-    e.preventDefault();
-    if (weaveSidebarLayout.getState().status === "open") {
-      weaveSidebarLayout.getState().setStatus("temporal");
-    }
-    if (!isDragging()) {
-      selectStore.getState().selectAtom(atom);
-      const { placedX, placedY } = atom;
-      const { nativeEvent } = e;
-      const { offsetX, offsetY } = nativeEvent;
-      projectStore
-        .getState()
-        .manipulateAtom({ ...atom, isPlaced: "nowPlacing" });
-      cursorStore.getState().startDragAtom(
-        atom,
-        { initX: placedX, initY: placedY },
-        {
-          diffX: offsetX + 1,
-          diffY: offsetY + 1,
-        },
-      );
     }
   };
 

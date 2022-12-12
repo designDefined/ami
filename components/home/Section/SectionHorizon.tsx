@@ -1,7 +1,7 @@
 import styles from "./Section.module.scss";
 import classNames from "classnames/bind";
 import CardSmall from "../Card/CardSmall";
-import { IProjectSummary } from "../../../types/base";
+import { IProjectSummary } from "../../../types/old/base";
 import CardSmallButton from "../Card/CardSmallButton";
 
 const cx = classNames.bind(styles);

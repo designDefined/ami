@@ -1,4 +1,4 @@
-import { IPage } from "../../../types/base";
+import { IPage } from "../../../types/old/base";
 import styles from "./Page.module.scss";
 import classNames from "classnames/bind";
 import createStyle from "../../../functions/create/createStyle";

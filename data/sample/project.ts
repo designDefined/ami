@@ -1,4 +1,4 @@
-import { IProject } from "../../types/base";
+import { IProject } from "../../types/old/base";
 import { sampleUserData } from "./user";
 import { nanoid } from "nanoid";
 import createEmpty from "../../functions/create/createEmpty";

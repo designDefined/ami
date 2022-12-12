@@ -1,6 +1,6 @@
-import { IAtom } from "../../types/base";
 import { useProject } from "../../store/project";
 import { useDragGuide } from "../../store/dragGuide";
+import { IAtom } from "../../types/atom";
 
 const pageCenter = 960;
 const sensitivity = 6;

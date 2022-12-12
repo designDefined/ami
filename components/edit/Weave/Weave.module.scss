@@ -1,0 +1,8 @@
+@use "../../../styles/simple";
+.Weave {
+  @include simple.scrollbar(3px);
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}

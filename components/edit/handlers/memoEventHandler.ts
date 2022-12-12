@@ -1,4 +1,4 @@
-import { IAtom, IMarkDownType, IPage } from "../../../types/base";
+import { IAtom, IMarkDownType, IPage } from "../../../types/old/base";
 import createEmpty from "../../../functions/create/createEmpty";
 import { useProject } from "../../../store/project";
 import { useText } from "../../../store/text";

@@ -1,4 +1,5 @@
-import { IAtom, IPage } from "../../types/base";
+import { IPage } from "../../types/page";
+import { IAtom } from "../../types/atom";
 
 export const findAtomParent = (
   pages: IPage[],

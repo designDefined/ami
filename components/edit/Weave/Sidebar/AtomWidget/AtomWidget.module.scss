@@ -1,0 +1,26 @@
+@use "../../../../../styles/color";
+@use "../../../../../styles/simple";
+@use "../../../../../styles/weave/widgets";
+.AtomList {
+  @include widgets.listStyle;
+}
+.AtomInfo {
+  @include widgets.infoStyle;
+  .fontSize {
+    width: 40px !important;
+  }
+  .inputContent {
+    @include simple.scrollbar(4px);
+    width: 328px;
+    resize: none;
+    font: inherit;
+    padding: 4px;
+    color: color.$gray11;
+    background: color.$gray5;
+    &:focus {
+      outline: none;
+      color: color.$gray1;
+      background: color.$gray11;
+    }
+  }
+}

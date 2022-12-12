@@ -1,4 +1,4 @@
-import { IWithId } from "../../types/base";
+import { IIdentifiable } from "../../types/general";
 
 export interface IManipulateWithIdConfig {
   addContinuously: boolean;
@@ -14,7 +14,7 @@ export const defaultManipulateWithIdConfig = (
   isDelete: false,
 });
 
-export const manipulateWithId = <T extends IWithId<number | string>>(
+export const manipulateWithId = <T extends IIdentifiable<number | string>>(
   array: T[],
   target: T | T[],
   inputConfig?: Partial<IManipulateWithIdConfig>,

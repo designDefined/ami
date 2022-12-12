@@ -1,4 +1,4 @@
-import { IProjectSum } from "../../../types/base";
+import { IProjectSum } from "../../../types/old/base";
 import create from "zustand";
 import axios from "axios";
 import { isLocal } from "../../../localApi/environment";

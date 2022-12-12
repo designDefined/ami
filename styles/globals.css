@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Stylish&display=swap");
 
 @font-face {
   font-family: "MapoFlowerIsland";
@@ -16,6 +17,19 @@
     format("woff");
   font-weight: normal;
   font-style: normal;
+}
+@font-face {
+  font-family: "InkLipquid";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.noto-serif {
+  font-family: "Noto Serif KR", serif;
+}
+.stylish {
+  font-family: "Stylish", sans-serif;
 }
 
 html,

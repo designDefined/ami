@@ -1,4 +1,4 @@
-import { IProject, IProjectSummary } from "../../types/base";
+import { IProjectSummary } from "../../types/old/base";
 import {
   localEmptyData,
   LocalPost,
@@ -7,6 +7,7 @@ import {
   localWrongKey,
 } from "./types";
 import getSample, { sampleLength } from "../../data/sample/sample";
+import { IProject } from "../../types/project";
 
 const TOP_PROJECTS = "ami_top_projects" as const;
 const MY_PROJECTS = "ami_my_projects" as const;

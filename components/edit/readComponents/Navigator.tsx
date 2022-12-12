@@ -1,4 +1,4 @@
-import { IMarkDownType, IPage } from "../../../types/base";
+import { IMarkDownType, IPage } from "../../../types/old/base";
 import { toNumber } from "lodash";
 import { useState } from "react";
 import NavItem from "../../temporal/Navigator/NavItem";

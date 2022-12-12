@@ -1,6 +1,7 @@
 import create from "zustand";
-import { IData, ISelectableType } from "../types/interaction";
-import { IAtom, IPage } from "../types/base";
+import { ISelectableType } from "../types/old/interaction";
+import { IPage } from "../types/page";
+import { IAtom } from "../types/atom";
 
 type ICursorStatus = "wait" | "drag";
 

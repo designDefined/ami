@@ -1,6 +1,6 @@
 import styles from "./weaveComponents.module.scss";
 import classNames from "classnames/bind";
-import { IAtom, IPage, IProject } from "../../types/base";
+import { IAtom, IPage, IProject } from "../../types/old/base";
 import { useState } from "react";
 import { submitAtom, submitPage } from "./WeaveEventHandler";
 import AtomForm from "./AtomForm";

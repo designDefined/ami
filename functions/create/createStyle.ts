@@ -1,4 +1,4 @@
-import { IAtom, IPage } from "../../types/base";
+import { IAtom, IPage } from "../../types/old/base";
 import { CSSProperties } from "react";
 import { size } from "lodash";
 

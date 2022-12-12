@@ -4,7 +4,7 @@ import sample3 from "./3.json";
 import sample4 from "./4.json";
 import all from "./all.json";
 
-import { IProject, IProjectSum } from "../../../types/base";
+import { IProject, IProjectSum } from "../../../types/old/base";
 
 // @ts-ignore
 export const samples: IProject[] = [sample1, sample2, sample3, sample4];

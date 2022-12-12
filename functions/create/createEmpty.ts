@@ -1,4 +1,4 @@
-import { IAtom, IPage, IProject, IToken, IUser } from "../../types/base";
+import { IAtom, IPage, IProject, IToken, IUser } from "../../types/old/base";
 import { nanoid } from "nanoid";
 
 export const emptyId = "empty_id" as const;

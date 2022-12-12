@@ -2,7 +2,7 @@ import styles from "./weaveComponents.module.scss";
 import classNames from "classnames/bind";
 import { useState } from "react";
 import Pages from "./Pages";
-import { IPage, IProject } from "../../types/base";
+import { IPage, IProject } from "../../types/old/base";
 
 const cx = classNames.bind(styles);
 

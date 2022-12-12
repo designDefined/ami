@@ -1,6 +1,6 @@
 import styles from "./ReadComponents.module.scss";
 import classNames from "classnames/bind";
-import { IPage } from "../../../types/base";
+import { IPage } from "../../../types/old/base";
 import Atom from "./Atom";
 import Navigator from "./Navigator";
 import { useState } from "react";

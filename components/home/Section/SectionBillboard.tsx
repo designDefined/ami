@@ -3,7 +3,7 @@ import styles from "./Section.module.scss";
 import classNames from "classnames/bind";
 import CardSmall from "../Card/CardSmall";
 import ReactParallaxTilt from "react-parallax-tilt";
-import { IProjectSum } from "../../../types/base";
+import { IProjectSum } from "../../../types/old/base";
 
 interface Props {
   projectsList: IProjectSum[];

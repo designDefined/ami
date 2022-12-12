@@ -1,5 +1,5 @@
 import create from "zustand";
-import { IToken, IUser } from "../../../types/base";
+import { IToken, IUser } from "../../../types/old/base";
 import createEmpty from "../../../functions/create/createEmpty";
 
 export interface UserRequest {

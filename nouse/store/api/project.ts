@@ -1,4 +1,4 @@
-import { IAtom, IPage, IProject, IUser } from "../../../types/base";
+import { IAtom, IPage, IProject, IUser } from "../../../types/old/base";
 import {
   manipulateWithId,
   manipulateWithIds,

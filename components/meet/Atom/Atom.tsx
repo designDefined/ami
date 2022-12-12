@@ -1,9 +1,9 @@
-import { IAtom } from "../../../types/base";
+import { IAtom } from "../../../types/old/base";
 import styles from "./Atom.module.scss";
 import classNames from "classnames/bind";
 import { CSSProperties, useCallback, useEffect, useMemo, useRef } from "react";
 import createStyle from "../../../functions/create/createStyle";
-import { IAtomInteraction } from "../../../types/interaction";
+import { IAtomInteraction } from "../../../types/old/interaction";
 import { useRouter } from "next/router";
 import imageSample, {
   imageSampleList,

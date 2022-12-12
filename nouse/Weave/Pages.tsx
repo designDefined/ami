@@ -1,6 +1,6 @@
 import styles from "./weaveComponents.module.scss";
 import classNames from "classnames/bind";
-import { IPage, IProject } from "../../types/base";
+import { IPage, IProject } from "../../types/old/base";
 import { useState } from "react";
 import { submitPage } from "./WeaveEventHandler";
 

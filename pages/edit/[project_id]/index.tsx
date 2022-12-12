@@ -9,7 +9,7 @@ import Memo from "../../../components/edit/memoComponents/Memo";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
 import Saver from "../../../components/edit/Saver/Saver";
-import Weave from "../../../components/edit/weaveComponents/Weave";
+import Weave from "../../../components/edit/weave/Weave";
 
 const cx = classNames.bind(styles);
 

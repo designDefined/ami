@@ -1,6 +1,8 @@
 import create from "zustand";
-import { IAtom, IPage, IProject } from "../types/base";
-import { ISelectableType } from "../types/interaction";
+import { ISelectableType } from "../types/old/interaction";
+import { IProject } from "../types/project";
+import { IPage } from "../types/page";
+import { IAtom } from "../types/atom";
 
 interface ISelectionStore {
   current: ISelectableType;
@@ -28,9 +30,6 @@ export const checkSelectedPage = (target: IPage): boolean => {
 };
 
 export const checkSelectedAtom = (
-  current: ISelectableType,
+  { type, data }: ISelectableType,
   target: IAtom,
-): boolean => {
-  const { type, data } = current;
-  return type === "atom" ? data.id === target.id : false;
-};
+): boolean => (type === "atom" ? data.id === target.id : false);

@@ -2,7 +2,7 @@ import styles from "./Card.module.scss";
 import classNames from "classnames/bind";
 import ReactParallaxTilt from "react-parallax-tilt";
 import { useRouter } from "next/router";
-import { IProjectSummary } from "../../../types/base";
+import { IProjectSummary } from "../../../types/old/base";
 import Image from "next/image";
 import { thumbnail1 } from "../../../public/assets/thumbnails";
 
@@ -26,7 +26,7 @@ const CardLarge = ({ project }: Props) => {
       <div
         className={cx("Card", "large")}
         onClick={async () => {
-          await router.push(`/edit/${id}`);
+          await router.push(`/meet/${id}`);
         }}
       >
         <div className={cx("thumbnail")}>

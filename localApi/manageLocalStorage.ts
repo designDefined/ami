@@ -1,4 +1,4 @@
-import { IPage, IProject, IProjectSum, IUser } from "../types/base";
+import { IPage, IProject, IProjectSum, IUser } from "../types/old/base";
 
 const ALLPROJECT = "ami_all_projects" as const;
 const MYPROJECT = "ami_my_projects" as const;
