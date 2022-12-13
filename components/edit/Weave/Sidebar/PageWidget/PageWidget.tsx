@@ -10,6 +10,8 @@ import {
 } from "../../../handlers/weaveEventHandler";
 import { useSelection } from "../../../../../store/selection";
 import { useProject } from "../../../../../store/project";
+import PageInfo from "../Info/PageInfo";
+import { PageList } from "../List/PageList";
 
 const cx = classNames.bind(styles);
 
@@ -81,108 +83,16 @@ export const PageConnection = ({
   );
 };
 
-export const PageInfo = ({
-  selectedPage: page,
-}: {
-  selectedPage: IPage | false;
-}) => {
-  if (!page) {
-    return (
-      <WidgetWrapper name={"페이지를 선택하세요"}>
-        <span />
-      </WidgetWrapper>
-    );
-  }
-  return (
-    <WidgetWrapper name="페이지 정보">
-      <div className={cx("PageInfo")}>
-        <div className={cx("section")}>
-          <div className={cx("sectionLabel")}>기본 정보</div>
-          <div className={cx("attribute")}>
-            <div className={cx("attributeLabel")}>이름:</div>
-            <input
-              className={cx("attributeInput", "long")}
-              type="text"
-              value={page.pageName}
-              onChange={onChangePageStringAttribute("pageName", page)}
-            />
-          </div>
-          <div className={cx("sectionHorizontal")}>
-            <div className={cx("attribute")}>
-              <div className={cx("attributeLabel")}>높이:</div>
-              <input
-                className={cx("attributeInput")}
-                type="text"
-                value={page.offsetHeight}
-                onChange={onChangePageNumberAttribute("offsetHeight", page)}
-              />
-            </div>
-            <div className={cx("attribute")}>
-              <div className={cx("attributeLabel")}>배경:</div>
-              <input
-                className={cx("attributeInput")}
-                type="color"
-                value={page.backgroundColor}
-                onChange={onChangePageStringAttribute("backgroundColor", page)}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </WidgetWrapper>
-  );
-};
-const cutName = (name: string): string =>
-  name.length > 8 ? name.slice(0, 8) + "..." : name;
-const PageList = ({ pages, selectedPage }: PropList) => {
-  const selectPage = useSelection((state) => state.selectPage);
-  const deselect = useSelection((state) => state.deselect);
-
-  return (
-    <WidgetWrapper name="모든 페이지">
-      <ol className={cx("PageList")}>
-        <li className={cx("itemLabel")}>
-          <span className={cx("itemSpan", "index")}>#</span>
-          <span className={cx("itemSpan", "content")}>이름</span>
-        </li>
-        {pages.map((page, index) => (
-          <li
-            key={page.id}
-            className={cx("item", {
-              selected: selectedPage && selectedPage.id === page.id,
-              placed: page.isPlaced !== "notPlaced",
-            })}
-            onClick={(e) => {
-              e.preventDefault();
-              if (selectedPage && selectedPage.id === page.id) {
-                deselect();
-              } else {
-                selectPage(page);
-              }
-            }}
-            onMouseDown={onPressListedPage(page)}
-          >
-            <span className={cx("itemSpan", "index")}>{index + 1}</span>
-            <span className={cx("itemSpan", "content")}>
-              {cutName(page.pageName)}
-            </span>
-          </li>
-        ))}
-      </ol>
-    </WidgetWrapper>
-  );
-};
-
-const PageWidget = ({ pages }: PropPages) => {
+const PageWidget = () => {
   const { type, data: page } = useSelection((state) => state.current);
   return (
     <>
       <PageInfo selectedPage={type === "page" ? page : false} />
-      <PageConnection
-        selectedPage={type === "page" ? page : false}
-        modifiable={true}
-      />
-      <PageList pages={pages} selectedPage={type === "page" ? page : false} />
+      {/*<PageConnection*/}
+      {/*  selectedPage={type === "page" ? page : false}*/}
+      {/*  modifiable={true}*/}
+      {/*/>*/}
+      {<PageList selectedPage={type === "page" ? page : false} />}
     </>
   );
 };

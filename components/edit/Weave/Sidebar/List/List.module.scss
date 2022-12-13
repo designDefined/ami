@@ -1,0 +1,63 @@
+@use "./styles/color";
+@use "./styles/simple";
+@use "./styles/material";
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  .itemLabel {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: color.$gray5;
+    color: color.$gray10;
+    height: 26px;
+    &.add {
+      @include material.shadow(2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: color.$gray9;
+      margin-top: 10px;
+      cursor: pointer;
+      color: color.$gray3;
+      &:hover {
+        @include material.shadow(1);
+      }
+    }
+  }
+  .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+    margin: 4px 0;
+    background-color: color.$red2;
+    border: 1px solid color.$gray11;
+
+    &.placed {
+      background-color: color.$white;
+    }
+    &.selected {
+      background-color: color.$green2;
+    }
+    &:hover {
+      background-color: transparentize(color.$green2, 0.8);
+      border: 1px solid color.$green1;
+    }
+  }
+  .itemSpan {
+    display: inline-block;
+    &.index {
+      margin-left: 8px;
+      width: 10%;
+    }
+    &.content {
+      width: 60%;
+    }
+    &.type {
+    }
+  }
+}

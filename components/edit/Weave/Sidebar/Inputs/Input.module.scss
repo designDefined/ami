@@ -1,0 +1,26 @@
+@use "./styles/color";
+@use "./styles/simple";
+@use "./styles/material";
+
+.horizon {
+  display: flex;
+  padding: 4px 0;
+}
+.input {
+  @include simple.textInput;
+  margin-left: 10px;
+  width: 80px;
+  &.long {
+    width: 200px;
+  }
+}
+
+.button {
+  @include simple.textButton;
+  @include material.shadow(1);
+  margin-left: 10px;
+}
+
+.range {
+  margin-left: 10px;
+}

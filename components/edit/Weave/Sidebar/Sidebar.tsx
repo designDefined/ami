@@ -45,7 +45,7 @@ const Sidebar = ({ pages, pageStatus }: Props) => {
       <div className={cx("container")}>
         <PageNavigator />
         {pageStatus < 0 ? (
-          <PageWidget pages={pages} />
+          <PageWidget />
         ) : (
           <AtomWidget page={pages[pageStatus]} />
         )}

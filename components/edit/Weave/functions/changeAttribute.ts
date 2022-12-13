@@ -30,6 +30,16 @@ const updatePage = (page: IPage) => {
   selectStore.getState().selectPage(page);
 };
 
+export const changePageNumberAttribute = (
+  value: number | string,
+  attribute: IPageNumberProperty,
+  page: IPage,
+) =>
+  updatePage({
+    ...page,
+    [attribute]: passStringIfNumber(value, page[attribute]),
+  });
+
 export const onChangePageNumberAttribute =
   (
     attribute: IPageNumberProperty,
@@ -42,17 +52,16 @@ export const onChangePageNumberAttribute =
     });
   };
 
-export const onChangePageStringAttribute =
-  (
-    attribute: IPageStringProperty,
-    page: IPage,
-  ): React.ChangeEventHandler<HTMLInputElement> =>
-  (e) => {
-    updatePage({
-      ...page,
-      [attribute]: e.target.value,
-    });
-  };
+export const changePageStringAttribute = (
+  value: string,
+  attribute: IPageStringProperty,
+  page: IPage,
+) => {
+  updatePage({
+    ...page,
+    [attribute]: value,
+  });
+};
 
 export const onChangeAtomNumberAttribute =
   (
