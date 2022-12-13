@@ -43,7 +43,7 @@ const Sidebar = ({ pages, pageStatus }: Props) => {
         />
       </button>
       <div className={cx("container")}>
-        <PageNavigator pages={pages} />
+        <PageNavigator />
         {pageStatus < 0 ? (
           <PageWidget pages={pages} />
         ) : (

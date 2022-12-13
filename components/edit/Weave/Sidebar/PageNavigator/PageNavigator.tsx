@@ -1,68 +1,51 @@
 import classNames from "classnames/bind";
 import styles from "./PageNavigator.module.scss";
 import { useProject } from "../../../../../store/project";
-import { useCallback, useState } from "react";
 import WidgetWrapper from "../Widget";
-import { IPage } from "../../../../../types/page";
+import {
+  onChangeCurrentPageId,
+  onChangeCurrentPageNumber,
+} from "../../functions/changePageStatus";
 
 const cx = classNames.bind(styles);
 
-interface Props {
-  pages: IPage[];
-}
-
-const PageNavigator = ({ pages }: Props) => {
+const PageNavigator = () => {
+  const pages = useProject((state) => state.pages);
   const pageStatus = useProject((state) => state.pageStatus);
-  const setPageStatus = useProject((state) => state.setPageStatus);
-  const [pageInput, setPageInput] = useState<number>(pageStatus + 1);
-
-  const onChangePage = useCallback(
-    (to: number): React.MouseEventHandler =>
-      () => {
-        if (to >= -1 && to < pages.length) {
-          setPageInput(to + 1);
-          setPageStatus(to);
-        }
-      },
-    [],
-  );
 
   return (
     <WidgetWrapper name="페이지 이동">
       <div className={cx("PageNavigator")}>
         <div className={cx("pageNumber")}>
           페이지:
-          {/*<input*/}
-          {/*  className={cx("currentPage")}*/}
-          {/*  value={pageInput}*/}
-          {/*  onChange={(e) => {*/}
-          {/*    const num = Number(e.target.value);*/}
-          {/*    if (Number.isInteger(num)) setPageInput(Number(num));*/}
-          {/*  }}*/}
-          {/*/>*/}
-          <span>{pageStatus + 1}</span>
-          <span>/</span> <span>{pages.length}</span>
           <button
-            className={cx("numButton")}
-            onClick={onChangePage(pageInput - 1)}
-          >
-            이동
-          </button>
-        </div>
-        <div className={cx("navButtons")}>
-          <button
-            className={cx("navButton", "prev")}
-            onClick={onChangePage(pageStatus - 1)}
+            className={cx("pageButton", "prev")}
+            onClick={() => onChangeCurrentPageNumber(pageStatus - 1)}
           >
             이전
           </button>
+          <span>{pageStatus + 1}</span>
+          <span>/</span> <span>{pages.length}</span>
           <button
-            className={cx("navButton", "next")}
-            onClick={onChangePage(pageStatus + 1)}
+            className={cx("pageButton", "next")}
+            onClick={() => onChangeCurrentPageNumber(pageStatus + 1)}
           >
             다음
           </button>
         </div>
+        <select
+          className={cx("pageSelect")}
+          value={pageStatus < 0 ? "home" : pages[pageStatus].id}
+          onChange={(e) => onChangeCurrentPageId(e.target.value)}
+        >
+          <option value={"home"}>전체 페이지</option>
+          {pages.map(({ id, pageName }) => (
+            <option key={id} value={id}>
+              {pageName}
+            </option>
+          ))}
+          <option className={cx("pageOption")}>가나다</option>
+        </select>
       </div>
     </WidgetWrapper>
   );

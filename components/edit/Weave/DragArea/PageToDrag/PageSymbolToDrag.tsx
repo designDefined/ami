@@ -15,7 +15,7 @@ const PageSymbolToDrag = ({ x, y, page }: Props) => {
   const { pageName } = page;
   return (
     <div
-      className={cx("PageSymbol")}
+      className={cx("PageSymbol", "drag")}
       style={buildPageSymbolStyle(page, { x, y })}
     >
       {pageName}
