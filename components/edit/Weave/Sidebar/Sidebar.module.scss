@@ -22,21 +22,17 @@
   .container {
     right: 10px;
     width: 360px;
-    //    background-color: red;
     padding: 0;
   }
   &.isClosed {
-    transform: translate(380px);
-    .handleBg {
-      transform: translate(40px);
-    }
+    right: -380px;
   }
 }
 
 .handle {
-  position: absolute;
-  top: 75px;
-  left: 20px;
+  position: fixed;
+  top: 100px;
+  right: 376px;
   width: 20px;
   height: 20px;
   padding: 0;
@@ -44,6 +40,7 @@
   background: none;
   border: 0;
   cursor: pointer;
+  transition: 0.7s;
   .handleBg {
     @include material.shadow(2);
     display: block;
@@ -53,13 +50,18 @@
     height: 28px;
     top: -4px;
     left: -8px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 8px;
     background-color: #e5e5e5;
     transition: 0.5s ease;
     &:hover {
       @include material.shadow(1);
       opacity: 0.7;
+    }
+  }
+  &.isClosed {
+    right: -4px;
+    .handleBg {
+      transform: translateX(40px);
     }
   }
 }

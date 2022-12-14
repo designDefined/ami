@@ -1,6 +1,6 @@
 import styles from "./AtomWidget.module.scss";
 import classNames from "classnames/bind";
-import { PageConnection, PageInfo } from "../PageWidget/PageWidget";
+
 import { useSelection } from "../../../../../store/selection";
 import WidgetWrapper from "../Widget";
 import {
@@ -22,6 +22,7 @@ import { AtomInfo } from "../Info/AtomInfo";
 import { IPage } from "../../../../../types/page";
 import { IAtom } from "../../../../../types/atom";
 import { IMarkDownType } from "../../../../../types/old/base";
+import PageInfo from "../Info/PageInfo";
 const cx = classNames.bind(styles);
 
 interface PropList {
@@ -131,6 +132,7 @@ const AtomWidget = ({ page }: Props) => {
   const { type, data: atom } = useSelection((state) => state.current);
   return (
     <>
+      <PageInfo selectedPage={page} />
       <AtomInfo selectedAtom={type === "atom" ? atom : false} page={page} />
     </>
   );

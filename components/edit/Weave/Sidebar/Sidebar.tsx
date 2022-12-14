@@ -26,7 +26,7 @@ const Sidebar = ({ pages, pageStatus }: Props) => {
       //onMouseDown={(e) => e.stopPropagation()}
     >
       <button
-        className={cx("handle")}
+        className={cx("handle", { isClosed: sidebarStatus !== "open" })}
         onClick={() => {
           if (sidebarStatus === "open") {
             setSidebarStatus("close");

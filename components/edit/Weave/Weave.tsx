@@ -4,12 +4,18 @@ import { useProject } from "../../../store/project";
 import Page from "./Page/Page";
 import PageMap from "./PageMap/PageMap";
 import Sidebar from "./Sidebar/Sidebar";
+import { useEffect } from "react";
+import { useSelection } from "../../../store/selection";
 
 const cx = classNames.bind(styles);
 
 const Weave = () => {
   const pages = useProject((state) => state.pages);
   const pageStatus = useProject((state) => state.pageStatus);
+  const deselect = useSelection((state) => state.deselect);
+  useEffect(() => {
+    deselect();
+  }, [pageStatus]);
 
   return (
     <section className={cx("Weave")}>
