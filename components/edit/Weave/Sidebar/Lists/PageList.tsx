@@ -6,6 +6,7 @@ import { useProject } from "../../../../../store/project";
 import styles from "./List.module.scss";
 import classNames from "classnames/bind";
 import { onPressListedPage } from "../../functions/cursorEvent";
+import { createPage } from "../../functions/createNew";
 
 const cx = classNames.bind(styles);
 interface Props {
@@ -50,6 +51,17 @@ export const PageList = ({ selectedPage }: Props) => {
             </span>
           </li>
         ))}
+        <div className={cx("buttons")}>
+          <button
+            className={cx("add", "page")}
+            onClick={(e) => {
+              e.preventDefault();
+              createPage(`페이지 ${pages.length + 1}`);
+            }}
+          >
+            페이지 추가
+          </button>
+        </div>
       </ol>
     </WidgetWrapper>
   );

@@ -1,8 +1,6 @@
 import styles from "./Page.module.scss";
 import classNames from "classnames/bind";
-import createStyle from "../../../functions/create/createStyle";
 import Atom from "../Atom/Atom";
-import { CSSProperties, useMemo } from "react";
 import { IPage } from "../../../types/page";
 import buildPageStyle from "../../../functions/create/buildPageStyle";
 

@@ -45,3 +45,11 @@ export const initializeTextAtom = (atom: ITextAtom): ITextAtom => {
   }
   return { ...atom, ...styleToOverwrite };
 };
+
+export const createPage = (name: string) => {
+  const newPage = createEmpty.page(projectStore.getState().id);
+  projectStore.getState().manipulatePage({
+    ...newPage,
+    pageName: name,
+  });
+};

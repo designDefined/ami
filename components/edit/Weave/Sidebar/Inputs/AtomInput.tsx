@@ -9,11 +9,21 @@ import {
   textAlignsWithLabels,
 } from "../../../../../types/atom";
 import {
+  changeAtomExtension,
   changeAtomNumberAttribute,
   changeAtomStringAttribute,
   changeTextAtomNumberAttribute,
   changeTextAtomStringAttribute,
+  clearLink,
 } from "../../functions/changeAttribute";
+import {
+  clickInteractions,
+  fadeEffects,
+  shadowEffects,
+  slideEffects,
+} from "../../../../../types/atomExtension";
+import { useProject } from "../../../../../store/project";
+import { hasEffect } from "../../../../meet/functions/parseExtension";
 
 const cx = classNames.bind(styles);
 
@@ -304,5 +314,100 @@ export const AtomBorderInput = ({ atom }: TextProps) => {
         />
       </div>
     </>
+  );
+};
+
+export const AtomEffectInput = ({ atom }: TextProps | ImageProps) => {
+  return (
+    <>
+      <div className={cx("horizon")}>
+        페이드 IO:
+        {fadeEffects.map((effect) => (
+          <button
+            className={cx("button", "extension", {
+              isSelected: hasEffect(atom.extension, effect),
+            })}
+            key={effect.name}
+            onClick={(e) => {
+              e.preventDefault();
+              changeAtomExtension(effect, atom, false);
+            }}
+          >
+            {effect.name}
+          </button>
+        ))}
+      </div>
+      <div className={cx("horizon")}>
+        슬라이드:
+        {slideEffects.map((effect) => (
+          <button
+            className={cx("button", "extension", {
+              isSelected: hasEffect(atom.extension, effect),
+            })}
+            key={effect.name}
+            onClick={(e) => {
+              e.preventDefault();
+              changeAtomExtension(effect, atom, true);
+            }}
+          >
+            {effect.name}
+          </button>
+        ))}
+      </div>
+      <div className={cx("horizon")}>
+        그림자:
+        {shadowEffects.map((effect) => (
+          <button
+            className={cx("button", "extension", {
+              isSelected: hasEffect(atom.extension, effect),
+            })}
+            key={effect.name}
+            onClick={(e) => {
+              e.preventDefault();
+              changeAtomExtension(effect, atom, true);
+            }}
+          >
+            {effect.name}
+          </button>
+        ))}
+      </div>
+    </>
+  );
+};
+
+export const AtomInteractionInput = ({ atom }: TextProps | ImageProps) => {
+  const pages = useProject((state) => state.pages);
+  const pageStatus = useProject((state) => state.pageStatus);
+  const internal = atom.extension.find(
+    (ext) => ext.extensionType === "internalLink",
+  );
+  return (
+    <div className={cx("horizon")}>
+      페이지 링크:
+      <select
+        className={cx("select")}
+        value={internal ? internal.value : "none"}
+        onChange={(e) => {
+          if (e.target.value === "none") {
+            clearLink(atom, true);
+          } else {
+            changeAtomExtension(
+              { ...clickInteractions[0], value: e.target.value },
+              atom,
+              true,
+            );
+          }
+        }}
+      >
+        <option value="none">없음</option>
+        {pages
+          .filter((page, index) => index !== pageStatus)
+          .map((page) => (
+            <option key={page.id} value={page.id}>
+              {page.pageName}
+            </option>
+          ))}
+      </select>
+    </div>
   );
 };

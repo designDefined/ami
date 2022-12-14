@@ -1,16 +1,48 @@
+$slide: 30px;
+
 .Atom {
   position: absolute;
   font-size: 24px;
 
-  &.clickable {
+  &.link {
     cursor: pointer;
     &:hover {
       text-decoration: underline;
     }
   }
-  &.invisible {
+  &.fadeIn {
     opacity: 0;
     transition: 1s ease;
-    //  transform: translateY(50px);
+    &.isObserved {
+      opacity: 1;
+    }
+  }
+  &.slideFromLeft {
+    transform: translate(-$slide, 0);
+    transition: 1s ease;
+    &.isObserved {
+      transform: translate(0);
+    }
+  }
+  &.slideFromRight {
+    transform: translate($slide, 0);
+    transition: 1s ease;
+    &.isObserved {
+      transform: translate(0);
+    }
+  }
+  &.slideFromTop {
+    transform: translate(0, -$slide/2);
+    transition: 1s ease;
+    &.isObserved {
+      transform: translate(0);
+    }
+  }
+  &.slideFromBottom {
+    transform: translate(0, $slide/2);
+    transition: 1s ease;
+    &.isObserved {
+      transform: translate(0);
+    }
   }
 }

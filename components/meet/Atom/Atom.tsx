@@ -10,79 +10,45 @@ import imageSample, {
 import Image from "next/image";
 import buildAtomStyle from "../../../functions/create/buildAtomStyle";
 import { IAtom } from "../../../types/atom";
+import { parseExtensionToClass } from "../functions/parseExtension";
+import {
+  observeAtom,
+  useIntersectionObserver,
+} from "../../../store/intersectionObserver";
 const cx = classNames.bind(styles);
 
 interface Props {
   atom: IAtom;
 }
 
-const interactionsToClass = (interactions: IAtomInteraction[]) => {
-  let result: string[] = [];
-  for (let i = 0; i < interactions.length; i++) {
-    if (interactions[i].interactionType === "click") {
-      result.push("clickable");
-    }
-    if (interactions[i].interactionType === "scroll") {
-      result.push("invisible");
-    }
-  }
-  return result;
-};
-
 const Atom = ({ atom }: Props) => {
   const router = useRouter();
   const ref = useRef<HTMLDivElement>(null);
-
-  const interactionToClickEvent =
-    useCallback((): React.MouseEventHandler<HTMLDivElement> => {
-      for (let i = 0; i < atom.interactions.length; i++) {
-        const target = atom.interactions[i];
-        if (target.interactionType === "click") {
-          if (target.external) {
-            return () => (window.location.href = target.to);
-          } else {
-            return () =>
-              router.push(`/meet/${router.query.project_id}/${target.to}`);
-          }
-        }
-      }
-      return () => null;
-    }, [atom.interactions]);
+  const io = useIntersectionObserver((state) => state.current);
+  const observedAtomIds = useIntersectionObserver(
+    (state) => state.observedAtomIds,
+  );
   useEffect(() => {
-    if (ref.current) {
-      const observer = new IntersectionObserver(
-        ([entry], observer) => {
-          if (entry.isIntersecting) {
-            //console.log(atom.interactions);
-
-            if (
-              atom.interactions.findIndex(
-                (item) => item.interactionType === "scroll",
-              ) >= 0
-            ) {
-              console.log(atom.interactions);
-
-              entry.target.classList.add("IO");
-            }
-          }
-        },
-        {
-          threshold: 1.0,
-          rootMargin: "-30px",
-        },
-      );
-      observer.observe(ref.current);
-      return () => observer.disconnect();
+    if (
+      atom.extension.filter((ext) =>
+        ["fade", "slide"].includes(ext.extensionType),
+      ).length > 0
+    ) {
+      if (ref.current && io) {
+        observeAtom(ref.current, atom);
+      }
     }
-  }, [ref.current, atom.interactions]);
+  }, [io, ref.current]);
 
   if (atom.type === "image") {
     const source = atom.content as typeof imageSampleList[number];
     return (
       <div
-        className={cx("Atom", ...interactionsToClass(atom.interactions))}
+        id={atom.id}
+        className={cx("Atom", [...parseExtensionToClass(atom.extension)], {
+          isObserved: observedAtomIds.includes(atom.id),
+        })}
         style={buildAtomStyle(atom, false)}
-        onClick={interactionToClickEvent()}
         ref={ref}
       >
         {
@@ -98,9 +64,11 @@ const Atom = ({ atom }: Props) => {
 
   return (
     <div
-      className={cx("Atom", ...interactionsToClass(atom.interactions))}
+      id={atom.id}
+      className={cx("Atom", [...parseExtensionToClass(atom.extension)], {
+        isObserved: observedAtomIds.includes(atom.id),
+      })}
       style={buildAtomStyle(atom, false)}
-      onClick={interactionToClickEvent()}
       ref={ref}
     >
       {atom.content}

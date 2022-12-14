@@ -71,6 +71,10 @@
       &:hover {
         background-color: color.$green2;
       }
+      &.page {
+        width: 100%;
+        padding: 4px;
+      }
     }
   }
 }

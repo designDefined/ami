@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import classNames from "classnames/bind";
 import styles from "./Meet.module.scss";
 import Page from "../../../components/meet/Page/Page";
+import { loadObserver } from "../../../store/intersectionObserver";
 
 const cx = classNames.bind(styles);
 
@@ -59,6 +60,7 @@ const Meet: NextPage = () => {
         }
       }
     }
+    loadObserver();
   }, [router.query.project_id, router.query.page_id]);
 
   return (

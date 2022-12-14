@@ -18,7 +18,9 @@ import { IPage } from "../../../../../types/page";
 import {
   AtomBackgroundInput,
   AtomBorderInput,
+  AtomEffectInput,
   AtomFontInput,
+  AtomInteractionInput,
   AtomPositionInput,
   AtomTextContentInput,
 } from "../Inputs/AtomInput";
@@ -94,61 +96,12 @@ export const AtomInfo = ({ selectedAtom: atom, page }: Props) => {
         </div>
         <div className={cx("section")}>
           <div className={cx("sectionLabel")}>효과</div>
-        </div>
-
-        {/*
-            </div>
-          </div>
+          <AtomEffectInput atom={atom} />
         </div>
         <div className={cx("section")}>
-          <div className={cx("sectionLabel")}>클릭</div>
-
-          <div className={cx("attribute")}>
-            <div className={cx("attributeLabel")}>이동:</div>
-            <select
-              className={cx("attributeSelect")}
-              value={getClickInteractionValue(atom.interactions)}
-              onChange={onChangeClickInteraction(atom, false)}
-            >
-              <option value="clear">없음</option>
-              <PageConnection selectedPage={page} modifiable={false} />
-              <option value="external">외부 링크</option>
-            </select>
-            {getClickInteraction(atom.interactions) && (
-              <input
-                value={getClickInteraction(atom.interactions).to}
-                onChange={onChangeClickInteraction(atom, true)}
-              />
-            )}
-          </div>
+          <div className={cx("sectionLabel")}>인터랙션</div>
+          <AtomInteractionInput atom={atom} />
         </div>
-        <div className={cx("section")}>
-          <div className={cx("sectionLabel")}>스크롤</div>
-          <div className={cx("sectionHorizontal")}>
-            <div className={cx("attribute")}>
-              <div className={cx("attributeLabel")}>효과:</div>
-              {atom.interactions.filter(
-                (item) => item.interactionType === "scroll",
-              ).length > 0 ? (
-                <button
-                  className={cx("attributeButton", "selected")}
-                  onClick={onDeleteScroll(atom)}
-                >
-                  페이드 인 제거
-                </button>
-              ) : (
-                <button
-                  className={cx("attributeButton")}
-                  onClick={onAddScroll(atom)}
-                >
-                  페이드 인
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-
-          */}
       </div>
     </WidgetWrapper>
   );

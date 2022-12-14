@@ -1,12 +1,9 @@
 import { useProject } from "../../../../store/project";
 import { useSelection } from "../../../../store/selection";
-import { useCursor } from "../../../../store/cursor";
-import { useWeaveSidebarLayout } from "../../../../store/layout/weaveSidebar";
 import {
   IAtom,
   IAtomNumberProperty,
   IAtomStringProperty,
-  ITextAlign,
   ITextAtom,
   ITextAtomNumberProperty,
   ITextAtomStringProperty,
@@ -16,11 +13,10 @@ import {
   IPageNumberProperty,
   IPageStringProperty,
 } from "../../../../types/page";
+import { IAtomExtension } from "../../../../types/atomExtension";
 
 const projectStore = useProject;
 const selectStore = useSelection;
-const cursorStore = useCursor;
-const weaveSidebarLayout = useWeaveSidebarLayout;
 
 const passStringIfNumber = (input: string | number, original: number): number =>
   Number.isNaN(Number(input)) ? original : Number(input);
@@ -97,3 +93,39 @@ export const changeTextAtomStringAttribute = (
     ...atom,
     [attribute]: value,
   });
+
+/****** Atom Extension ******/
+
+export const changeAtomExtension = (
+  value: IAtomExtension,
+  atom: IAtom,
+  isSingle: boolean,
+) => {
+  if (atom.extension.includes(value)) {
+    updateAtom({
+      ...atom,
+      extension: atom.extension.filter((ext) => ext !== value),
+    });
+  } else {
+    updateAtom({
+      ...atom,
+      extension: isSingle
+        ? [
+            ...atom.extension.filter(
+              (ext) => ext.extensionType !== value.extensionType,
+            ),
+            value,
+          ]
+        : [...atom.extension, value],
+    });
+  }
+};
+export const clearLink = (atom: IAtom, isInternal: boolean) => {
+  updateAtom({
+    ...atom,
+    extension: atom.extension.filter(
+      (ext) =>
+        ext.extensionType !== (isInternal ? "internalLink" : "externalLink"),
+    ),
+  });
+};

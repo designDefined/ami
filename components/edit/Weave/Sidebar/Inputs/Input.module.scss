@@ -6,6 +6,7 @@
   display: flex;
   padding: 4px 0;
 }
+
 .input {
   @include simple.textInput;
   margin: 0 24px 0 8px;
@@ -25,6 +26,17 @@
   @include simple.textButton;
   @include material.shadow(1);
   margin: 0 8px;
+  &.extension {
+    &:hover {
+      background-color: white;
+    }
+    &.isSelected {
+      background-color: color.$green2;
+      &:hover {
+        background-color: color.$red2;
+      }
+    }
+  }
 }
 
 .range {

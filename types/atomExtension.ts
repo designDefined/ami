@@ -1,4 +1,4 @@
-export const clickInteractions = [
+export const clickInteractions: IClickInteraction[] = [
   {
     extensionType: "internalLink",
     name: "내부 링크",
@@ -6,12 +6,12 @@ export const clickInteractions = [
     classes: ["link"],
   },
   {
-    interactionType: "externalLink",
+    extensionType: "externalLink",
     name: "외부 링크",
     value: "",
     classes: ["link"],
   },
-] as const;
+];
 export const shadowEffects = [
   {
     extensionType: "boxShadow",
@@ -26,12 +26,6 @@ export const fadeEffects = [
     name: "페이드 인",
     value: "in",
     classes: ["fadeIn"],
-  },
-  {
-    extensionType: "fade",
-    name: "페이드 아웃",
-    value: "out",
-    classes: ["fadeOut"],
   },
 ] as const;
 export const slideEffects = [
@@ -60,8 +54,19 @@ export const slideEffects = [
     classes: ["slideFromBottom"],
   },
 ] as const;
-
-export type IClickInteraction = typeof clickInteractions[number];
+export type IClickInteraction =
+  | {
+      extensionType: "internalLink";
+      name: "내부 링크";
+      value: string;
+      classes: ["link"];
+    }
+  | {
+      extensionType: "externalLink";
+      name: "외부 링크";
+      value: string;
+      classes: ["link"];
+    };
 export type IShadowEffect = typeof shadowEffects[number];
 export type IFadeEffect = typeof fadeEffects[number];
 export type ISlideEffect = typeof slideEffects[number];
