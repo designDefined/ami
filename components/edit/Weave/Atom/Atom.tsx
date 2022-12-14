@@ -9,14 +9,14 @@ const cx = classNames.bind(style);
 interface Props {
   atom: IAtom;
   isSelected: boolean;
+  isDragging: boolean;
 }
 
-const Atom = ({ atom, isSelected }: Props) => {
+const Atom = ({ atom, isSelected, isDragging }: Props) => {
   const { type, content } = atom;
-  if (isSelected) console.log(atom);
   return (
     <div
-      className={cx("Atom", "edit")}
+      className={cx("Atom", "edit", { noEvent: isDragging })}
       style={buildAtomStyle(atom, false)}
       onClick={() => {
         if (isSelected) onDoubleClickAtom();

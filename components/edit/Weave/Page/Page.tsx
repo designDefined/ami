@@ -6,6 +6,7 @@ import { MainDragArea } from "../DragArea/DragArea";
 import { IPage } from "../../../../types/page";
 import buildPageStyle from "../../../../functions/create/buildPageStyle";
 import Atom from "../Atom/Atom";
+import { useCursor } from "../../../../store/cursor";
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,7 @@ interface Props {
 
 const Page = ({ page }: Props) => {
   const current = useSelection((state) => state.current);
+  const dragStatus = useCursor((state) => state.status);
   return (
     <div
       className={cx("Page")}
@@ -29,6 +31,7 @@ const Page = ({ page }: Props) => {
             key={atom.id}
             atom={atom}
             isSelected={checkSelectedAtom(current, atom)}
+            isDragging={dragStatus === "drag"}
           />
         ))}
       <MainDragArea />

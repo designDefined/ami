@@ -4,6 +4,7 @@ import classNames from "classnames/bind";
 import { useDragGuide } from "../../../../store/dragGuide";
 import AtomToDrag from "./AtomToDrag/AtomToDrag";
 import PageSymbolToDrag from "./PageToDrag/PageSymbolToDrag";
+import { onDrag, onRelease } from "../../handlers/weaveEventHandler";
 
 const cx = classNames.bind(styles);
 

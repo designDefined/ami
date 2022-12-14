@@ -3,12 +3,16 @@
 
 .Atom {
   position: absolute;
+  border-style: solid;
 
   &.read {
   }
 
   &.edit {
     cursor: pointer;
+    &.noEvent {
+      pointer-events: none;
+    }
     .cursorState {
       @include flexbox.full;
       &:hover {

@@ -53,7 +53,6 @@ const buildAtomStyle = (
       //background
       background: backgroundColor,
       //border
-      borderStyle: "solid",
       borderWidth,
       borderColor,
       borderRadius,
