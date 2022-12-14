@@ -6,6 +6,10 @@ import {
   IAtom,
   IAtomNumberProperty,
   IAtomStringProperty,
+  ITextAlign,
+  ITextAtom,
+  ITextAtomNumberProperty,
+  ITextAtomStringProperty,
 } from "../../../../types/atom";
 import {
   IPage,
@@ -30,6 +34,8 @@ const updatePage = (page: IPage) => {
   selectStore.getState().selectPage(page);
 };
 
+/****** Page ******/
+
 export const changePageNumberAttribute = (
   value: number | string,
   attribute: IPageNumberProperty,
@@ -40,49 +46,54 @@ export const changePageNumberAttribute = (
     [attribute]: passStringIfNumber(value, page[attribute]),
   });
 
-export const onChangePageNumberAttribute =
-  (
-    attribute: IPageNumberProperty,
-    page: IPage,
-  ): React.ChangeEventHandler<HTMLInputElement> =>
-  (e) => {
-    updatePage({
-      ...page,
-      [attribute]: passStringIfNumber(e.target.value, page[attribute]),
-    });
-  };
-
 export const changePageStringAttribute = (
   value: string,
   attribute: IPageStringProperty,
   page: IPage,
-) => {
+) =>
   updatePage({
     ...page,
     [attribute]: value,
   });
-};
 
-export const onChangeAtomNumberAttribute =
-  (
-    attribute: IAtomNumberProperty,
-    atom: IAtom,
-  ): React.ChangeEventHandler<HTMLInputElement> =>
-  (e) => {
-    updateAtom({
-      ...atom,
-      [attribute]: passStringIfNumber(e.target.value, atom[attribute]),
-    });
-  };
+/****** Atom ******/
 
-export const onChangeAtomStringAttribute =
-  (
-    attribute: IAtomStringProperty,
-    atom: IAtom,
-  ): React.ChangeEventHandler<HTMLInputElement> =>
-  (e) => {
-    updateAtom({
-      ...atom,
-      [attribute]: e.target.value,
-    });
-  };
+export const changeAtomNumberAttribute = (
+  value: number | string,
+  attribute: IAtomNumberProperty,
+  atom: IAtom,
+) =>
+  updateAtom({
+    ...atom,
+    [attribute]: passStringIfNumber(value, atom[attribute]),
+  });
+
+export const changeAtomStringAttribute = (
+  value: string,
+  attribute: IAtomStringProperty,
+  atom: IAtom,
+) =>
+  updateAtom({
+    ...atom,
+    [attribute]: value,
+  });
+
+export const changeTextAtomNumberAttribute = (
+  value: number | string,
+  attribute: ITextAtomNumberProperty,
+  atom: ITextAtom,
+) =>
+  updateAtom({
+    ...atom,
+    [attribute]: passStringIfNumber(value, atom[attribute]),
+  });
+
+export const changeTextAtomStringAttribute = (
+  value: string,
+  attribute: ITextAtomStringProperty,
+  atom: ITextAtom,
+) =>
+  updateAtom({
+    ...atom,
+    [attribute]: value,
+  });

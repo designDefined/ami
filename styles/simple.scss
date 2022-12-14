@@ -43,3 +43,9 @@
     }
   }
 }
+
+@mixin select {
+  border: 0;
+  font: inherit;
+  box-shadow: 1px 1px 3px transparentize(black, 0.7) inset;
+}

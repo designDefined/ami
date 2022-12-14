@@ -8,19 +8,53 @@
 }
 .input {
   @include simple.textInput;
-  margin-left: 10px;
-  width: 80px;
+  margin: 0 24px 0 8px;
+  width: 72px;
   &.long {
     width: 200px;
   }
 }
 
+.color {
+  margin: 0 10px;
+  padding: 0;
+  height: 21px;
+}
+
 .button {
   @include simple.textButton;
   @include material.shadow(1);
-  margin-left: 10px;
+  margin: 0 8px;
 }
 
 .range {
   margin-left: 10px;
+  &.small {
+    width: 100px;
+  }
+}
+
+.textarea {
+  @include simple.scrollbar(4px);
+  width: 328px;
+  resize: none;
+  font: inherit;
+  padding: 4px;
+  color: color.$gray11;
+  background: color.$gray5;
+  &:focus {
+    outline: none;
+    color: color.$gray1;
+    background: color.$gray11;
+  }
+}
+
+.select {
+  @include simple.select;
+  cursor: pointer;
+  margin: 0 24px 0 8px;
+
+  &:hover {
+    background-color: color.$gray10;
+  }
 }

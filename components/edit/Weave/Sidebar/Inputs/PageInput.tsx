@@ -18,7 +18,6 @@ export const PageTitleInput = ({ page }: Props) => {
   useEffect(() => {
     setTitle(page.pageName);
   }, [page]);
-
   return (
     <div className={cx("horizon")}>
       이름:
@@ -86,7 +85,7 @@ export const PageBackgroundColorInput = ({ page }: Props) => (
     <button
       className={cx("button")}
       onClick={() => {
-        changePageStringAttribute("#000000FF", "backgroundColor", page);
+        changePageStringAttribute("rgba(0,0,0,0)", "backgroundColor", page);
       }}
     >
       투명

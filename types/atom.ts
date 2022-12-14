@@ -16,6 +16,15 @@ export const markdownTypes = [
   "image",
 ] as const;
 export const textAligns = ["center", "justify", "left", "right"] as const;
+export const textAlignsWithLabels: { value: ITextAlign; label: string }[] = [
+  "가운데",
+  "양쪽",
+  "왼쪽",
+  "오른쪽",
+].map((label, index) => ({
+  value: textAligns[index],
+  label,
+}));
 
 /*************** property constants ***************/
 /********** common **********/
@@ -24,6 +33,8 @@ const atomNumberProperties = [
   "offsetWidth",
   "offsetPadding",
   "layer",
+  "placedX",
+  "placedY",
 ] as const;
 const atomStringProperties = ["content"] as const;
 /********** text **********/
@@ -38,6 +49,7 @@ const textAtomStringProperties = [
   "fontColor",
   "backgroundColor",
   "borderColor",
+  "textAlign",
 ] as const;
 
 /*************** property types ***************/
