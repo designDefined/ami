@@ -4,6 +4,7 @@ import { useSelection } from "../../../../store/selection";
 import { useCursor } from "../../../../store/cursor";
 import { useProject } from "../../../../store/project";
 import { IPage } from "../../../../types/page";
+import { initializeTextAtom } from "./initializeAtom";
 
 const projectStore = useProject;
 const cursorStore = useCursor;
@@ -60,6 +61,30 @@ export const onPressPlacedPageSymbol =
     }
   };
 
-export const onDoubleClickAtom = () => () => {
-  console.log("clickDouble!");
-};
+export const onPressListedAtom =
+  (atom: IAtom): React.MouseEventHandler<HTMLLIElement> =>
+  (e) => {
+    e.preventDefault();
+    if (!isDragging()) {
+      if (atom.isPlaced === "notPlaced") {
+        selectStore.getState().selectAtom(atom);
+        const { clientX, clientY } = e;
+        if (weaveSidebarLayout.getState().status === "open") {
+          weaveSidebarLayout.getState().setStatus("temporal");
+        }
+        projectStore
+          .getState()
+          .manipulateAtom({ ...atom, isPlaced: "nowPlacing" });
+        cursorStore.getState().startDragAtom(
+          atom.type === "text" ? initializeTextAtom(atom) : atom,
+          { initX: clientX - atom.offsetWidth / 2, initY: clientY - 10 },
+          {
+            diffX: atom.offsetWidth / 2,
+            diffY: 10,
+          },
+        );
+      }
+    }
+  };
+
+export const onPressListedPage = () => {};

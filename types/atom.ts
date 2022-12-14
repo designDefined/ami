@@ -81,13 +81,13 @@ export interface ITextAtom
     Record<ITextAtomNumberProperty, number>,
     Record<ITextAtomStringProperty, string> {
   type: "text";
-  markdownTypes: Exclude<IMarkdownType, "image">;
+  markdownType: Exclude<IMarkdownType, "image">;
   textAlign: ITextAlign;
 }
 
 export interface IImageAtom extends ICommonAtom {
   type: "image";
-  markdownTypes: "image";
+  markdownType: "image";
 }
 
 export type IAtom = ITextAtom | IImageAtom;

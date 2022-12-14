@@ -10,6 +10,7 @@ import {
 } from "../../../../../types/atom";
 import {
   changeAtomNumberAttribute,
+  changeAtomStringAttribute,
   changeTextAtomNumberAttribute,
   changeTextAtomStringAttribute,
 } from "../../functions/changeAttribute";
@@ -36,6 +37,13 @@ export const AtomTextContentInput = ({ atom }: TextProps) => {
       className={cx("textarea")}
       value={input}
       onChange={(e) => setInput(e.target.value)}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          changeAtomStringAttribute(input, "content", atom);
+        }
+      }}
+      onBlur={(e) => changeAtomStringAttribute(input, "content", atom)}
     />
   );
 };
