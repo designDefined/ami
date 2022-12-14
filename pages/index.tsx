@@ -10,6 +10,7 @@ import SectionHorizon from "../components/home/Section/SectionHorizon";
 import styles from "./Home.module.scss";
 import classNames from "classnames/bind";
 import HomeBackground from "../components/home/Background/HomeBackground";
+import { useProject } from "../store/project";
 
 const cx = classNames.bind(styles);
 
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
   const myProjectsList = useProjectList((state) => state.myProjects);
   const loadTopProjects = useProjectList((state) => state.setTopProjects);
   const loadMyProjects = useProjectList((state) => state.setMyProjects);
+  const clearProject = useProject((state) => state.clear);
 
   const onAddMyProject = useCallback(() => {}, []);
 
@@ -34,6 +36,7 @@ const Home: NextPage = () => {
       } else {
       }
     });
+    clearProject();
   }, []);
 
   return (

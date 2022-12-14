@@ -1,12 +1,12 @@
 import styles from "./Page.module.scss";
 import classNames from "classnames/bind";
 import { checkSelectedAtom, useSelection } from "../../../../store/selection";
-import { onDrag, onRelease } from "../../handlers/weaveEventHandler";
 import { MainDragArea } from "../DragArea/DragArea";
 import { IPage } from "../../../../types/page";
 import buildPageStyle from "../../../../functions/create/buildPageStyle";
 import Atom from "../Atom/Atom";
 import { useCursor } from "../../../../store/cursor";
+import { onDrag, onRelease } from "../functions/cursorEvent";
 
 const cx = classNames.bind(styles);
 

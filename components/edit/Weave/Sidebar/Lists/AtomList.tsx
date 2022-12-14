@@ -3,9 +3,10 @@ import WidgetWrapper from "../Widget";
 
 import styles from "./List.module.scss";
 import classNames from "classnames/bind";
-import { IAtom, IMarkdownType } from "../../../../../types/atom";
+import { IAtom, IMarkdownType, markdownTypes } from "../../../../../types/atom";
 import { IPage } from "../../../../../types/page";
 import { onPressListedAtom } from "../../functions/cursorEvent";
+import { createTextAtom } from "../../functions/createNew";
 
 const cx = classNames.bind(styles);
 interface Props {
@@ -68,11 +69,24 @@ const AtomList = ({ page, selectedAtom }: Props) => {
             </span>
           </li>
         ))}
-        <div
-          className={cx("itemLabel", "add")}
-          //onClick={onAddImageAtom(page.id)}
-        >
-          이미지 추가
+        <div className={cx("buttons")}>
+          추가:
+          {markdownTypes
+            .filter((type) => !["image", "oli", "uli"].includes(type))
+            .map((type) => (
+              <button
+                key={type}
+                className={cx("add")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (type !== "image") {
+                    createTextAtom(page.id, type, translateType(type));
+                  }
+                }}
+              >
+                {translateType(type)}
+              </button>
+            ))}
         </div>
       </ol>
     </WidgetWrapper>

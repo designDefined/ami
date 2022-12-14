@@ -1,9 +1,10 @@
-import { IPage } from "../../../types/old/base";
 import styles from "./Page.module.scss";
 import classNames from "classnames/bind";
 import createStyle from "../../../functions/create/createStyle";
 import Atom from "../Atom/Atom";
 import { CSSProperties, useMemo } from "react";
+import { IPage } from "../../../types/page";
+import buildPageStyle from "../../../functions/create/buildPageStyle";
 
 const cx = classNames.bind(styles);
 interface Props {
@@ -11,12 +12,8 @@ interface Props {
 }
 
 const Page = ({ page }: Props) => {
-  const pageStyle = useMemo(
-    (): CSSProperties => createStyle.page(page),
-    [page],
-  );
   return (
-    <div className={cx("Page")} style={pageStyle}>
+    <div className={cx("Page")} style={buildPageStyle(page)}>
       {page.atoms
         .filter((atom) => atom.isPlaced === "placed")
         .map((atom) => (

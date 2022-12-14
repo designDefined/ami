@@ -1,7 +1,7 @@
-import { IPage } from "../../../../../types/old/base";
-import { useProject } from "../../../../../store/project";
-import WidgetWrapper from "../Widget";
-import { onConnectPage } from "../../../handlers/weaveEventHandler";
+import { IPage } from "../../types/old/base";
+import { useProject } from "../../store/project";
+import WidgetWrapper from "../../components/edit/Weave/Sidebar/Widget";
+import { onConnectPage } from "../../components/edit/handlers/weaveEventHandler";
 
 export const PageConnection = ({
   selectedPage,

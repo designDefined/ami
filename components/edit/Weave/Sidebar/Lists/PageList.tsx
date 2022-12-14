@@ -1,10 +1,11 @@
 import { useSelection } from "../../../../../store/selection";
 import WidgetWrapper from "../Widget";
-import { onPressListedPage } from "../../../handlers/weaveEventHandler";
+
 import { IPage } from "../../../../../types/page";
 import { useProject } from "../../../../../store/project";
 import styles from "./List.module.scss";
 import classNames from "classnames/bind";
+import { onPressListedPage } from "../../functions/cursorEvent";
 
 const cx = classNames.bind(styles);
 interface Props {
@@ -41,7 +42,7 @@ export const PageList = ({ selectedPage }: Props) => {
                 selectPage(page);
               }
             }}
-            onMouseDown={() => {}}
+            onMouseDown={onPressListedPage(page)}
           >
             <span className={cx("itemSpan", "index")}>{index + 1}</span>
             <span className={cx("itemSpan", "content")}>

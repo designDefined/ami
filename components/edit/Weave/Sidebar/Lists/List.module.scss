@@ -60,4 +60,17 @@
     &.type {
     }
   }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    .add {
+      @include simple.textButton;
+      @include material.shadow(1);
+      background-color: color.$green1;
+      color: white;
+      &:hover {
+        background-color: color.$green2;
+      }
+    }
+  }
 }

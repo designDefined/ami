@@ -43,6 +43,7 @@ const loadingProject = {
   writer: { id: codes.noUser, userName: codes.noUser },
   projectName: codes.noProject,
   pages: [],
+  pageStatus: 0,
 };
 
 export const useProject = create<IProjectStore>()((set) => ({

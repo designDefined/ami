@@ -1,15 +1,15 @@
-import { IAtom } from "../../../types/old/base";
 import styles from "./Atom.module.scss";
 import classNames from "classnames/bind";
-import { CSSProperties, useCallback, useEffect, useMemo, useRef } from "react";
-import createStyle from "../../../functions/create/createStyle";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { IAtomInteraction } from "../../../types/old/interaction";
 import { useRouter } from "next/router";
 import imageSample, {
   imageSampleList,
 } from "../../../public/assets/images/images";
-import { onPressPlacedAtom } from "../../edit/handlers/weaveEventHandler";
+
 import Image from "next/image";
+import buildAtomStyle from "../../../functions/create/buildAtomStyle";
+import { IAtom } from "../../../types/atom";
 const cx = classNames.bind(styles);
 
 interface Props {
@@ -32,10 +32,7 @@ const interactionsToClass = (interactions: IAtomInteraction[]) => {
 const Atom = ({ atom }: Props) => {
   const router = useRouter();
   const ref = useRef<HTMLDivElement>(null);
-  const atomStyle = useMemo(
-    (): CSSProperties => createStyle.atom(atom),
-    [atom],
-  );
+
   const interactionToClickEvent =
     useCallback((): React.MouseEventHandler<HTMLDivElement> => {
       for (let i = 0; i < atom.interactions.length; i++) {
@@ -84,7 +81,7 @@ const Atom = ({ atom }: Props) => {
     return (
       <div
         className={cx("Atom", ...interactionsToClass(atom.interactions))}
-        style={atomStyle}
+        style={buildAtomStyle(atom, false)}
         onClick={interactionToClickEvent()}
         ref={ref}
       >
@@ -102,7 +99,7 @@ const Atom = ({ atom }: Props) => {
   return (
     <div
       className={cx("Atom", ...interactionsToClass(atom.interactions))}
-      style={atomStyle}
+      style={buildAtomStyle(atom, false)}
       onClick={interactionToClickEvent()}
       ref={ref}
     >

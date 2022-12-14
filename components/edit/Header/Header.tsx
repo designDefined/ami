@@ -1,12 +1,17 @@
 import styles from "./Header.module.scss";
 import classNames from "classnames/bind";
 import { IEditStatus, useProject } from "../../../store/project";
+import { useRouter } from "next/router";
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const status = useProject((state) => state.editStatus);
   const setStatus = useProject((state) => state.setEditStatus);
   const projectName = useProject((state) => state.projectName);
+  const projectId = useProject((state) => state.id);
+  const pages = useProject((state) => state.pages);
+  const pageStatus = useProject((state) => state.pageStatus);
+  const router = useRouter();
 
   const handleStatusButton =
     (target: IEditStatus): React.MouseEventHandler<HTMLButtonElement> =>
@@ -36,9 +41,15 @@ const Header = () => {
           className={cx({ selected: status === "preview" })}
           onClick={handleStatusButton("preview")}
         >
-          프리뷰
+          모바일
         </button>
-        <button>배포</button>
+        <button
+          onClick={() => {
+            router.push(`/meet/${projectId}/${pages[pageStatus].id}`);
+          }}
+        >
+          배포
+        </button>
       </div>
     </header>
   );

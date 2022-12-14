@@ -17,5 +17,7 @@ export interface IPage
     IPlaceable,
     Record<IPageNumberProperty, number>,
     Record<IPageStringProperty, string> {
+  parentProjectId: number;
   atoms: IAtom[];
+  connectedPage: IPageId[];
 }

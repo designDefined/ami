@@ -2,13 +2,14 @@ import styles from "./Pagemap.module.scss";
 import classNames from "classnames/bind";
 import { checkSelectedPage } from "../../../../store/selection";
 import { CSSProperties, useMemo } from "react";
-import createStyle from "../../../../functions/create/createStyle";
+
+import { IPage } from "../../../../types/page";
+import { buildPageSymbolStyle } from "../../../../functions/create/buildPageStyle";
 import {
   onDrag,
-  onPressPlacedPage,
+  onPressPlacedPageSymbol,
   onRelease,
-} from "../../handlers/weaveEventHandler";
-import { IPage } from "../../../../types/page";
+} from "../functions/cursorEvent";
 
 const cx = classNames.bind(styles);
 
@@ -25,14 +26,14 @@ const PageSymbol = ({
 }) => {
   const { pageName } = page;
   const pageSymbolStyle = useMemo(
-    (): CSSProperties => createStyle.pageSymbol(page),
+    (): CSSProperties => buildPageSymbolStyle(page, false),
     [page],
   );
   return (
     <div
       className={cx("PageSymbol", { isSelected })}
       style={pageSymbolStyle}
-      onMouseDown={onPressPlacedPage(page)}
+      onMouseDown={onPressPlacedPageSymbol(page)}
     >
       {pageName}
     </div>

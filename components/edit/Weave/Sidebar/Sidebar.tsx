@@ -1,11 +1,11 @@
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
 import PageNavigator from "./PageNavigator/PageNavigator";
-import AtomWidget from "./AtomWidget/AtomWidget";
 import { useWeaveSidebarLayout } from "../../../../store/layout/weaveSidebar";
 import LineToggleButton from "../../../common/Buttons/LineToggleButton/LineToggleButton";
-import PageWidget from "./PageWidget/PageWidget";
+import PageWidget from "./Widgets/PageWidget";
 import { IPage } from "../../../../types/page";
+import AtomWidget from "./Widgets/AtomWidget";
 
 const cx = classNames.bind(styles);
 

@@ -1,6 +1,6 @@
 import { IPlaceable, IIdentifiable } from "./general";
 import { IPageId } from "./page";
-import { AtomExtension } from "./atomExtension";
+import { IAtomExtension } from "./atomExtension";
 
 /*************** custom type constants ***************/
 export type IAtomId = string;
@@ -72,8 +72,8 @@ interface ICommonAtom
     Record<IAtomStringProperty, string> {
   readonly parentPageId: IPageId;
   type: IAtomType;
-  markDownType: IMarkdownType;
-  extension: AtomExtension[];
+  markdownType: IMarkdownType;
+  extension: IAtomExtension[];
 }
 
 export interface ITextAtom

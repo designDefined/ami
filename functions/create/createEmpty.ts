@@ -1,5 +1,9 @@
-import { IAtom, IPage, IProject, IToken, IUser } from "../../types/old/base";
 import { nanoid } from "nanoid";
+import { IToken } from "../../types/old/base";
+import { IUser } from "../../types/general";
+import { IProject } from "../../types/project";
+import { IPage } from "../../types/page";
+import { IImageAtom, ITextAtom } from "../../types/atom";
 
 export const emptyId = "empty_id" as const;
 
@@ -26,21 +30,21 @@ const page = (projectId: number): IPage => {
     id,
     pageName: "새 페이지",
     parentProjectId: projectId,
-    atoms: [atom(id)],
+    atoms: [textAtom(id)],
     //position
     isPlaced: "notPlaced",
     placedX: -1,
     placedY: -1,
     //map
     symbolColor: "#bbbbbb",
-    connectedTo: [],
+    connectedPage: [],
     //style
     backgroundColor: "transparent",
     offsetHeight: 937,
   };
 };
 
-const atom = (parentId: string, depth: number = 0): IAtom => ({
+const textAtom = (parentId: string, depth: number = 0): ITextAtom => ({
   id: nanoid(),
   parentPageId: parentId,
   //markdown
@@ -59,9 +63,9 @@ const atom = (parentId: string, depth: number = 0): IAtom => ({
   //font
   fontFamily: "inherit",
   fontSize: 24,
-  fontWeight: 300,
+  fontWeight: 200,
   fontColor: "#000000",
-  textAlign: "justify",
+  textAlign: "center",
   //background
   backgroundColor: "transparent",
   //border
@@ -71,15 +75,15 @@ const atom = (parentId: string, depth: number = 0): IAtom => ({
   //layer
   layer: 5,
   //interaction
-  interactions: [],
+  extension: [],
 });
 
-const imageAtom = (parentId: string, depth: number = 0): IAtom => ({
+const imageAtom = (parentId: string, depth: number = 0): IImageAtom => ({
   id: nanoid(),
   parentPageId: parentId,
   //markdown
   type: "image",
-  markdownType: "p",
+  markdownType: "image",
   markdownDepth: depth,
   //content
   content: "",
@@ -93,9 +97,9 @@ const imageAtom = (parentId: string, depth: number = 0): IAtom => ({
   //layer
   layer: 1,
   //interaction
-  interactions: [],
+  extension: [],
 });
 
-const createEmpty = { token, user, project, page, atom, imageAtom };
+const createEmpty = { token, user, project, page, textAtom, imageAtom };
 
 export default createEmpty;
