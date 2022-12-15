@@ -20,3 +20,127 @@ $homeBackground: linear-gradient(color.$gray11, color.$gray8);
     padding: 0 120px;
   }
 }
+
+.HomeTwo {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: color.$gray1;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  color: color.$gray9;
+  .section {
+    position: relative;
+    width: 960px;
+    height: 100%;
+    font-family: "LeferiPoint-WhiteObliqueA", sans-serif;
+    font-weight: 200;
+    transition: 0.5s ease;
+    cursor: pointer;
+    .main {
+      position: absolute;
+      top: 0;
+      font-size: 60px;
+      font-weight: 100;
+      left: 300px;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+      .l1 {
+        position: absolute;
+        transform: translate(120px, 200px);
+        font-size: 100px;
+        transition: 0.5s ease;
+      }
+      .l2 {
+        position: absolute;
+        transform: translate(40px, 200px);
+        font-size: 320px;
+        opacity: 0.3;
+        transition: 0.5s ease;
+      }
+      .l3 {
+        position: absolute;
+        transform: translate(180px, 340px);
+        transition: 0.5s ease;
+      }
+      .r1 {
+        width: 400px;
+        position: absolute;
+        transform: translate(-240px, 280px);
+        font-size: 96px;
+      }
+    }
+    .sub {
+      width: 1200px;
+      position: absolute;
+      bottom: 200px;
+      left: 360px;
+      font-size: 18px;
+      .r2 {
+        transform: translate(-420px, 0);
+      }
+      .r3 {
+        transform: translate(-500px, 0);
+      }
+    }
+
+    &.ami {
+      transform: translateX(-200px);
+      background: linear-gradient(to right, rgba(68, 59, 59), color.$gray1);
+    }
+    &.visit {
+      transform: translateX(200px);
+      background: linear-gradient(to left, rgba(59, 59, 69), color.$gray1);
+    }
+    &:hover {
+    }
+  }
+  .bar {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    width: 1px;
+    height: 720px;
+    background-color: color.$gray9;
+    transition: 0.5s ease;
+    transform: rotate(15deg);
+  }
+  &.left {
+    .ami {
+      transform: translate(0px);
+      .l1 {
+        margin-left: 60px;
+      }
+      .l3 {
+        margin-left: 20px;
+      }
+    }
+    .visit {
+      transform: translate(360px);
+      opacity: 0.4;
+    }
+    .bar {
+      transform: translate(200px) rotate(20deg);
+    }
+  }
+  &.right {
+    .visit {
+      transform: translate(0px);
+    }
+    .ami {
+      transform: translate(-360px);
+      opacity: 0.4;
+    }
+    .bar {
+      transform: translate(-200px) rotate(10deg);
+    }
+  }
+  .center {
+    position: fixed;
+    width: 1000px;
+    left: calc(50% - 180px);
+    top: 50%;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}

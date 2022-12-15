@@ -6,8 +6,6 @@ interface IIntersectionObserverStore {
   observedAtomIds: string[];
 }
 
-let atomsToBeObserved: IAtom[] = [];
-
 export const useIntersectionObserver = create<IIntersectionObserverStore>()(
   () => ({
     current: null,
@@ -33,7 +31,6 @@ export const observeAtom = (ref: Element, atom: IAtom) => {
   const io = useIntersectionObserver.getState().current;
   if (io) {
     io.observe(ref);
-    atomsToBeObserved = [...atomsToBeObserved, atom];
   }
 };
 export const resetObserver = () => {
@@ -41,7 +38,7 @@ export const resetObserver = () => {
   if (io) {
     io.disconnect();
   }
-  atomsToBeObserved = [];
+  useIntersectionObserver.setState({ observedAtomIds: [] });
 };
 
 export const loadObserver = () => {

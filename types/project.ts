@@ -10,3 +10,4 @@ export interface IProject
   writer: IUser;
   pages: IPage[];
 }
+export type IProjectSummary = Omit<IProject, "pages">;

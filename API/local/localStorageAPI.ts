@@ -47,6 +47,10 @@ const getMyProjects = async (): Promise<LocalResponse<IProjectSummary[]>> => {
 };
 
 const getProjectById = async (id: number): Promise<LocalResponse<IProject>> => {
+  if (id === 0) {
+    console.log(getSample.project(0));
+    //    return localSuccess(getSample.project(0));
+  }
   try {
     const stringData = await localStorage.getItem(PROJECT(id));
     if (stringData) {

@@ -10,7 +10,7 @@ import imageSample, {
 import Image from "next/image";
 import buildAtomStyle from "../../../functions/create/buildAtomStyle";
 import { IAtom } from "../../../types/atom";
-import { parseExtensionToClass } from "../functions/parseExtension";
+import { hasEffect, parseExtensionToClass } from "../functions/parseExtension";
 import {
   observeAtom,
   useIntersectionObserver,
@@ -70,6 +70,14 @@ const Atom = ({ atom }: Props) => {
       })}
       style={buildAtomStyle(atom, false)}
       ref={ref}
+      onClick={() => {
+        const targets = atom.extension.filter(
+          (ext) => ext.extensionType === "internalLink",
+        );
+        if (targets.length > 0) {
+          router.push(`/meet/${router.query.project_id}/${targets[0].value}`);
+        }
+      }}
     >
       {atom.content}
     </div>

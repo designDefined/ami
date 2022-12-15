@@ -44,7 +44,6 @@ const PageNavigator = () => {
               {pageName}
             </option>
           ))}
-          <option className={cx("pageOption")}>가나다</option>
         </select>
       </div>
     </WidgetWrapper>
