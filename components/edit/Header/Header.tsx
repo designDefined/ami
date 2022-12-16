@@ -26,23 +26,26 @@ const Header = () => {
       {projectName}
       <div className={cx("modes")}>
         <button
-          className={cx({ selected: status === "memo" })}
-          onClick={handleStatusButton("memo")}
-        >
-          메모
-        </button>
-        <button
           className={cx({ selected: status === "weave" })}
           onClick={handleStatusButton("weave")}
         >
           편집
         </button>
+        {/*
+        <button
+          className={cx({ selected: status === "memo" })}
+          onClick={handleStatusButton("memo")}
+        >
+          메모
+        </button>
+
         <button
           className={cx({ selected: status === "preview" })}
           onClick={handleStatusButton("preview")}
         >
           모바일
         </button>
+                */}
         <button
           onClick={() => {
             router.push(`/meet/${projectId}/${pages[pageStatus].id}`);

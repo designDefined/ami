@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Component {...pageProps} />
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
       <Modal />
     </>
   );

@@ -1,10 +1,12 @@
 @use "../../../styles/material";
+@use "./styles/simple";
 .SaveLoader {
   position: fixed;
   bottom: 20px;
   right: 5px;
   z-index: 1000;
   .button {
+    @include simple.textButton;
     @include material.shadow(3);
     border: 0;
     margin-right: 15px;
@@ -13,6 +15,7 @@
     border-radius: 15px;
     background-color: white;
     cursor: pointer;
+    transition: 0.2s ease;
     &:hover {
       @include material.shadow(2);
       background-color: #c2c2c2;

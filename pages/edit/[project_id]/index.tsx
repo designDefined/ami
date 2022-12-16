@@ -9,7 +9,7 @@ import Memo from "../../../components/edit/memoComponents/Memo";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
 import Saver from "../../../components/edit/Saver/Saver";
-import Weave from "../../../components/edit/weave/Weave";
+import Weave from "../../../components/edit/Weave/Weave";
 
 const cx = classNames.bind(styles);
 
@@ -53,15 +53,6 @@ const Edit: NextPage = () => {
           {editStatus === "memo" && <Memo />}
           {/*{editStatus === "preview" && <ReadByPage />}*/}
           {editStatus === "weave" && <Weave />}
-          <button
-            className={cx("toHome")}
-            onClick={() => {
-              clear();
-              router.push("/");
-            }}
-          >
-            {"< 홈으로 돌아가기"}
-          </button>
           <Saver />
         </>
       )}

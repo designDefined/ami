@@ -34,10 +34,14 @@ $homeBackground: linear-gradient(color.$gray11, color.$gray8);
     position: relative;
     width: 960px;
     height: 100%;
-    font-family: "LeferiPoint-WhiteObliqueA", sans-serif;
     font-weight: 200;
     transition: 0.5s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     .main {
       position: absolute;
       top: 0;
@@ -46,7 +50,7 @@ $homeBackground: linear-gradient(color.$gray11, color.$gray8);
       left: 300px;
       text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
       .l1 {
-        position: absolute;
+        position: absoslute;
         transform: translate(120px, 200px);
         font-size: 100px;
         transition: 0.5s ease;

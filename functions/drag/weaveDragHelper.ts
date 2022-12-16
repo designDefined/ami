@@ -2,7 +2,7 @@ import { useProject } from "../../store/project";
 import { useDragGuide } from "../../store/dragGuide";
 import { IAtom } from "../../types/atom";
 
-const pageCenter = 960;
+const pageCenter = 880;
 const sensitivity = 6;
 
 const projectStore = useProject;

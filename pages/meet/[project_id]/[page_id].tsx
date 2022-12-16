@@ -74,6 +74,14 @@ const Meet: NextPage = () => {
       >
         수정
       </div>
+      <button
+        className={cx("toHome")}
+        onClick={() => {
+          router.push("/");
+        }}
+      >
+        {"< 홈으로 돌아가기"}
+      </button>
     </article>
   );
 };
