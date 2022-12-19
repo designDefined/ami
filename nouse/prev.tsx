@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getProject, useProjectStore } from "./store/api/project";
 import Header from "../components/edit/Header/Header";
-import Memo from "../components/edit/memoComponents/Memo";
+import Memo from "../components/edit/Memo/Memo";
 import ReadByPage from "../components/edit/readComponents/ReadByPage";
 import { IEditStatus } from "../types/status";
 import Weave from "./Weave/Weave";

@@ -21,7 +21,9 @@ const ToMeet: NextPage = () => {
             toast.success("Project Loaded");
             load(data);
             setPageStatus(0);
-            router.push(`/meet/${routerId}/${data.pages[0].id}`);
+            router.replace(`/meet/${routerId}/${data.pages[0].id}`, undefined, {
+              scroll: true,
+            });
           } else {
             toast.error(`Project load failed with reason: ${data}`);
           }

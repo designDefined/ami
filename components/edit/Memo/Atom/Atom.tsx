@@ -1,5 +1,4 @@
-import { IAtom } from "../../../types/old/base";
-import styles from "./MemoComponents.module.scss";
+import styles from "../MemoComponents.module.scss";
 import classNames from "classnames/bind";
 import { useEffect, useRef } from "react";
 
@@ -8,8 +7,9 @@ import {
   onChangeInput,
   onClickAtom,
   onKeyDownAtom,
-} from "../handlers/memoEventHandler";
-import { useText } from "../../../store/text";
+} from "../../handlers/memoEventHandler";
+import { useText } from "../../../../store/text";
+import { IAtom } from "../../../../types/atom";
 
 interface Props {
   atom: IAtom;
@@ -36,7 +36,7 @@ const resizeTextarea = (ref: HTMLTextAreaElement | null): void => {
 };
 
 export const AtomWriter = ({ atom }: Props) => {
-  const { markdownType } = atom;
+  const { type, markdownType } = atom;
   const input = useText((state) => state.input);
   const setInput = useText((state) => state.setInput);
 
@@ -48,6 +48,10 @@ export const AtomWriter = ({ atom }: Props) => {
   useEffect(() => {
     resizeTextarea(ref.current);
   }, [ref, input]);
+
+  if (type === "image") {
+    return <li className={cx("Atom")}>Image</li>;
+  }
 
   return (
     <li className={cx("Atom", "writer", markdownType)}>

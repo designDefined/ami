@@ -1,15 +1,17 @@
-import { IAtom, IIdentifier, IPage } from "../../../types/old/base";
 import classNames from "classnames/bind";
-import styles from "./MemoComponents.module.scss";
-import { AtomReader, AtomWriter } from "./Atom";
+import styles from "../MemoComponents.module.scss";
+import { AtomReader, AtomWriter } from "../Atom/Atom";
 import ReactParallaxTilt from "react-parallax-tilt";
 import { useState } from "react";
-import { useText } from "../../../store/text";
+import { useText } from "../../../../store/text";
 import {
   onAddPage,
   onDeletePage,
   onModifyPageName,
-} from "../handlers/memoEventHandler";
+} from "../../handlers/memoEventHandler";
+import { IPage } from "../../../../types/page";
+import { IAtom } from "../../../../types/atom";
+import { IIdentifier } from "../../../../types/general";
 
 interface Props {
   page: IPage;

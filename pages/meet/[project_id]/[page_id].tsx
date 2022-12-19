@@ -38,7 +38,9 @@ const Meet: NextPage = () => {
                 setPageStatus(pageIndex);
               }
             } else {
-              router.push(`/meet/${routerId}/${data.pages[0].id}`);
+              router.push(`/meet/${routerId}/${data.pages[0].id}`, undefined, {
+                scroll: true,
+              });
             }
           } else {
             toast.error(`Project load failed with reason: ${data}`);
@@ -56,7 +58,9 @@ const Meet: NextPage = () => {
           }
         } else {
           setPageStatus(0);
-          router.push(`/meet/${routerId}/${pages[0].id}`);
+          router.replace(`/meet/${routerId}/${pages[0].id}`, undefined, {
+            scroll: true,
+          });
         }
       }
     }

@@ -1,4 +1,4 @@
-import Page, { PageAdd } from "./Page";
+import Page, { PageAdd } from "./Page/Page";
 import Hint from "./Hint/Hint";
 import Saver from "../Saver/Saver";
 import styles from "./MemoComponents.module.scss";

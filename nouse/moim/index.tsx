@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useProjectStore } from "../store/api/project";
 import Header from "../../components/edit/Header/Header";
 import Read from "../../components/edit/readComponents/Read";
-import Memo from "../../components/edit/memoComponents/Memo";
+import Memo from "../../components/edit/Memo/Memo";
 import { useEffect, useState } from "react";
 import styles from "./Moim.module.scss";
 import classNames from "classnames/bind";

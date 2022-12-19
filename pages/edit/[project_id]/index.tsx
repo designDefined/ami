@@ -5,7 +5,7 @@ import { useProject } from "../../../store/project";
 import localStorageAPI from "../../../API/local/localStorageAPI";
 import { toast } from "react-toastify";
 import Header from "../../../components/edit/Header/Header";
-import Memo from "../../../components/edit/memoComponents/Memo";
+import Memo from "../../../components/edit/Memo/Memo";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
 import Saver from "../../../components/edit/Saver/Saver";

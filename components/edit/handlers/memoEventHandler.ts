@@ -1,8 +1,9 @@
-import { IAtom, IMarkDownType, IPage } from "../../../types/old/base";
 import createEmpty from "../../../functions/create/createEmpty";
 import { useProject } from "../../../store/project";
 import { useText } from "../../../store/text";
 import { findAtomRelatively } from "../../../store/helper/manipulateWithParent";
+import { IPage } from "../../../types/page";
+import { IAtom, IMarkdownType, ITextAtom } from "../../../types/atom";
 
 const projectStore = useProject;
 const textStore = useText;
@@ -14,14 +15,14 @@ export const onClickAtom =
   };
 
 export const onKeyDownAtom =
-  (atom: IAtom): React.KeyboardEventHandler<HTMLTextAreaElement> =>
+  (atom: ITextAtom): React.KeyboardEventHandler<HTMLTextAreaElement> =>
   (e) => {
     const input = textStore.getState().input;
     switch (e.key) {
       case "Enter":
         e.preventDefault();
         const changedAtom = { ...atom, content: input };
-        const newAtom = createEmpty.atom(
+        const newAtom = createEmpty.textAtom(
           changedAtom.parentPageId,
           changedAtom.markdownDepth,
         );
@@ -71,7 +72,7 @@ const countSharp = (source: string): number => {
 };
 
 export const onChangeInput =
-  (atom: IAtom): React.ChangeEventHandler<HTMLTextAreaElement> =>
+  (atom: ITextAtom): React.ChangeEventHandler<HTMLTextAreaElement> =>
   (e) => {
     const input: string = e.target.value;
     const split = input.split(" ", 2);
@@ -80,7 +81,7 @@ export const onChangeInput =
       /***** Headings (#) *****/
       const sharps = countSharp(prefix);
       if (sharps > 0 && sharps <= 4) {
-        const newType = `h${sharps}` as IMarkDownType;
+        const newType = `h${sharps}` as "h1" | "h2" | "h3" | "h4";
         const newAtom = { ...atom, markdownType: newType, content: source };
         projectStore.getState().manipulateAtom(newAtom);
       }

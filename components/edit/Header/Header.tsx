@@ -31,7 +31,7 @@ const Header = () => {
         >
           편집
         </button>
-        {/*
+
         <button
           className={cx({ selected: status === "memo" })}
           onClick={handleStatusButton("memo")}
@@ -45,7 +45,7 @@ const Header = () => {
         >
           모바일
         </button>
-                */}
+
         <button
           onClick={() => {
             router.push(`/meet/${projectId}/${pages[pageStatus].id}`);
