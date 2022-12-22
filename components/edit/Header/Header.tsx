@@ -2,12 +2,15 @@ import styles from "./Header.module.scss";
 import classNames from "classnames/bind";
 import { IEditStatus, useProject } from "../../../store/project";
 import { useRouter } from "next/router";
+import { useState } from "react";
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const [isEdit, setIsEdit] = useState<boolean>(false);
   const status = useProject((state) => state.editStatus);
   const setStatus = useProject((state) => state.setEditStatus);
   const projectName = useProject((state) => state.projectName);
+  const setProjectName = useProject((state) => state.setProjectName);
   const projectId = useProject((state) => state.id);
   const pages = useProject((state) => state.pages);
   const pageStatus = useProject((state) => state.pageStatus);
@@ -23,7 +26,26 @@ const Header = () => {
 
   return (
     <header className={cx("Header")}>
-      {projectName}
+      {isEdit ? (
+        <input
+          className={cx("nameInput")}
+          type="text"
+          value={projectName}
+          onChange={(e) => {
+            setProjectName(e.target.value);
+          }}
+        />
+      ) : (
+        projectName
+      )}
+      <button
+        className={cx("nameButton")}
+        onClick={() => {
+          setIsEdit(!isEdit);
+        }}
+      >
+        {isEdit ? "확인" : "수정"}
+      </button>
       <div className={cx("modes")}>
         <button
           className={cx({ selected: status === "weave" })}
@@ -31,7 +53,6 @@ const Header = () => {
         >
           편집
         </button>
-
         <button
           className={cx({ selected: status === "memo" })}
           onClick={handleStatusButton("memo")}

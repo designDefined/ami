@@ -11,7 +11,7 @@ import { IProject } from "../../types/project";
 
 const TOP_PROJECTS = "ami_top_projects" as const;
 const MY_PROJECTS = "ami_my_projects" as const;
-const PROJECT = (id: number) => `ami_project_${id}` as const;
+const PROJECT = (id: number) => `ami_project_08_${id}` as const;
 
 const getTopProjects = async (): Promise<LocalResponse<IProjectSummary[]>> => {
   try {

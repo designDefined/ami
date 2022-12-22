@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import styles from "../MemoComponents.module.scss";
+import styles from "./Page.module.scss";
 import { AtomReader, AtomWriter } from "../Atom/Atom";
 import ReactParallaxTilt from "react-parallax-tilt";
 import { useState } from "react";
@@ -26,7 +26,7 @@ const renderAtom = (atom: IAtom, inputAtomId: IIdentifier | null) => {
 
 const Page = ({ page }: Props) => {
   const { pageName, atoms } = page;
-  const [nameInput, setNameInput] = useState<string>("");
+  const [nameInput, setNameInput] = useState<null | string>(null);
   const inputAtomId = useText((state) => state.identifier);
 
   return (
@@ -37,11 +37,28 @@ const Page = ({ page }: Props) => {
         </button>
         <button
           className={cx("button", "modifyName")}
-          onClick={onModifyPageName(page, nameInput)}
+          onClick={() => {
+            if (nameInput !== null) {
+              //setPageName(nameInput)
+              setNameInput(null);
+            } else {
+              setNameInput(pageName);
+            }
+          }}
         >
           수정
         </button>
-        <label className={cx("name")}>{pageName}</label>
+        {nameInput !== null ? (
+          <input
+            className={cx("nameInput")}
+            value={nameInput}
+            onChange={(e) => {
+              setNameInput(e.target.value);
+            }}
+          />
+        ) : (
+          <label className={cx("name")}>{pageName}</label>
+        )}
       </div>
       <ul className={cx("list")}>
         {atoms.map((atom) => renderAtom(atom, inputAtomId))}

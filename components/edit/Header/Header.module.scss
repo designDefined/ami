@@ -1,4 +1,6 @@
 @use "../../../styles/material";
+@use "../../../styles/simple";
+
 .Header {
   @include material.shadow(1);
   position: fixed;
@@ -15,6 +17,15 @@
   background-color: rgba(white, 0.8);
   backdrop-filter: blur(5px);
   z-index: 999;
+
+  .nameInput {
+    @include simple.textInput;
+  }
+  .nameButton {
+    @include material.shadow(1);
+    @include simple.textButton;
+    margin-left: 20px;
+  }
 
   .modes {
     position: absolute;
